@@ -1,0 +1,11 @@
+﻿<Page x:Class="AutoPartApp.Views.WarehouseView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="WarehouseView">
+    <Grid>
+        <TextBlock Text="Warehouse View"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="24" />
+    </Grid>
+</Page>
