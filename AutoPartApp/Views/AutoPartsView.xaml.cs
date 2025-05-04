@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace AutoPartApp.Views
+namespace AutoPartApp
 {
     /// <summary>
     /// Interaction logic for AutoPartsView.xaml
