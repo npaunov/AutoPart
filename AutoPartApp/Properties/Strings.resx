@@ -120,4 +120,7 @@
   <data name="AutoPartName" xml:space="preserve">
     <value>AutoPart</value>
   </data>
+  <data name="AutoPartTitle" xml:space="preserve">
+    <value>Auto Part 2025</value>
+  </data>
 </root>

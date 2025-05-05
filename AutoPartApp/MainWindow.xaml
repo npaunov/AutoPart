@@ -1,22 +1,24 @@
 ﻿<Window x:Class="AutoPartApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:AutoPartApp"
         xmlns:vm="clr-namespace:AutoPartApp"
-        Title="AutoPart Manager" Height="450" Width="800">
+        xmlns:views="clr-namespace:AutoPartApp"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:prop="clr-namespace:AutoPartApp.Properties"
+        FontSize="18"
+        Title="{x:Static prop:Strings.AutoPartTitle}" Height="600" Width="1000">
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
     <Grid>
-        <TabControl>
-            <!-- Tab for Auto Parts -->
-            <TabItem Header="Auto Parts">
-                <local:AutoPartsView />
-            </TabItem>
-
-            <!-- Tab for Warehouse -->
+        <TabControl TabStripPlacement="Left">
+            <!-- Warehouse Tab -->
             <TabItem Header="Warehouse">
-                <local:WarehouseView />
+                <views:WarehouseView />
+            </TabItem>
+            <!-- Auto Parts Tab -->
+            <TabItem Header="Auto Parts">
+                <views:AutoPartsView />
             </TabItem>
         </TabControl>
     </Grid>
