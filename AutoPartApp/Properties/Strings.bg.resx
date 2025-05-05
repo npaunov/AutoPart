@@ -121,12 +121,12 @@
     <value>AutoPart</value>
   </data>
   <data name="AutoPartsName" xml:space="preserve">
-    <value>Auto Parts</value>
+    <value>Резервни Части</value>
   </data>
   <data name="AutoPartTitle" xml:space="preserve">
-    <value>Auto Part 2025</value>
+    <value>Ауто Парт 2025</value>
   </data>
   <data name="WareHouseName" xml:space="preserve">
-    <value>Warehouse</value>
+    <value>Склад</value>
   </data>
 </root>

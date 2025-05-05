@@ -70,11 +70,29 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto Parts.
+        /// </summary>
+        public static string AutoPartsName {
+            get {
+                return ResourceManager.GetString("AutoPartsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto Part 2025.
         /// </summary>
         public static string AutoPartTitle {
             get {
                 return ResourceManager.GetString("AutoPartTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warehouse.
+        /// </summary>
+        public static string WareHouseName {
+            get {
+                return ResourceManager.GetString("WareHouseName", resourceCulture);
             }
         }
     }

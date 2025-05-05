@@ -12,6 +12,5 @@
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Value}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Update Warehouse" Command="{Binding UpdateWarehouseCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
     </Grid>
 </UserControl>

@@ -13,11 +13,11 @@
     <Grid>
         <TabControl TabStripPlacement="Left">
             <!-- Warehouse Tab -->
-            <TabItem Header="Warehouse">
+            <TabItem Header="{x:Static prop:Strings.WareHouseName}">
                 <views:WarehouseView />
             </TabItem>
             <!-- Auto Parts Tab -->
-            <TabItem Header="Auto Parts">
+            <TabItem Header="{x:Static prop:Strings.AutoPartsName}">
                 <views:AutoPartsView />
             </TabItem>
         </TabControl>
