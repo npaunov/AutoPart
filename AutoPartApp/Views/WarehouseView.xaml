@@ -1,11 +1,17 @@
-﻿<Page x:Class="AutoPartApp.WarehouseView"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="WarehouseView">
+﻿<UserControl x:Class="AutoPartApp.WarehouseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AutoPartApp">
+    <UserControl.DataContext>
+        <vm:WarehouseViewModel />
+    </UserControl.DataContext>
     <Grid>
-        <TextBlock Text="Warehouse View"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="24" />
+        <DataGrid ItemsSource="{Binding Warehouse.PartQuantities}" AutoGenerateColumns="False" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Part ID" Binding="{Binding Key}" />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Value}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Update Warehouse" Command="{Binding UpdateWarehouseCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
     </Grid>
-</Page>
+</UserControl>

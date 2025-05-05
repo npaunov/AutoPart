@@ -5,7 +5,7 @@ namespace AutoPartApp
     /// <summary>
     /// Interaction logic for WarehouseView.xaml
     /// </summary>
-    public partial class WarehouseView : Page
+    public partial class WarehouseView : UserControl
     {
         public WarehouseView()
         {

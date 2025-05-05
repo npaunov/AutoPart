@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace AutoPartApp.ViewModels;
+namespace AutoPartApp;
 
 public class AutoPartsViewModel : INotifyPropertyChanged
 {

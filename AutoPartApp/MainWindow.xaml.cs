@@ -11,12 +11,4 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-
-    private void ViewAutoParts_Click(object sender, RoutedEventArgs e)
-    {
-        // Navigate to AutoPartsView
-        var autoPartsView = new AutoPartsView();
-        //autoPartsView.Show();
-        this.Close();
-    }
 }
