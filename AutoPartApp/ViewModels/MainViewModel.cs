@@ -1,10 +1,61 @@
+using System.ComponentModel;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Windows.Input;
+
 namespace AutoPartApp;
 
-/// <summary>
-/// The main ViewModel for the application.
-/// </summary>
-public class MainViewModel
+public class MainViewModel : INotifyPropertyChanged
 {
-    public AutoPartsViewModel AutoPartsViewModel { get; } = new();
-    public WarehouseViewModel WarehouseViewModel { get; } = new();
+    public ICommand ChangeLanguageCommand { get; }
+    private string _selectedLanguage = "bg-BG";
+
+    public MainViewModel()
+    {
+        // Set the initial culture to Bulgarian
+        ChangeLanguageCommand = new NewCommand<string>(ChangeLanguage);
+        ChangeLanguageCommand.Execute(SelectedLanguage);
+    }
+
+    public string SelectedLanguage
+    {
+        get => _selectedLanguage;
+        set
+        {
+            if (_selectedLanguage != value)
+            {
+                _selectedLanguage = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    // Localized string properties
+    public string AutoPartTitle => Properties.Strings.AutoPartTitle;
+    public string WareHouseName => Properties.Strings.WareHouseName;
+    public string AutoPartsName => Properties.Strings.AutoPartsName;
+
+    private void ChangeLanguage(string? languageCode)
+    {
+        if (!string.IsNullOrEmpty(languageCode))
+        {
+            // Set the culture
+            CultureInfo culture = new CultureInfo(languageCode);
+            Thread.CurrentThread.CurrentUICulture = culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+
+            // Update the resource culture
+            Properties.Strings.Culture = culture;
+
+            // Notify the UI to refresh bindings
+            OnPropertyChanged(string.Empty); // Notify all properties
+        }
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }

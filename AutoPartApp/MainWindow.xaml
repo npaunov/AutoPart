@@ -4,21 +4,46 @@
         xmlns:vm="clr-namespace:AutoPartApp"
         xmlns:views="clr-namespace:AutoPartApp"
         xmlns:prop="clr-namespace:AutoPartApp.Properties"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         FontSize="18"
         Title="{x:Static prop:Strings.AutoPartTitle}" Height="600" Width="1000">
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
     <Grid>
-        <TabControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- TabControl -->
+        <TabControl Grid.Row="0">
             <!-- Warehouse Tab -->
-            <TabItem Header="{x:Static prop:Strings.WareHouseName}">
+            <TabItem Header="{Binding WareHouseName}">
                 <views:WarehouseView />
             </TabItem>
             <!-- Auto Parts Tab -->
-            <TabItem Header="{x:Static prop:Strings.AutoPartsName}">
+            <TabItem Header="{Binding AutoPartsName}">
                 <views:AutoPartsView />
             </TabItem>
         </TabControl>
+
+        <!-- Localization Dropdown -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
+            <TextBlock Text="Language:" FontSize="16" Margin="0,0,10,0" VerticalAlignment="Center" />
+            <ComboBox Width="150" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" SelectedValuePath="Tag" VerticalAlignment="Bottom" SelectedValue="bg-BG">
+               <i:Interaction.Triggers>
+                   <i:EventTrigger EventName="SelectionChanged">
+                       <i:InvokeCommandAction Command="{Binding ChangeLanguageCommand}" 
+                                   CommandParameter="{Binding SelectedValue, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+                   </i:EventTrigger>
+               </i:Interaction.Triggers>
+               <ComboBoxItem Content="English" Tag="en-US" />
+               <ComboBoxItem Content="Bulgarian" Tag="bg-BG" />
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>
