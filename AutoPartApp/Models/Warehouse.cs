@@ -4,5 +4,5 @@ namespace AutoPartApp;
 
 public class Warehouse
 {
-    public Dictionary<int, int> PartQuantities { get; set; } = new();
+    public List<Part> Parts { get; set; } = new();
 }

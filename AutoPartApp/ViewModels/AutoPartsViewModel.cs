@@ -27,8 +27,8 @@ public class AutoPartsViewModel : INotifyPropertyChanged
     public AutoPartsViewModel()
     {
         // Initialize sample data
-        Parts.Add(new Part { Id = 1, Description = "Brake Pad", Price = 29.99m, SalesForYear = 500 });
-        Parts.Add(new Part { Id = 2, Description = "Oil Filter", Price = 15.49m, SalesForYear = 1200 });
+        Parts.Add(new Part { Id = 1, Description = "Brake Pad", PriceBGN = 29.99m });
+        Parts.Add(new Part { Id = 2, Description = "Oil Filter", PriceBGN = 15.49m });
 
         AddPartCommand = new RelayCommand(AddPart);
         RemovePartCommand = new RelayCommand(RemovePart, CanRemovePart);
@@ -40,8 +40,7 @@ public class AutoPartsViewModel : INotifyPropertyChanged
         {
             Id = Parts.Count + 1,
             Description = "New Part",
-            Price = 0.0m,
-            SalesForYear = 0
+            PriceBGN = 0.0m
         };
         Parts.Add(newPart);
     }

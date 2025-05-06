@@ -5,11 +5,28 @@
     <UserControl.DataContext>
         <vm:WarehouseViewModel />
     </UserControl.DataContext>
-    <Grid>
-        <DataGrid ItemsSource="{Binding Warehouse.PartQuantities}" AutoGenerateColumns="False" Margin="10">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Search Section -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Search Part ID:" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <TextBox Width="200" Text="{Binding SearchPartId, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Search" Command="{Binding SearchCommand}" Margin="10,0,0,0" />
+        </StackPanel>
+
+        <!-- Warehouse Inventory -->
+        <DataGrid Grid.Row="1" ItemsSource="{Binding FilteredParts}" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Part ID" Binding="{Binding Key}" />
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Value}" />
+                <DataGridTextColumn Header="Part ID" Binding="{Binding Id}" Width="*" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*" />
+                <DataGridTextColumn Header="Price (BGN)" Binding="{Binding PriceBGN}" Width="*" />
+                <DataGridTextColumn Header="Price (EURO)" Binding="{Binding PriceEURO}" Width="*" />
+                <DataGridTextColumn Header="Package" Binding="{Binding Package}" Width="*" />
+                <DataGridTextColumn Header="In Store" Binding="{Binding InStore}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
