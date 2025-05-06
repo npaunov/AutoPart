@@ -11,7 +11,7 @@ public class DataImportViewModel : BaseViewModel
 {
     private string _selectedFilePath = string.Empty;
     private string _importStatus = string.Empty;
-
+    private WarehouseViewModel _warehouseViewModel = new();
     /// <summary>
     /// The path of the selected file.
     /// </summary>
@@ -79,5 +79,6 @@ public class DataImportViewModel : BaseViewModel
     private void ImportData()
     {
         ImportStatus = DataImportService.ImportCsv(SelectedFilePath);
+        _warehouseViewModel.LoadImportedParts();
     }
 }

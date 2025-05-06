@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Windows.Input;
+using AutoPartApp.Services;
 
 namespace AutoPartApp;
 
@@ -36,6 +36,7 @@ public class WarehouseViewModel : BaseViewModel
     }
 
     public ICommand SearchCommand { get; }
+    public ICommand LoadImportedPartsCommand { get; }
 
     // Localized Name and Label Properties
     public string PartIdHeader => Properties.Strings.PartIDName;
@@ -49,29 +50,43 @@ public class WarehouseViewModel : BaseViewModel
 
     public WarehouseViewModel()
     {
-        // Initialize the warehouse with sample data
-        Warehouse.Parts.Add(new Part { Id = 1, Description = "Engine", PriceBGN = 500, Package = 1, InStore = 10 });
-        Warehouse.Parts.Add(new Part { Id = 2, Description = "Gearbox", PriceBGN = 300, Package = 2, InStore = 5 });
-        Warehouse.Parts.Add(new Part { Id = 3, Description = "Tire", PriceBGN = 100, Package = 3, InStore = 50 });
-
-        // Initialize the filtered parts with all parts
-        FilteredParts = new ObservableCollection<Part>(Warehouse.Parts);
-
         // Initialize the search command
         SearchCommand = new RelayCommand(Search);
+
+        // Initialize the load imported parts command
+        LoadImportedPartsCommand = new RelayCommand(LoadImportedParts);
+
+        // Load the imported parts initially (if any)
+        LoadImportedParts();
     }
 
+    /// <summary>
+    /// Filters the parts based on the entered part ID.
+    /// </summary>
     private void Search()
     {
-        if (int.TryParse(SearchPartId, out int partId))
+        if (!string.IsNullOrEmpty(SearchPartId))
         {
             // Filter parts by the entered part ID
-            FilteredParts = new ObservableCollection<Part>(Warehouse.Parts.Where(p => p.Id == partId));
+            FilteredParts = new ObservableCollection<Part>(Warehouse.Parts.Where(p => p.Id.Equals(SearchPartId)));
         }
         else
         {
             // If no valid part ID is entered, show all parts
-            FilteredParts = new ObservableCollection<Part>(Warehouse.Parts);
+            FilteredParts = Warehouse.Parts;
         }
+    }
+
+    /// <summary>
+    /// Loads the parts imported by the DataImportService into the Warehouse and updates the FilteredParts collection.
+    /// </summary>
+    public void LoadImportedParts()
+    {
+        // Clear the current warehouse parts and load the imported parts
+        //Warehouse.Parts.Clear();
+        Warehouse.Parts = DataImportService.ImportedParts;
+
+        // Update the filtered parts to reflect the imported data
+        FilteredParts = DataImportService.ImportedParts;
     }
 }

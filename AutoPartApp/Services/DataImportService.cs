@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 
 namespace AutoPartApp.Services;
@@ -9,12 +12,12 @@ namespace AutoPartApp.Services;
 public static class DataImportService
 {
     /// <summary>
-    /// A collection to store the imported data.
+    /// A collection to store the imported parts.
     /// </summary>
-    public static List<string[]> ImportedData { get; private set; } = new();
+    public static ObservableCollection<Part> ImportedParts { get; private set; } = new();
 
     /// <summary>
-    /// Imports data from a specified CSV file and stores it in the `ImportedData` collection.
+    /// Imports data from a specified CSV file and stores it in the `ImportedParts` collection.
     /// </summary>
     /// <param name="filePath">The path to the CSV file.</param>
     /// <returns>A string indicating the result of the import operation.</returns>
@@ -28,25 +31,47 @@ public static class DataImportService
         try
         {
             // Clear the existing data
-            ImportedData.Clear();
+            ImportedParts.Clear();
 
             // Read all lines from the CSV file
             var lines = File.ReadAllLines(filePath);
 
-            // Parse each line and add it to the collection
-            foreach (var line in lines)
+            // Skip the header row and parse each line into a Part object
+            for (int i = 1; i < lines.Length; i++)
             {
-                var values = line.Split(',');
-                ImportedData.Add(values);
-            }
+                var line = lines[i];
+                var values = line.Split(';');
 
-            var a = ImportedData;
+                if (values.Length < 5)
+                {
+                    return $"Invalid data format on line {i + 1}.";
+                }
+
+                try
+                {
+                    var part = new Part
+                    {
+                        Id = values[0],
+                        Description = values[1],
+                        PriceBGN = decimal.Parse(values[2], CultureInfo.InvariantCulture),
+                        Package = int.Parse(values[3]),
+                        InStore = int.Parse(values[4])
+                    };
+
+                    ImportedParts.Add(part);
+                }
+                catch (Exception ex)
+                {
+                    return $"Error parsing line {i + 1}: {ex.Message}";
+                }
+            }
+            var a = ImportedParts;
 
             return "Data imported successfully!";
         }
-        catch
+        catch (Exception ex)
         {
-            return "An error occurred during data import.";
+            return $"An error occurred during data import: {ex.Message}";
         }
     }
 }

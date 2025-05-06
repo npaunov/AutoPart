@@ -27,8 +27,8 @@ public class AutoPartsViewModel : BaseViewModel
     public AutoPartsViewModel()
     {
         // Initialize sample data
-        Parts.Add(new Part { Id = 1, Description = "Brake Pad", PriceBGN = 29.99m });
-        Parts.Add(new Part { Id = 2, Description = "Oil Filter", PriceBGN = 15.49m });
+        Parts.Add(new Part { Id = "1", Description = "Brake Pad", PriceBGN = 29.99m });
+        Parts.Add(new Part { Id = "2", Description = "Oil Filter", PriceBGN = 15.49m });
 
         AddPartCommand = new RelayCommand(AddPart);
         RemovePartCommand = new RelayCommand(RemovePart, CanRemovePart);
@@ -38,7 +38,7 @@ public class AutoPartsViewModel : BaseViewModel
     {
         var newPart = new Part
         {
-            Id = Parts.Count + 1,
+            Id = (Parts.Count + 1).ToString(),
             Description = "New Part",
             PriceBGN = 0.0m
         };
