@@ -14,7 +14,7 @@ public class MainViewModel : INotifyPropertyChanged
     public MainViewModel()
     {
         // Set the initial culture to Bulgarian
-        ChangeLanguageCommand = new NewCommand<string>(ChangeLanguage);
+        ChangeLanguageCommand = new RelayCommandGeneric<string>(ChangeLanguage);
         ChangeLanguageCommand.Execute(SelectedLanguage);
     }
 
