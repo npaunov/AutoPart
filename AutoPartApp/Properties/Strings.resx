@@ -126,14 +126,38 @@
   <data name="AutoPartTitle" xml:space="preserve">
     <value>Auto Part 2025</value>
   </data>
+  <data name="BGNName" xml:space="preserve">
+    <value>BGN</value>
+  </data>
   <data name="BulgarianName" xml:space="preserve">
     <value>Bulgarian</value>
+  </data>
+  <data name="DescriptionName" xml:space="preserve">
+    <value>Description</value>
   </data>
   <data name="EnglishName" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="EuroName" xml:space="preserve">
+    <value>Euro</value>
+  </data>
+  <data name="InStoreName" xml:space="preserve">
+    <value>In Store</value>
+  </data>
   <data name="LanguageName" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="PackageName" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="PartIDName" xml:space="preserve">
+    <value>Part ID</value>
+  </data>
+  <data name="PriceName" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="SearchName" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="WareHouseName" xml:space="preserve">
     <value>Warehouse</value>

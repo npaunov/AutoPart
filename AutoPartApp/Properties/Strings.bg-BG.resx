@@ -126,14 +126,38 @@
   <data name="AutoPartTitle" xml:space="preserve">
     <value>Ауто Парт 2025</value>
   </data>
+  <data name="BGNName" xml:space="preserve">
+    <value>Лева</value>
+  </data>
   <data name="BulgarianName" xml:space="preserve">
     <value>Български</value>
+  </data>
+  <data name="DescriptionName" xml:space="preserve">
+    <value>Описание</value>
   </data>
   <data name="EnglishName" xml:space="preserve">
     <value>Английски</value>
   </data>
+  <data name="EuroName" xml:space="preserve">
+    <value>Евро</value>
+  </data>
+  <data name="InStoreName" xml:space="preserve">
+    <value>На Склад</value>
+  </data>
   <data name="LanguageName" xml:space="preserve">
     <value>Език</value>
+  </data>
+  <data name="PackageName" xml:space="preserve">
+    <value>Опаковка</value>
+  </data>
+  <data name="PartIDName" xml:space="preserve">
+    <value>Кат. Номер</value>
+  </data>
+  <data name="PriceName" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="SearchName" xml:space="preserve">
+    <value>Търси</value>
   </data>
   <data name="WareHouseName" xml:space="preserve">
     <value>Склад</value>

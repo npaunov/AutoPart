@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -37,6 +36,16 @@ public class WarehouseViewModel : INotifyPropertyChanged
     }
 
     public ICommand SearchCommand { get; }
+
+    // Localized Name and Label Properties
+    public string PartIdHeader => Properties.Strings.PartIDName;
+    public string DescriptionHeader => Properties.Strings.DescriptionName;
+    public string PriceBGNHeader => Properties.Strings.PriceName;
+    public string PriceEUROHeader => Properties.Strings.PriceName;
+    public string PackageHeader => Properties.Strings.PackageName;
+    public string InStoreHeader => Properties.Strings.InStoreName;
+    public string SearchPartIdLabel => Properties.Strings.SearchName;
+    public string SearchButtonLabel => Properties.Strings.SearchName;
 
     public WarehouseViewModel()
     {

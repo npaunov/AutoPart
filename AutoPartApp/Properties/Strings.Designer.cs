@@ -88,11 +88,29 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BGN.
+        /// </summary>
+        public static string BGNName {
+            get {
+                return ResourceManager.GetString("BGNName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bulgarian.
         /// </summary>
         public static string BulgarianName {
             get {
                 return ResourceManager.GetString("BulgarianName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string DescriptionName {
+            get {
+                return ResourceManager.GetString("DescriptionName", resourceCulture);
             }
         }
         
@@ -106,11 +124,65 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Euro.
+        /// </summary>
+        public static string EuroName {
+            get {
+                return ResourceManager.GetString("EuroName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Store.
+        /// </summary>
+        public static string InStoreName {
+            get {
+                return ResourceManager.GetString("InStoreName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string LanguageName {
             get {
                 return ResourceManager.GetString("LanguageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package.
+        /// </summary>
+        public static string PackageName {
+            get {
+                return ResourceManager.GetString("PackageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Part ID.
+        /// </summary>
+        public static string PartIDName {
+            get {
+                return ResourceManager.GetString("PartIDName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string PriceName {
+            get {
+                return ResourceManager.GetString("PriceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchName {
+            get {
+                return ResourceManager.GetString("SearchName", resourceCulture);
             }
         }
         

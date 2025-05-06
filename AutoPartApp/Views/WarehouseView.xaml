@@ -13,20 +13,73 @@
 
         <!-- Search Section -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-            <TextBlock Text="Search Part ID:" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <TextBlock Text="{Binding SearchPartIdLabel}" VerticalAlignment="Center" Margin="0,0,10,0" />
             <TextBox Width="200" Text="{Binding SearchPartId, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Content="Search" Command="{Binding SearchCommand}" Margin="10,0,0,0" />
+            <Button Content="{Binding SearchButtonLabel}" Command="{Binding SearchCommand}" Margin="10,0,0,0" />
         </StackPanel>
 
         <!-- Warehouse Inventory -->
-        <DataGrid Grid.Row="1" ItemsSource="{Binding FilteredParts}" AutoGenerateColumns="False" CanUserAddRows="False">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding FilteredParts}" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" ColumnWidth="*">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Part ID" Binding="{Binding Id}" Width="*" />
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*" />
-                <DataGridTextColumn Header="Price (BGN)" Binding="{Binding PriceBGN}" Width="*" />
-                <DataGridTextColumn Header="Price (EURO)" Binding="{Binding PriceEURO}" Width="*" />
-                <DataGridTextColumn Header="Package" Binding="{Binding Package}" Width="*" />
-                <DataGridTextColumn Header="In Store" Binding="{Binding InStore}" Width="*" />
+                <!-- Part ID Column -->
+                <DataGridTextColumn Binding="{Binding Id}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PartIdHeader, 
+                                RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <!-- Description Column -->
+                <DataGridTextColumn Binding="{Binding Description}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.DescriptionHeader, 
+                                RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <!-- Price (BGN) Column -->
+                <DataGridTextColumn Binding="{Binding PriceBGN}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PriceBGNHeader, 
+                                RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <!-- Price (EURO) Column -->
+                <DataGridTextColumn Binding="{Binding PriceEURO}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PriceEUROHeader, 
+                                RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <!-- Package Column -->
+                <DataGridTextColumn Binding="{Binding Package}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PackageHeader, 
+                                RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <!-- In Store Column -->
+                <DataGridTextColumn Binding="{Binding InStore}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.InStoreHeader, 
+                                RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
