@@ -1,75 +1,83 @@
+using AutoPartApp.Services;
 using System.IO;
 using System.Windows.Input;
 
-namespace AutoPartApp
+namespace AutoPartApp;
+
+/// <summary>
+/// ViewModel for the Data Import functionality.
+/// </summary>
+public class DataImportViewModel : BaseViewModel
 {
-    public class DataImportViewModel : BaseViewModel
+    private string _selectedFilePath = string.Empty;
+    private string _importStatus = string.Empty;
+
+    /// <summary>
+    /// The path of the selected file.
+    /// </summary>
+    public string SelectedFilePath
     {
-        private string _selectedFilePath = string.Empty;
-        private string _importStatus = string.Empty;
-
-        public string SelectedFilePath
+        get => _selectedFilePath;
+        set
         {
-            get => _selectedFilePath;
-            set
-            {
-                _selectedFilePath = value;
-                OnPropertyChanged();
-            }
+            _selectedFilePath = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string ImportStatus
+    /// <summary>
+    /// The status message of the import operation.
+    /// </summary>
+    public string ImportStatus
+    {
+        get => _importStatus;
+        set
         {
-            get => _importStatus;
-            set
-            {
-                _importStatus = value;
-                OnPropertyChanged();
-            }
+            _importStatus = value;
+            OnPropertyChanged();
         }
+    }
 
-        public ICommand BrowseFileCommand { get; }
-        public ICommand ImportDataCommand { get; }
+    /// <summary>
+    /// Command to browse and select a file.
+    /// </summary>
+    public ICommand BrowseFileCommand { get; }
 
-        public DataImportViewModel()
+    /// <summary>
+    /// Command to import data from the selected file.
+    /// </summary>
+    public ICommand ImportDataCommand { get; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
+    /// </summary>
+    public DataImportViewModel()
+    {
+        BrowseFileCommand = new RelayCommand(BrowseFile);
+        ImportDataCommand = new RelayCommand(ImportData);
+    }
+
+    /// <summary>
+    /// Opens a file dialog to select a CSV file.
+    /// </summary>
+    private void BrowseFile()
+    {
+        var openFileDialog = new Microsoft.Win32.OpenFileDialog
         {
-            BrowseFileCommand = new RelayCommand(BrowseFile);
-            ImportDataCommand = new RelayCommand(ImportData);
-        }
+            Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*"
+        };
 
-        private void BrowseFile()
+        if (openFileDialog.ShowDialog() == true)
         {
-            // Open a file dialog to select a file
-            var openFileDialog = new Microsoft.Win32.OpenFileDialog
-            {
-                Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*"
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                SelectedFilePath = openFileDialog.FileName;
-            }
+            SelectedFilePath = openFileDialog.FileName;
         }
+    }
 
-        private void ImportData()
-        {
-            if (string.IsNullOrEmpty(SelectedFilePath) || !File.Exists(SelectedFilePath))
-            {
-                ImportStatus = "Invalid file path. Please select a valid file.";
-                return;
-            }
-
-            try
-            {
-                // Simulate data import logic
-                var fileContent = File.ReadAllText(SelectedFilePath);
-                // Process the file content (e.g., parse CSV and update the database)
-                ImportStatus = "Data imported successfully!";
-            }
-            catch
-            {
-                ImportStatus = "An error occurred during data import.";
-            }
-        }
+    /// <summary>
+    /// Imports data from the selected file using the <see cref="DataImportService"/>.
+    /// </summary>
+    private void ImportData()
+    {
+        ImportStatus = DataImportService.ImportCsv(SelectedFilePath);
     }
 }
