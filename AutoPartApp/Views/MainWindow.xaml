@@ -41,8 +41,8 @@
                                    CommandParameter="{Binding SelectedValue, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
                    </i:EventTrigger>
                </i:Interaction.Triggers>
-                <ComboBoxItem Content="{Binding EnglishName}" Tag="en-US" />
-                <ComboBoxItem Content="{Binding BulgarianName}" Tag="bg-BG" />
+                <ComboBoxItem Content="{Binding BulgarianName}" Tag="{Binding BulgarianCultureCode}" />
+                <ComboBoxItem Content="{Binding EnglishName}" Tag="{Binding EnglishCultureCode}" />
             </ComboBox>
         </StackPanel>
     </Grid>

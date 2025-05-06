@@ -129,11 +129,17 @@
   <data name="BGNName" xml:space="preserve">
     <value>Лева</value>
   </data>
+  <data name="BulgarianCultureCode" xml:space="preserve">
+    <value>bg-BG</value>
+  </data>
   <data name="BulgarianName" xml:space="preserve">
     <value>Български</value>
   </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Описание</value>
+  </data>
+  <data name="EnglishCultureCode" xml:space="preserve">
+    <value>en-EN</value>
   </data>
   <data name="EnglishName" xml:space="preserve">
     <value>Английски</value>

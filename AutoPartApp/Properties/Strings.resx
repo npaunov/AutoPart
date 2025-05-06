@@ -129,11 +129,17 @@
   <data name="BGNName" xml:space="preserve">
     <value>BGN</value>
   </data>
+  <data name="BulgarianCultureCode" xml:space="preserve">
+    <value>bg-BG</value>
+  </data>
   <data name="BulgarianName" xml:space="preserve">
     <value>Bulgarian</value>
   </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="EnglishCultureCode" xml:space="preserve">
+    <value>en-EN</value>
   </data>
   <data name="EnglishName" xml:space="preserve">
     <value>English</value>

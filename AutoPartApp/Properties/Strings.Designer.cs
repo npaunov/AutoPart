@@ -97,6 +97,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bg-BG.
+        /// </summary>
+        public static string BulgarianCultureCode {
+            get {
+                return ResourceManager.GetString("BulgarianCultureCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bulgarian.
         /// </summary>
         public static string BulgarianName {
@@ -111,6 +120,15 @@ namespace AutoPartApp.Properties {
         public static string DescriptionName {
             get {
                 return ResourceManager.GetString("DescriptionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to en-EN.
+        /// </summary>
+        public static string EnglishCultureCode {
+            get {
+                return ResourceManager.GetString("EnglishCultureCode", resourceCulture);
             }
         }
         

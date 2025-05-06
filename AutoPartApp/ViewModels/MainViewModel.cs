@@ -1,20 +1,17 @@
-using System.ComponentModel;
-using System.Globalization;
-using System.Runtime.CompilerServices;
+using AutoPartApp.Services;
 using System.Windows.Input;
 
 namespace AutoPartApp;
 
 public class MainViewModel : BaseViewModel
 {
-    public ICommand ChangeLanguageCommand { get; }
     private string _selectedLanguage = "bg-BG";
+    public ICommand ChangeLanguageCommand { get; }
 
     public MainViewModel()
     {
-        // Set the initial culture to Bulgarian
-        ChangeLanguageCommand = new RelayCommandGeneric<string>(ChangeLanguage);
-        ChangeLanguageCommand.Execute(SelectedLanguage);
+        // Initialize the ChangeLanguageCommand
+        ChangeLanguageCommand = new RelayCommandGeneric<string>(LanguageService.ChangeLanguage);
     }
 
     public string SelectedLanguage
@@ -31,27 +28,12 @@ public class MainViewModel : BaseViewModel
     }
 
     // Localized string properties
+    public string BulgarianCultureCode => Properties.Strings.BulgarianCultureCode;
+    public string EnglishCultureCode => Properties.Strings.EnglishCultureCode;
     public string AutoPartTitle => Properties.Strings.AutoPartTitle;
     public string WareHouseName => Properties.Strings.WareHouseName;
     public string AutoPartsName => Properties.Strings.AutoPartsName;
     public string LanguageName => Properties.Strings.LanguageName;
     public string EnglishName => Properties.Strings.EnglishName;
     public string BulgarianName => Properties.Strings.BulgarianName;
-
-    private void ChangeLanguage(string? languageCode)
-    {
-        if (!string.IsNullOrEmpty(languageCode))
-        {
-            // Set the culture
-            CultureInfo culture = new CultureInfo(languageCode);
-            Thread.CurrentThread.CurrentUICulture = culture;
-            Thread.CurrentThread.CurrentCulture = culture;
-
-            // Update the resource culture
-            Properties.Strings.Culture = culture;
-
-            // Notify the UI to refresh bindings
-            OnPropertyChanged(string.Empty); // Notify all properties
-        }
-    }
 }

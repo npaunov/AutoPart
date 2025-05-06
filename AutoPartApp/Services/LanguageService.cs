@@ -1,23 +1,34 @@
 using System;
+using System.Globalization;
+using System.Threading;
+using System.Windows;
 
 namespace AutoPartApp.Services;
 
 /// <summary>
 /// A service that facilitates language change across view models.
 /// </summary>
-public class LanguageService
+public static class LanguageService
 {
-    /// <summary>
-    /// Event triggered when the application language is changed.
-    /// </summary>
-    public event Action<string>? LanguageChanged;
 
     /// <summary>
-    /// Notifies subscribers about the language change.
+    /// Changes the application language and notifies subscribers.
     /// </summary>
     /// <param name="newCulture">The new culture code (e.g., "en-EN", "bg-BG").</param>
-    public void ChangeLanguage(string newCulture)
+    public static void ChangeLanguage(string newCulture)
     {
-        LanguageChanged?.Invoke(newCulture);
+        if (!string.IsNullOrEmpty(newCulture))
+        {
+            // Set the culture
+            CultureInfo culture = new CultureInfo(newCulture);
+            Thread.CurrentThread.CurrentUICulture = culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+
+            // Refresh the UI
+            if (Application.Current.MainWindow != null)
+            {
+                Application.Current.MainWindow.Language = System.Windows.Markup.XmlLanguage.GetLanguage(culture.IetfLanguageTag);
+            }
+        }
     }
 }

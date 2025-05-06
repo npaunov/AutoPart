@@ -40,11 +40,11 @@ public class WarehouseViewModel : BaseViewModel
     // Localized Name and Label Properties
     public string PartIdHeader => Properties.Strings.PartIDName;
     public string DescriptionHeader => Properties.Strings.DescriptionName;
-    public string PriceBGNHeader => Properties.Strings.PriceName;
-    public string PriceEUROHeader => Properties.Strings.PriceName;
+    public string PriceBGNHeader => Properties.Strings.PriceName + " " + Properties.Strings.BGNName;
+    public string PriceEUROHeader => Properties.Strings.PriceName + " " + Properties.Strings.EuroName;
     public string PackageHeader => Properties.Strings.PackageName;
     public string InStoreHeader => Properties.Strings.InStoreName;
-    public string SearchPartIdLabel => Properties.Strings.SearchName;
+    public string SearchPartIdLabel => Properties.Strings.SearchName + " " + Properties.Strings.PartIDName;
     public string SearchButtonLabel => Properties.Strings.SearchName;
 
     public WarehouseViewModel()
