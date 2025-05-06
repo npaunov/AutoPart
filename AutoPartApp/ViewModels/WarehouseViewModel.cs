@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace AutoPartApp;
 
-public class WarehouseViewModel : INotifyPropertyChanged
+public class WarehouseViewModel : BaseViewModel
 {
     private string _searchPartId = string.Empty;
     private ObservableCollection<Part> _filteredParts = new();
@@ -73,12 +73,5 @@ public class WarehouseViewModel : INotifyPropertyChanged
             // If no valid part ID is entered, show all parts
             FilteredParts = new ObservableCollection<Part>(Warehouse.Parts);
         }
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

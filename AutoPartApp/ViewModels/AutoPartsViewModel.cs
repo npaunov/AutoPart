@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace AutoPartApp;
 
-public class AutoPartsViewModel : INotifyPropertyChanged
+public class AutoPartsViewModel : BaseViewModel
 {
     private Part? _selectedPart;
 
@@ -55,11 +55,4 @@ public class AutoPartsViewModel : INotifyPropertyChanged
     }
 
     private bool CanRemovePart() => SelectedPart != null;
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 }

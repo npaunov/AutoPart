@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace AutoPartApp;
 
-public class MainViewModel : INotifyPropertyChanged
+public class MainViewModel : BaseViewModel
 {
     public ICommand ChangeLanguageCommand { get; }
     private string _selectedLanguage = "bg-BG";
@@ -53,11 +53,5 @@ public class MainViewModel : INotifyPropertyChanged
             // Notify the UI to refresh bindings
             OnPropertyChanged(string.Empty); // Notify all properties
         }
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
