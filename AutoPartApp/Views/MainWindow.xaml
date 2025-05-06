@@ -29,6 +29,10 @@
             <TabItem Header="{Binding AutoPartsName}">
                 <views:AutoPartsView />
             </TabItem>
+            <!-- Data Import Tab -->
+            <TabItem Header="{Binding DataImportName}">
+                <views:DataImportView />
+            </TabItem>
         </TabControl>
 
         <!-- Localization Dropdown -->

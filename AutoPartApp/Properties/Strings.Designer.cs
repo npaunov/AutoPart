@@ -115,6 +115,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data Import.
+        /// </summary>
+        public static string DataImportName {
+            get {
+                return ResourceManager.GetString("DataImportName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string DescriptionName {

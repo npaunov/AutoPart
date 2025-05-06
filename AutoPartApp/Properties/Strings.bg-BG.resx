@@ -135,6 +135,9 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Български</value>
   </data>
+  <data name="DataImportName" xml:space="preserve">
+    <value>Импорт на Данни</value>
+  </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Описание</value>
   </data>

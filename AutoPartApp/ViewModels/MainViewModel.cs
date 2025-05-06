@@ -36,4 +36,5 @@ public class MainViewModel : BaseViewModel
     public string LanguageName => Properties.Strings.LanguageName;
     public string EnglishName => Properties.Strings.EnglishName;
     public string BulgarianName => Properties.Strings.BulgarianName;
+    public string DataImportName => Properties.Strings.DataImportName;
 }

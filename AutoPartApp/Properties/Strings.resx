@@ -135,6 +135,9 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Bulgarian</value>
   </data>
+  <data name="DataImportName" xml:space="preserve">
+    <value>Data Import</value>
+  </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Description</value>
   </data>
