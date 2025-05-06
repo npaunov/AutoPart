@@ -33,16 +33,16 @@
 
         <!-- Localization Dropdown -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-            <TextBlock Text="Language:" FontSize="16" Margin="0,0,10,0" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding LanguageName}" FontSize="16" Margin="0,0,10,0" VerticalAlignment="Center" Width="80" TextAlignment="Right"/>
             <ComboBox Width="150" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" SelectedValuePath="Tag" VerticalAlignment="Bottom" SelectedValue="bg-BG">
-               <i:Interaction.Triggers>
+                <i:Interaction.Triggers>
                    <i:EventTrigger EventName="SelectionChanged">
                        <i:InvokeCommandAction Command="{Binding ChangeLanguageCommand}" 
                                    CommandParameter="{Binding SelectedValue, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
                    </i:EventTrigger>
                </i:Interaction.Triggers>
-               <ComboBoxItem Content="English" Tag="en-US" />
-               <ComboBoxItem Content="Bulgarian" Tag="bg-BG" />
+                <ComboBoxItem Content="{Binding EnglishName}" Tag="en-US" />
+                <ComboBoxItem Content="{Binding BulgarianName}" Tag="bg-BG" />
             </ComboBox>
         </StackPanel>
     </Grid>

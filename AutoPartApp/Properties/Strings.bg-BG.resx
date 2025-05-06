@@ -126,6 +126,15 @@
   <data name="AutoPartTitle" xml:space="preserve">
     <value>Ауто Парт 2025</value>
   </data>
+  <data name="BulgarianName" xml:space="preserve">
+    <value>Български</value>
+  </data>
+  <data name="EnglishName" xml:space="preserve">
+    <value>Английски</value>
+  </data>
+  <data name="LanguageName" xml:space="preserve">
+    <value>Език</value>
+  </data>
   <data name="WareHouseName" xml:space="preserve">
     <value>Склад</value>
   </data>

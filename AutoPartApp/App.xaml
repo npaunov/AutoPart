@@ -14,7 +14,7 @@
             <Setter Property="HeaderTemplate">
                 <Setter.Value>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}" FontSize="20" Margin="15" />
+                        <TextBlock Text="{Binding}" FontSize="20" Margin="15" Width="150" TextAlignment="Center" />
                     </DataTemplate>
                 </Setter.Value>
             </Setter>

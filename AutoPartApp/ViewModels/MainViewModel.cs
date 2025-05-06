@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Windows.Input;
 
 namespace AutoPartApp;
@@ -35,6 +34,9 @@ public class MainViewModel : INotifyPropertyChanged
     public string AutoPartTitle => Properties.Strings.AutoPartTitle;
     public string WareHouseName => Properties.Strings.WareHouseName;
     public string AutoPartsName => Properties.Strings.AutoPartsName;
+    public string LanguageName => Properties.Strings.LanguageName;
+    public string EnglishName => Properties.Strings.EnglishName;
+    public string BulgarianName => Properties.Strings.BulgarianName;
 
     private void ChangeLanguage(string? languageCode)
     {
