@@ -11,6 +11,9 @@ obj/
 *.userosscache
 *.sln.docstates
 
+# User created files and folders
+/DataBase/
+
 # IDE-specific files
 .vscode/
 .vs/

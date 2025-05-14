@@ -19,7 +19,7 @@
         </StackPanel>
 
         <!-- Warehouse Inventory -->
-        <DataGrid Grid.Row="1" ItemsSource="{Binding FilteredParts}" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" ColumnWidth="*">
+        <DataGrid Grid.Row="1" IsReadOnly="True" ItemsSource="{Binding FilteredParts}" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" ColumnWidth="*">
             <DataGrid.Columns>
                 <!-- Part ID Column -->
                 <DataGridTextColumn Binding="{Binding Id}">
