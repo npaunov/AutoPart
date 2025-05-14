@@ -13,10 +13,8 @@
         <StackPanel Width="200" Margin="10">
             <TextBlock Text="Data Import" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
             <TextBlock Text="Select a file to import data:"/>
-            <Button Content="Browse File" Command="{Binding BrowseFileCommand}" Margin="0,10,0,0"/>
+            <Button Content="Import Data" Command="{Binding BrowseAndImportCommand}" Margin="0,10,0,0"/>
             <TextBlock Text="{Binding SelectedFilePath}" Margin="0,10,0,0"/>
-            <Button Content="Import Data" Command="{Binding ImportDataCommand}" Margin="0,10,0,0"/>
-            <TextBlock Text="{Binding ImportStatus}" Margin="0,10,0,0" Foreground="Green"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -11,7 +11,10 @@ public class DataImportViewModel : BaseViewModel
 {
     private string _selectedFilePath = string.Empty;
     private string _importStatus = string.Empty;
-    private WarehouseViewModel _warehouseViewModel = new();
+
+    // Expose WarehouseViewModel as a property
+    public WarehouseViewModel WarehouseViewModel { get; } = new();
+
     /// <summary>
     /// The path of the selected file.
     /// </summary>
@@ -39,28 +42,22 @@ public class DataImportViewModel : BaseViewModel
     }
 
     /// <summary>
-    /// Command to browse and select a file.
+    /// Command to browse and import data from a selected file.
     /// </summary>
-    public ICommand BrowseFileCommand { get; }
-
-    /// <summary>
-    /// Command to import data from the selected file.
-    /// </summary>
-    public ICommand ImportDataCommand { get; }
+    public ICommand BrowseAndImportCommand { get; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
     /// </summary>
     public DataImportViewModel()
     {
-        BrowseFileCommand = new RelayCommand(BrowseFile);
-        ImportDataCommand = new RelayCommand(ImportData);
+        BrowseAndImportCommand = new RelayCommand(BrowseAndImport);
     }
 
     /// <summary>
-    /// Opens a file dialog to select a CSV file.
+    /// Opens a file dialog to select a CSV file and imports data from it.
     /// </summary>
-    private void BrowseFile()
+    private void BrowseAndImport()
     {
         var openFileDialog = new Microsoft.Win32.OpenFileDialog
         {
@@ -70,15 +67,8 @@ public class DataImportViewModel : BaseViewModel
         if (openFileDialog.ShowDialog() == true)
         {
             SelectedFilePath = openFileDialog.FileName;
+            ImportStatus = DataImportService.ImportCsv(SelectedFilePath);
+            WarehouseViewModel.LoadImportedParts();
         }
-    }
-
-    /// <summary>
-    /// Imports data from the selected file using the <see cref="DataImportService"/>.
-    /// </summary>
-    private void ImportData()
-    {
-        ImportStatus = DataImportService.ImportCsv(SelectedFilePath);
-        _warehouseViewModel.LoadImportedParts();
     }
 }
