@@ -10,11 +10,12 @@ namespace AutoPartApp;
 public class DataImportViewModel : BaseViewModel
 {
     private string _selectedFilePath = string.Empty;
-    private string _importStatus = string.Empty;
+    private string _buttonStatus = string.Empty;
 
     // Expose WarehouseViewModel as a property
     public WarehouseViewModel WarehouseViewModel { get; } = new();
 
+    #region Properties
     /// <summary>
     /// The path of the selected file.
     /// </summary>
@@ -29,22 +30,24 @@ public class DataImportViewModel : BaseViewModel
     }
 
     /// <summary>
-    /// The status message of the import operation.
+    /// The status message of the button operation.
     /// </summary>
-    public string ImportStatus
+    public string ButtonStatus
     {
-        get => _importStatus;
+        get => _buttonStatus;
         set
         {
-            _importStatus = value;
+            _buttonStatus = value;
             OnPropertyChanged();
         }
     }
+    #endregion Properties
 
     /// <summary>
     /// Command to browse and import data from a selected file.
     /// </summary>
     public ICommand BrowseAndImportCommand { get; }
+    public ICommand TestCommand { get; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
@@ -52,7 +55,10 @@ public class DataImportViewModel : BaseViewModel
     public DataImportViewModel()
     {
         BrowseAndImportCommand = new RelayCommand(BrowseAndImport);
+        TestCommand = new RelayCommand(TestAction);
     }
+
+
 
     /// <summary>
     /// Opens a file dialog to select a CSV file and imports data from it.
@@ -67,8 +73,13 @@ public class DataImportViewModel : BaseViewModel
         if (openFileDialog.ShowDialog() == true)
         {
             SelectedFilePath = openFileDialog.FileName;
-            ImportStatus = DataImportService.ImportCsv(SelectedFilePath);
+            ButtonStatus = DataImportService.ImportCsv(SelectedFilePath);
             WarehouseViewModel.LoadImportedParts();
         }
+    }
+
+    private void TestAction()
+    {
+        ButtonStatus = "Test button clicked!";
     }
 }
