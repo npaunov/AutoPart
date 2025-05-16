@@ -81,5 +81,19 @@ public class DataImportViewModel : BaseViewModel
     private void TestAction()
     {
         ButtonStatus = "Test button clicked!";
+        //try
+        //{
+
+        //    // Get the current directory
+        //    string currentDirectory = Directory.GetCurrentDirectory();
+        //    string relativePath = Path.Combine(currentDirectory, @"..\..\..\..\DataBase\empty_file.txt");
+
+        //    File.Create(relativePath);
+        //    ButtonStatus = $"Empty .txt file created";
+        //}
+        //catch (Exception ex)
+        //{
+        //    ButtonStatus = $"Failed to create .txt file: {ex.Message}";
+        //}
     }
 }
