@@ -1,6 +1,7 @@
 using AutoPartApp.Services;
 using System.IO;
 using System.Windows.Input;
+using EntityFramework;
 
 namespace AutoPartApp;
 
@@ -47,7 +48,13 @@ public class DataImportViewModel : BaseViewModel
     /// Command to browse and import data from a selected file.
     /// </summary>
     public ICommand BrowseAndImportCommand { get; }
+
+    /// <summary>
+    /// Command to create a new database file and schema.
+    /// </summary>
+    public ICommand CreateDatabaseCommand { get; }
     public ICommand TestCommand { get; }
+    
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
@@ -56,9 +63,16 @@ public class DataImportViewModel : BaseViewModel
     {
         BrowseAndImportCommand = new RelayCommand(BrowseAndImport);
         TestCommand = new RelayCommand(TestAction);
+        CreateDatabaseCommand = new RelayCommand(CreateDatabase);
     }
 
-
+    /// <summary>
+    /// Creates a new database and updates the status message.
+    /// </summary>
+    private void CreateDatabase()
+    {
+        ButtonStatus = DbContextWrapper.CreateNewDatabase();
+    }
 
     /// <summary>
     /// Opens a file dialog to select a CSV file and imports data from it.
