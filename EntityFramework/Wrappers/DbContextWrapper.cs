@@ -54,7 +54,6 @@ namespace EntityFramework
             string folderPath = @"D:\AutoPart\DataBase";
             var dbPath = Path.Combine(folderPath, "AutoPartsDb.mdf");
 
-            //var connectionString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True;Connect Timeout=30";
             var connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=AutoPartsDb;Integrated Security=True;Connect Timeout=30";
 
             return new DbContextOptionsBuilder<AutoPartDbContext>()
