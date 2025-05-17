@@ -135,6 +135,9 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Bulgarian</value>
   </data>
+  <data name="CreateNewDataBaseName" xml:space="preserve">
+    <value>Create New DataBase</value>
+  </data>
   <data name="DataImportName" xml:space="preserve">
     <value>Data Import</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="EuroName" xml:space="preserve">
     <value>Euro</value>
+  </data>
+  <data name="ImportCSVName" xml:space="preserve">
+    <value>Import .csv file</value>
   </data>
   <data name="InStoreName" xml:space="preserve">
     <value>In Store</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="SearchName" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="SelectFileName" xml:space="preserve">
+    <value>Select File to import</value>
   </data>
   <data name="WareHouseName" xml:space="preserve">
     <value>Warehouse</value>

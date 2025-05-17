@@ -115,6 +115,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New DataBase.
+        /// </summary>
+        public static string CreateNewDataBaseName {
+            get {
+                return ResourceManager.GetString("CreateNewDataBaseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data Import.
         /// </summary>
         public static string DataImportName {
@@ -156,6 +165,15 @@ namespace AutoPartApp.Properties {
         public static string EuroName {
             get {
                 return ResourceManager.GetString("EuroName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import .csv file.
+        /// </summary>
+        public static string ImportCSVName {
+            get {
+                return ResourceManager.GetString("ImportCSVName", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace AutoPartApp.Properties {
         public static string SearchName {
             get {
                 return ResourceManager.GetString("SearchName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select File to import.
+        /// </summary>
+        public static string SelectFileName {
+            get {
+                return ResourceManager.GetString("SelectFileName", resourceCulture);
             }
         }
         

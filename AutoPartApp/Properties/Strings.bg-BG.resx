@@ -135,6 +135,9 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Български</value>
   </data>
+  <data name="CreateNewDataBaseName" xml:space="preserve">
+    <value>Създайте Нова База Данни</value>
+  </data>
   <data name="DataImportName" xml:space="preserve">
     <value>Импорт на Данни</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="EuroName" xml:space="preserve">
     <value>Евро</value>
+  </data>
+  <data name="ImportCSVName" xml:space="preserve">
+    <value>Импорт на .csv файл</value>
   </data>
   <data name="InStoreName" xml:space="preserve">
     <value>На Склад</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="SearchName" xml:space="preserve">
     <value>Търси</value>
+  </data>
+  <data name="SelectFileName" xml:space="preserve">
+    <value>Изберете файл за импорт</value>
   </data>
   <data name="WareHouseName" xml:space="preserve">
     <value>Склад</value>

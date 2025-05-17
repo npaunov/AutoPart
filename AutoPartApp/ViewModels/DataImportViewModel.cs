@@ -73,4 +73,11 @@ public partial class DataImportViewModel : ObservableObject
         //    ButtonStatus = $"Failed to create .txt file: {ex.Message}";
         //}
     }
+
+    // Localized string properties
+    public string DataImportName => Properties.Strings.DataImportName;
+    public string SelectFileName => Properties.Strings.SelectFileName;
+    public string ImportCSVName => Properties.Strings.ImportCSVName;
+    public string CreateNewDataBaseName => Properties.Strings.CreateNewDataBaseName;
+
 }
