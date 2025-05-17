@@ -1,43 +1,19 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
-using AutoPartApp.Services;
 using Models;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AutoPartApp;
 
-public class WarehouseViewModel : BaseViewModel
+public partial class WarehouseViewModel : ObservableObject
 {
+    [ObservableProperty]
     private string _searchPartId = string.Empty;
+    [ObservableProperty]
     private ObservableCollection<Part> _filteredParts = new();
 
     public Warehouse Warehouse { get; set; } = new();
-
-    public string SearchPartId
-    {
-        get => _searchPartId;
-        set
-        {
-            if (_searchPartId != value)
-            {
-                _searchPartId = value;
-                OnPropertyChanged();
-            }
-        }
-    }
-
-    public ObservableCollection<Part> FilteredParts
-    {
-        get => _filteredParts;
-        set
-        {
-            _filteredParts = value;
-            OnPropertyChanged();
-        }
-    }
-
-    public ICommand SearchCommand { get; }
-    public ICommand LoadImportedPartsCommand { get; }
 
     // Localized Name and Label Properties
     public string PartIdHeader => Properties.Strings.PartIDName;
@@ -51,16 +27,9 @@ public class WarehouseViewModel : BaseViewModel
 
     public WarehouseViewModel()
     {
-        // Initialize the search command
-        SearchCommand = new RelayCommand(Search);
-
-        // Initialize the load imported parts command
-        LoadImportedPartsCommand = new RelayCommand(LoadImportedParts);
-
-        // Load the imported parts initially (if any)
-        LoadImportedParts();
     }
 
+    [RelayCommand]
     /// <summary>
     /// Filters the parts based on the entered part ID.
     /// </summary>
@@ -78,6 +47,7 @@ public class WarehouseViewModel : BaseViewModel
         }
     }
 
+    [RelayCommand]
     /// <summary>
     /// Loads the parts imported by the DataImportService into the Warehouse and updates the FilteredParts collection.
     /// </summary>

@@ -6,7 +6,6 @@ using System.Windows;
 using System.Globalization;
 using System.Windows.Markup;
 using System.Threading;
-using AutoPartApp.Services;
 
 namespace AutoPartApp
 {

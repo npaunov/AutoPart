@@ -1,33 +1,23 @@
-using AutoPartApp.Services;
-using System.Globalization;
-using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AutoPartApp;
 
-public class MainViewModel : BaseViewModel
+public partial class MainViewModel : ObservableObject
 {
-    private string _selectedLanguage = "bg-BG";
-    public ICommand ChangeLanguageCommand { get; }
+    [ObservableProperty]
+    private string _selectedLanguage = Properties.Strings.BulgarianCultureCode;
 
     public MainViewModel()
     {
-        // Initialize the ChangeLanguageCommand
-        ChangeLanguageCommand = new RelayCommandGeneric<string>(LanguageService.ChangeLanguage);
+
     }
 
-    public string SelectedLanguage
+    [RelayCommand]
+    private void ChangeLanguage(string newCulture)
     {
-        get => _selectedLanguage;
-        set
-        {
-            if (_selectedLanguage != value)
-            {
-                _selectedLanguage = value;
-                OnPropertyChanged();
-            }
-        }
+        LanguageService.ChangeLanguage(newCulture);
     }
-
     // Localized string properties
     public string BulgarianCultureCode => Properties.Strings.BulgarianCultureCode;
     public string EnglishCultureCode => Properties.Strings.EnglishCultureCode;

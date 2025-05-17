@@ -1,71 +1,32 @@
-using AutoPartApp.Services;
-using System.IO;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using EntityFramework;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AutoPartApp;
 
 /// <summary>
 /// ViewModel for the Data Import functionality.
 /// </summary>
-public class DataImportViewModel : BaseViewModel
+public partial class DataImportViewModel : ObservableObject
 {
+    [ObservableProperty]
     private string _selectedFilePath = string.Empty;
+    [ObservableProperty]
     private string _buttonStatus = string.Empty;
 
     // Expose WarehouseViewModel as a property
     public WarehouseViewModel WarehouseViewModel { get; } = new();
-
-    #region Properties
-    /// <summary>
-    /// The path of the selected file.
-    /// </summary>
-    public string SelectedFilePath
-    {
-        get => _selectedFilePath;
-        set
-        {
-            _selectedFilePath = value;
-            OnPropertyChanged();
-        }
-    }
-
-    /// <summary>
-    /// The status message of the button operation.
-    /// </summary>
-    public string ButtonStatus
-    {
-        get => _buttonStatus;
-        set
-        {
-            _buttonStatus = value;
-            OnPropertyChanged();
-        }
-    }
-    #endregion Properties
-
-    /// <summary>
-    /// Command to browse and import data from a selected file.
-    /// </summary>
-    public ICommand BrowseAndImportCommand { get; }
-
-    /// <summary>
-    /// Command to create a new database file and schema.
-    /// </summary>
-    public ICommand CreateDatabaseCommand { get; }
-    public ICommand TestCommand { get; }
-    
+     
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
     /// </summary>
     public DataImportViewModel()
     {
-        BrowseAndImportCommand = new RelayCommand(BrowseAndImport);
-        TestCommand = new RelayCommand(TestAction);
-        CreateDatabaseCommand = new RelayCommand(CreateDatabase);
     }
 
+    [RelayCommand]
     /// <summary>
     /// Creates a new database and updates the status message.
     /// </summary>
@@ -74,6 +35,7 @@ public class DataImportViewModel : BaseViewModel
         ButtonStatus = DbContextWrapper.CreateNewDatabase();
     }
 
+    [RelayCommand]
     /// <summary>
     /// Opens a file dialog to select a CSV file and imports data from it.
     /// </summary>
@@ -92,6 +54,7 @@ public class DataImportViewModel : BaseViewModel
         }
     }
 
+    [RelayCommand]
     private void TestAction()
     {
         ButtonStatus = "Test button clicked!";

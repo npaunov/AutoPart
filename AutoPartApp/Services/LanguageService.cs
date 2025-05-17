@@ -1,16 +1,13 @@
-using System;
 using System.Globalization;
-using System.Threading;
 using System.Windows;
 
-namespace AutoPartApp.Services;
+namespace AutoPartApp;
 
 /// <summary>
 /// A service that facilitates language change across view models.
 /// </summary>
 public static class LanguageService
 {
-
     /// <summary>
     /// Changes the application language and notifies subscribers.
     /// </summary>
