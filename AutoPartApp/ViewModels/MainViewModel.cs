@@ -32,9 +32,7 @@ public class MainViewModel : BaseViewModel
     public string BulgarianCultureCode => Properties.Strings.BulgarianCultureCode;
     public string EnglishCultureCode => Properties.Strings.EnglishCultureCode;
     public string AutoPartTitle => Properties.Strings.AutoPartTitle;
-    //public string WareHouseName => Properties.Strings.WareHouseName;
-
-    public string WareHouseName => Properties.Strings.ResourceManager.GetString(nameof(Properties.Strings.WareHouseName), CultureInfo.CurrentUICulture);
+    public string WareHouseName => Properties.Strings.WareHouseName;
     public string AutoPartsName => Properties.Strings.AutoPartsName;
     public string LanguageName => Properties.Strings.LanguageName;
     public string EnglishName => Properties.Strings.EnglishName;
