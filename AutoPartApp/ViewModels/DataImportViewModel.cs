@@ -1,9 +1,9 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
-using EntityFramework;
 using CommunityToolkit.Mvvm.Input;
-using Managers;
 using Services.DIServices.Interfaces;
+using AutoPartApp.Managers;
+using AutoPartApp.EntityFramework;
 
 namespace AutoPartApp;
 

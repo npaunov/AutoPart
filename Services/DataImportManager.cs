@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
-using Models;
+using AutoPartApp.Models;
 
-namespace Managers;
+namespace AutoPartApp.Managers;
 
 /// <summary>
 /// A static service class responsible for importing data from CSV files.

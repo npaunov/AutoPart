@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Windows;
 
-namespace Managers;
+namespace AutoPartAppManagers;
 
 /// <summary>
 /// A service that facilitates language change across view models.

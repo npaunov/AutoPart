@@ -1,4 +1,4 @@
-namespace Models;
+namespace AutoPartApp.Models;
 
 public class Part
 {

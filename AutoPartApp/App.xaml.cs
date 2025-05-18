@@ -3,8 +3,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Windows;
-using EntityFramework;
-using Managers;
+using AutoPartApp.EntityFramework;
+using AutoPartAppManagers;
 using Services.DIServices.Interfaces;
 using Services.DIServices;
 

@@ -2,8 +2,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
-using Models;
-using Managers;
+using AutoPartApp.Models;
+using AutoPartApp.Managers;
 
 namespace AutoPartApp;
 

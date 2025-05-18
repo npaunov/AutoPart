@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Models;
+using AutoPartApp.Models;
 
-namespace EntityFramework
+namespace AutoPartApp.EntityFramework
 {
     public class AutoPartDbContext : DbContext
     {

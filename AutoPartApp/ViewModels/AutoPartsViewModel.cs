@@ -1,6 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Models;
+using AutoPartApp.Models;
 using System.Collections.ObjectModel;
 
 namespace AutoPartApp;

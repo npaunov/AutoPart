@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Models;
+using AutoPartApp.Models;
 
-namespace EntityFramework
+namespace AutoPartApp.EntityFramework
 {
     /// <summary>
     /// Provides a wrapper around the AutoPartDbContext for database operations.
