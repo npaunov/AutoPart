@@ -20,7 +20,6 @@ public partial class DataImportViewModel : ObservableObject
     // Expose WarehouseViewModel as a property
     public WarehouseViewModel WarehouseViewModel { get; }
 
-
     private readonly IDialogService _dialogService;
 
     public DataImportViewModel(WarehouseViewModel warehouseViewModel, IDialogService dialogService)
@@ -61,8 +60,8 @@ public partial class DataImportViewModel : ObservableObject
     private void DeleteCsvData()
     {
         if (_dialogService.ShowConfirmation(
-            "Are you sure you want to delete all imported CSV data?",
-            "Confirm Delete"))
+            Properties.Strings.DeleteCSVDataQuestionName,
+            Properties.Strings.ConfirmDeleteName))
         {
             DataImportManager.ImportedParts.Clear();
         }

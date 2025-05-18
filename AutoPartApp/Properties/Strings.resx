@@ -135,6 +135,9 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Bulgarian</value>
   </data>
+  <data name="ConfirmDeleteName" xml:space="preserve">
+    <value>Confirm Delete</value>
+  </data>
   <data name="CreateNewDataBaseName" xml:space="preserve">
     <value>Create New DataBase</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="DeleteCSVDataName" xml:space="preserve">
     <value>Delete .csv Data</value>
+  </data>
+  <data name="DeleteCSVDataQuestionName" xml:space="preserve">
+    <value>Are you sure you want to delete all imported CSV data?</value>
   </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Description</value>

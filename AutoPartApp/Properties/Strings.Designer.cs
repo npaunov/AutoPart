@@ -115,6 +115,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm Delete.
+        /// </summary>
+        public static string ConfirmDeleteName {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create New DataBase.
         /// </summary>
         public static string CreateNewDataBaseName {
@@ -138,6 +147,15 @@ namespace AutoPartApp.Properties {
         public static string DeleteCSVDataName {
             get {
                 return ResourceManager.GetString("DeleteCSVDataName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete all imported CSV data?.
+        /// </summary>
+        public static string DeleteCSVDataQuestionName {
+            get {
+                return ResourceManager.GetString("DeleteCSVDataQuestionName", resourceCulture);
             }
         }
         

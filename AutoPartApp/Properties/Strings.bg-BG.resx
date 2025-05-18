@@ -135,6 +135,9 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Български</value>
   </data>
+  <data name="ConfirmDeleteName" xml:space="preserve">
+    <value>Потвърдете изтриването</value>
+  </data>
   <data name="CreateNewDataBaseName" xml:space="preserve">
     <value>Създайте Нова База Данни</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="DeleteCSVDataName" xml:space="preserve">
     <value>Изтрийте .csv Данни</value>
+  </data>
+  <data name="DeleteCSVDataQuestionName" xml:space="preserve">
+    <value>Сигурни ли сте че искате да изтриете .csv данните?</value>
   </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Описание</value>
