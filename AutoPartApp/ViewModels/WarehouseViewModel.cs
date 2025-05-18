@@ -47,7 +47,6 @@ public partial class WarehouseViewModel : ObservableObject
         }
     }
 
-    [RelayCommand]
     /// <summary>
     /// Loads the parts imported by the DataImportService into the Warehouse and updates the FilteredParts collection.
     /// </summary>

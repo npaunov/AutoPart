@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Controls;
 
 namespace AutoPartApp
 {
@@ -10,6 +11,7 @@ namespace AutoPartApp
         public DataImportView()
         {
             InitializeComponent();
+            DataContext = App.AppHost.Services.GetRequiredService<DataImportViewModel>();
         }
     }
 }

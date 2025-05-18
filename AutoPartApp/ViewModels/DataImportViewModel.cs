@@ -16,14 +16,15 @@ public partial class DataImportViewModel : ObservableObject
     private string _buttonStatus = string.Empty;
 
     // Expose WarehouseViewModel as a property
-    public WarehouseViewModel WarehouseViewModel { get; } = new();
+    public WarehouseViewModel WarehouseViewModel { get; }
      
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
     /// </summary>
-    public DataImportViewModel()
+    public DataImportViewModel(WarehouseViewModel warehouseViewModel)
     {
+        WarehouseViewModel = warehouseViewModel;
     }
 
     [RelayCommand]

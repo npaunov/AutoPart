@@ -27,9 +27,10 @@ namespace AutoPartApp
 
                     // Register your view models and other services
                     services.AddSingleton<MainWindow>();
-                    services.AddTransient<AutoPartsViewModel>();
-                    services.AddTransient<DataImportViewModel>();
-                    services.AddTransient<DbContextWrapper>();
+                    services.AddSingleton<WarehouseViewModel>();
+                    services.AddSingleton<AutoPartsViewModel>();
+                    services.AddSingleton<DataImportViewModel>();
+                    services.AddSingleton<DbContextWrapper>();
                     // Add other services as needed
                 })
                 .Build();
