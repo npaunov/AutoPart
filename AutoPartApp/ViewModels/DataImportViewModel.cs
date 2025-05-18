@@ -30,11 +30,21 @@ public partial class DataImportViewModel : ObservableObject
 
     [RelayCommand]
     /// <summary>
-    /// Creates a new database and updates the status message.
+    /// Asks for confirmation and creates a new database if confirmed, then updates the status message.
     /// </summary>
     private void CreateDatabase()
     {
-        ButtonStatus = DbContextWrapper.CreateNewDatabase();
+        if (_dialogService.ShowConfirmation(
+            Properties.Strings.CreateDatabaseQuestionName,
+            Properties.Strings.ConfirmCreateDatabaseName
+        ))
+        {
+            ButtonStatus = DbContextWrapper.CreateNewDatabase();
+        }
+        else
+        {
+            ButtonStatus = Properties.Strings.CreateDatabaseCanceledName;
+        }
     }
 
     [RelayCommand]

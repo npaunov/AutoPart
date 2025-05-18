@@ -135,8 +135,17 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Български</value>
   </data>
+  <data name="ConfirmCreateDatabaseName" xml:space="preserve">
+    <value>Потвърдете създаването на нова база данни</value>
+  </data>
   <data name="ConfirmDeleteName" xml:space="preserve">
     <value>Потвърдете изтриването</value>
+  </data>
+  <data name="CreateDatabaseCanceledName" xml:space="preserve">
+    <value>Отменено е създаването на нова база данни.</value>
+  </data>
+  <data name="CreateDatabaseQuestionName" xml:space="preserve">
+    <value>Сигурни ли сте, че искате да създадете нова база данни?</value>
   </data>
   <data name="CreateNewDataBaseName" xml:space="preserve">
     <value>Създайте Нова База Данни</value>

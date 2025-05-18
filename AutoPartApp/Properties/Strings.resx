@@ -135,8 +135,17 @@
   <data name="BulgarianName" xml:space="preserve">
     <value>Bulgarian</value>
   </data>
+  <data name="ConfirmCreateDatabaseName" xml:space="preserve">
+    <value>Confirm Create Database</value>
+  </data>
   <data name="ConfirmDeleteName" xml:space="preserve">
     <value>Confirm Delete</value>
+  </data>
+  <data name="CreateDatabaseCanceledName" xml:space="preserve">
+    <value>Database creation canceled.</value>
+  </data>
+  <data name="CreateDatabaseQuestionName" xml:space="preserve">
+    <value>Are you sure you want to create a new database?</value>
   </data>
   <data name="CreateNewDataBaseName" xml:space="preserve">
     <value>Create New DataBase</value>

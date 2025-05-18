@@ -115,11 +115,38 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm Create Database.
+        /// </summary>
+        public static string ConfirmCreateDatabaseName {
+            get {
+                return ResourceManager.GetString("ConfirmCreateDatabaseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Delete.
         /// </summary>
         public static string ConfirmDeleteName {
             get {
                 return ResourceManager.GetString("ConfirmDeleteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database creation canceled..
+        /// </summary>
+        public static string CreateDatabaseCanceledName {
+            get {
+                return ResourceManager.GetString("CreateDatabaseCanceledName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create a new database?.
+        /// </summary>
+        public static string CreateDatabaseQuestionName {
+            get {
+                return ResourceManager.GetString("CreateDatabaseQuestionName", resourceCulture);
             }
         }
         
