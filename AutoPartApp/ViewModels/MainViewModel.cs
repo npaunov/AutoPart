@@ -1,5 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using Services;
 
 namespace AutoPartApp;
 
@@ -17,6 +19,7 @@ public partial class MainViewModel : ObservableObject
     private void ChangeLanguage(string newCulture)
     {
         LanguageService.ChangeLanguage(newCulture);
+        WeakReferenceMessenger.Default.Send(new LanguageChangedMessage(newCulture));
     }
     // Localized string properties
     public string BulgarianCultureCode => Properties.Strings.BulgarianCultureCode;

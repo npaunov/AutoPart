@@ -6,6 +6,8 @@ using System.Windows;
 using System.Globalization;
 using System.Windows.Markup;
 using System.Threading;
+using Services;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace AutoPartApp
 {
@@ -16,6 +18,7 @@ namespace AutoPartApp
         public App()
         {
 
+            RegisterLanguageMessenger();
             LanguageService.ChangeLanguage(AutoPartApp.Properties.Strings.BulgarianCultureCode);
 
             AppHost = Host.CreateDefaultBuilder()
@@ -49,6 +52,18 @@ namespace AutoPartApp
         {
             await AppHost.StopAsync();
             base.OnExit(e);
+        }
+
+        private void RegisterLanguageMessenger()
+        {
+            WeakReferenceMessenger.Default.Register<LanguageChangedMessage>(this, (r, m) =>
+            {
+                if (Application.Current.MainWindow != null)
+                {
+                    var culture = System.Globalization.CultureInfo.CurrentUICulture;
+                    Application.Current.MainWindow.Language = System.Windows.Markup.XmlLanguage.GetLanguage(culture.IetfLanguageTag);
+                }
+            });
         }
     }
 }

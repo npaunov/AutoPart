@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Windows;
 
-namespace AutoPartApp;
+namespace Services;
 
 /// <summary>
 /// A service that facilitates language change across view models.
@@ -20,12 +20,6 @@ public static class LanguageService
             CultureInfo culture = new CultureInfo(newCulture);
             Thread.CurrentThread.CurrentUICulture = culture;
             Thread.CurrentThread.CurrentCulture = culture;
-
-            // Refresh the UI
-            if (Application.Current.MainWindow != null)
-            {
-                Application.Current.MainWindow.Language = System.Windows.Markup.XmlLanguage.GetLanguage(culture.IetfLanguageTag);
-            }
         }
     }
 }

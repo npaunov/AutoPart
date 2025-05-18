@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 using Models;
 
-namespace AutoPartApp;
+namespace Services;
 
 /// <summary>
 /// A static service class responsible for importing data from CSV files.
