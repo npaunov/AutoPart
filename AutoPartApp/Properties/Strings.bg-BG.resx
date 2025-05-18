@@ -141,6 +141,9 @@
   <data name="DataImportName" xml:space="preserve">
     <value>Импорт на Данни</value>
   </data>
+  <data name="DeleteCSVDataName" xml:space="preserve">
+    <value>Изтрийте .csv Данни</value>
+  </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Описание</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="LanguageName" xml:space="preserve">
     <value>Език</value>
+  </data>
+  <data name="ModifyDataName" xml:space="preserve">
+    <value>Редакция на данни</value>
   </data>
   <data name="PackageName" xml:space="preserve">
     <value>Опаковка</value>

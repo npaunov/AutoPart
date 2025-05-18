@@ -133,6 +133,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete .csv Data.
+        /// </summary>
+        public static string DeleteCSVDataName {
+            get {
+                return ResourceManager.GetString("DeleteCSVDataName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string DescriptionName {
@@ -192,6 +201,15 @@ namespace AutoPartApp.Properties {
         public static string LanguageName {
             get {
                 return ResourceManager.GetString("LanguageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify Data.
+        /// </summary>
+        public static string ModifyDataName {
+            get {
+                return ResourceManager.GetString("ModifyDataName", resourceCulture);
             }
         }
         

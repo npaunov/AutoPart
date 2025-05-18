@@ -141,6 +141,9 @@
   <data name="DataImportName" xml:space="preserve">
     <value>Data Import</value>
   </data>
+  <data name="DeleteCSVDataName" xml:space="preserve">
+    <value>Delete .csv Data</value>
+  </data>
   <data name="DescriptionName" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="LanguageName" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="ModifyDataName" xml:space="preserve">
+    <value>Modify Data</value>
   </data>
   <data name="PackageName" xml:space="preserve">
     <value>Package</value>

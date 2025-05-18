@@ -18,7 +18,7 @@ public partial class DataImportViewModel : ObservableObject
 
     // Expose WarehouseViewModel as a property
     public WarehouseViewModel WarehouseViewModel { get; }
-     
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
@@ -57,6 +57,12 @@ public partial class DataImportViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void DeleteCsvData()
+    {
+        
+    }
+
+    [RelayCommand]
     private void TestAction()
     {
         ButtonStatus = "Test button clicked!";
@@ -81,5 +87,7 @@ public partial class DataImportViewModel : ObservableObject
     public string SelectFileName => Properties.Strings.SelectFileName;
     public string ImportCSVName => Properties.Strings.ImportCSVName;
     public string CreateNewDataBaseName => Properties.Strings.CreateNewDataBaseName;
+    public string ModifyDataName => Properties.Strings.ModifyDataName;
+    public string DeleteCSVDataName => Properties.Strings.DeleteCSVDataName;
 
 }
