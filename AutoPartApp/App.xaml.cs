@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using EntityFramework;
 using Microsoft.EntityFrameworkCore;
-using System.Windows;
-using System.Globalization;
-using System.Windows.Markup;
-using System.Threading;
-using Services;
 using CommunityToolkit.Mvvm.Messaging;
+using System.Windows;
+using EntityFramework;
+using Managers;
+using Services.DIServices.Interfaces;
+using Services.DIServices;
 
 namespace AutoPartApp
 {
@@ -29,7 +28,7 @@ namespace AutoPartApp
         public App()
         {
             RegisterLanguageMessenger();
-            LanguageService.ChangeLanguage(AutoPartApp.Properties.Strings.BulgarianCultureCode);
+            LanguageManager.ChangeLanguage(AutoPartApp.Properties.Strings.BulgarianCultureCode);
 
             AppHost = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
@@ -43,6 +42,7 @@ namespace AutoPartApp
                     services.AddSingleton<WarehouseViewModel>();
                     services.AddSingleton<AutoPartsViewModel>();
                     services.AddSingleton<DataImportViewModel>();
+                    services.AddSingleton<IDialogService, DialogService>();
                     services.AddSingleton<DbContextWrapper>();
                 })
                 .Build();

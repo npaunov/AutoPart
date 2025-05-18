@@ -2,7 +2,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using EntityFramework;
 using CommunityToolkit.Mvvm.Input;
-using Services;
+using Managers;
+using Services.DIServices.Interfaces;
 
 namespace AutoPartApp;
 
@@ -20,12 +21,12 @@ public partial class DataImportViewModel : ObservableObject
     public WarehouseViewModel WarehouseViewModel { get; }
 
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="DataImportViewModel"/> class.
-    /// </summary>
-    public DataImportViewModel(WarehouseViewModel warehouseViewModel)
+    private readonly IDialogService _dialogService;
+
+    public DataImportViewModel(WarehouseViewModel warehouseViewModel, IDialogService dialogService)
     {
         WarehouseViewModel = warehouseViewModel;
+        _dialogService = dialogService;
     }
 
     [RelayCommand]
@@ -51,7 +52,7 @@ public partial class DataImportViewModel : ObservableObject
         if (openFileDialog.ShowDialog() == true)
         {
             SelectedFilePath = openFileDialog.FileName;
-            ButtonStatus = DataImportService.ImportCsv(SelectedFilePath);
+            ButtonStatus = DataImportManager.ImportCsv(SelectedFilePath);
             WarehouseViewModel.LoadImportedParts();
         }
     }
@@ -59,7 +60,13 @@ public partial class DataImportViewModel : ObservableObject
     [RelayCommand]
     private void DeleteCsvData()
     {
-        
+        if (_dialogService.ShowConfirmation(
+            "Are you sure you want to delete all imported CSV data?",
+            "Confirm Delete"))
+        {
+            DataImportManager.ImportedParts.Clear();
+        }
+
     }
 
     [RelayCommand]

@@ -1,6 +1,6 @@
 using CommunityToolkit.Mvvm.Messaging.Messages;
 
-namespace Services;
+namespace AutoPartApp;
 
 public class LanguageChangedMessage : ValueChangedMessage<string>
 {

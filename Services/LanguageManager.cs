@@ -1,12 +1,12 @@
 using System.Globalization;
 using System.Windows;
 
-namespace Services;
+namespace Managers;
 
 /// <summary>
 /// A service that facilitates language change across view models.
 /// </summary>
-public static class LanguageService
+public static class LanguageManager
 {
     /// <summary>
     /// Changes the application language and notifies subscribers.

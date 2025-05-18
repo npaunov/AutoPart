@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Models;
-using Services;
+using Managers;
 
 namespace AutoPartApp;
 
@@ -49,15 +49,15 @@ public partial class WarehouseViewModel : ObservableObject
     }
 
     /// <summary>
-    /// Loads the parts imported by the DataImportService into the Warehouse and updates the FilteredParts collection.
+    /// Loads the parts imported by the DataImportManager into the Warehouse and updates the FilteredParts collection.
     /// </summary>
     public void LoadImportedParts()
     {
         // Clear the current warehouse parts and load the imported parts
         //Warehouse.Parts.Clear();
-        Warehouse.Parts = DataImportService.ImportedParts;
+        Warehouse.Parts = DataImportManager.ImportedParts;
 
         // Update the filtered parts to reflect the imported data
-        FilteredParts = DataImportService.ImportedParts;
+        FilteredParts = DataImportManager.ImportedParts;
     }
 }

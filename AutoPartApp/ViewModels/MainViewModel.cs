@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using Services;
+using Managers;
 
 namespace AutoPartApp;
 
@@ -18,7 +18,7 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void ChangeLanguage(string newCulture)
     {
-        LanguageService.ChangeLanguage(newCulture);
+        LanguageManager.ChangeLanguage(newCulture);
         WeakReferenceMessenger.Default.Send(new LanguageChangedMessage(newCulture));
     }
     // Localized string properties

@@ -5,12 +5,12 @@ using System.Globalization;
 using System.IO;
 using Models;
 
-namespace Services;
+namespace Managers;
 
 /// <summary>
 /// A static service class responsible for importing data from CSV files.
 /// </summary>
-public static class DataImportService
+public static class DataImportManager
 {
     /// <summary>
     /// A collection to store the imported parts.
