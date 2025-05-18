@@ -4,9 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Windows;
 using AutoPartApp.EntityFramework;
-using AutoPartAppManagers;
-using Services.DIServices.Interfaces;
-using Services.DIServices;
+using AutoPartApp.Managers;
 
 namespace AutoPartApp
 {
