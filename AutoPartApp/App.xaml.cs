@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Windows;
 using AutoPartApp.EntityFramework;
-using AutoPartApp.Managers;
+using AutoPartApp.Utilities;
 
 namespace AutoPartApp
 {
@@ -26,7 +26,7 @@ namespace AutoPartApp
         public App()
         {
             RegisterLanguageMessenger();
-            LanguageManager.ChangeLanguage(AutoPartApp.Properties.Strings.BulgarianCultureCode);
+            LanguageUtil.ChangeLanguage(AutoPartApp.Properties.Strings.BulgarianCultureCode);
 
             AppHost = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>

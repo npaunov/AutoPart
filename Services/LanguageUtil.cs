@@ -1,11 +1,11 @@
 using System.Globalization;
 
-namespace AutoPartApp.Managers;
+namespace AutoPartApp.Utilities;
 
 /// <summary>
 /// A service that facilitates language change across view models.
 /// </summary>
-public static class LanguageManager
+public static class LanguageUtil
 {
     /// <summary>
     /// Changes the application language and notifies subscribers.

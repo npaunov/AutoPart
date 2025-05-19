@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
-using AutoPartApp.Managers;
+using AutoPartApp.Utilities;
 using AutoPartApp.EntityFramework;
 
 namespace AutoPartApp;
@@ -65,7 +65,7 @@ public partial class DataImportViewModel : ObservableObject
         if (openFileDialog.ShowDialog() == true)
         {
             SelectedFilePath = openFileDialog.FileName;
-            ButtonStatus = DataImportManager.ImportCsv(SelectedFilePath);
+            ButtonStatus = DataImportUtil.ImportCsv(SelectedFilePath);
             WarehouseViewModel.LoadImportedParts();
         }
     }
@@ -77,7 +77,7 @@ public partial class DataImportViewModel : ObservableObject
             Properties.Strings.DeleteCSVDataQuestionName,
             Properties.Strings.ConfirmDeleteName))
         {
-            DataImportManager.ImportedParts.Clear();
+            DataImportUtil.ImportedParts.Clear();
         }
 
     }

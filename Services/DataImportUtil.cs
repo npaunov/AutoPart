@@ -5,12 +5,12 @@ using System.Globalization;
 using System.IO;
 using AutoPartApp.Models;
 
-namespace AutoPartApp.Managers;
+namespace AutoPartApp.Utilities;
 
 /// <summary>
 /// A static service class responsible for importing data from CSV files.
 /// </summary>
-public static class DataImportManager
+public static class DataImportUtil
 {
     /// <summary>
     /// A collection to store the imported parts.

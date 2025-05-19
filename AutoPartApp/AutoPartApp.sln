@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "..\Models\Models.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "..\EntityFramework\EntityFramework.csproj", "{FA5D4338-71EF-4E3C-98F8-8529F9CB01A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Managers", "..\Services\Managers.csproj", "{F2963F96-AE64-4C0F-8CE5-97432785411E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "..\Services\Utilities.csproj", "{F2963F96-AE64-4C0F-8CE5-97432785411E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
