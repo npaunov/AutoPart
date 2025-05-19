@@ -20,11 +20,16 @@ public partial class DataImportViewModel : ObservableObject
     public WarehouseViewModel WarehouseViewModel { get; }
 
     private readonly IDialogService _dialogService;
+    private readonly DbContextWrapper _dbContextWrapper;
 
-    public DataImportViewModel(WarehouseViewModel warehouseViewModel, IDialogService dialogService)
+    public DataImportViewModel(
+        WarehouseViewModel warehouseViewModel,
+        IDialogService dialogService,
+        DbContextWrapper dbContextWrapper)
     {
         WarehouseViewModel = warehouseViewModel;
         _dialogService = dialogService;
+        _dbContextWrapper = dbContextWrapper;
     }
 
     [RelayCommand]
@@ -38,7 +43,7 @@ public partial class DataImportViewModel : ObservableObject
             Properties.Strings.ConfirmCreateDatabaseName
         ))
         {
-            ButtonStatus = DbContextWrapper.CreateNewDatabase();
+            ButtonStatus = _dbContextWrapper.CreateNewDatabase();
         }
         else
         {

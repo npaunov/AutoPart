@@ -41,7 +41,7 @@ namespace AutoPartApp
                     services.AddSingleton<AutoPartsViewModel>();
                     services.AddSingleton<DataImportViewModel>();
                     services.AddSingleton<IDialogService, DialogService>();
-                    services.AddSingleton<DbContextWrapper>();
+                    services.AddScoped<DbContextWrapper>();
                 })
                 .Build();
         }

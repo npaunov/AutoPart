@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using AutoPartApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoPartApp.EntityFramework
 {
@@ -15,50 +11,29 @@ namespace AutoPartApp.EntityFramework
         private readonly AutoPartDbContext _context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DbContextWrapper"/> class.
+        /// Initializes a new instance of the <see cref="DbContextWrapper"/> class using DI-managed context.
         /// </summary>
-        public DbContextWrapper()
+        public DbContextWrapper(AutoPartDbContext context)
         {
-            var options = BuildOptions();
-            _context = new AutoPartDbContext(options);
-            // Do not call EnsureCreated here; let the user trigger creation explicitly.
+            _context = context;
         }
 
         /// <summary>
         /// Creates a new database file and schema. Overwrites any existing database.
         /// </summary>
         /// <returns>A status message indicating success or failure.</returns>
-        public static string CreateNewDatabase()
+        public string CreateNewDatabase()
         {
             try
             {
-                var options = BuildOptions();
-                using var context = new AutoPartDbContext(options);
-                context.Database.EnsureDeleted(); // Optional
-                context.Database.EnsureCreated();
+                _context.Database.EnsureDeleted(); // Optional
+                _context.Database.Migrate(); // not EnsureCreated()
                 return "Database created successfully!";
             }
             catch (Exception ex)
             {
                 return $"Failed to create database: {ex.Message}";
             }
-        }
-
-        /// <summary>
-        /// Builds the DbContextOptions for connecting to the local database file.
-        /// </summary>
-        /// <returns>The configured DbContextOptions.</returns>
-        private static DbContextOptions<AutoPartDbContext> BuildOptions()
-        {
-            //string folderPath = @"..\..\..\..\DataBase\";
-            string folderPath = @"D:\AutoPart\DataBase";
-            var dbPath = Path.Combine(folderPath, "AutoPartsDb.mdf");
-
-            var connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=AutoPartsDb;Integrated Security=True;Connect Timeout=30";
-
-            return new DbContextOptionsBuilder<AutoPartDbContext>()
-                .UseSqlServer(connectionString)
-                .Options;
         }
 
         /// <summary>
@@ -92,7 +67,8 @@ namespace AutoPartApp.EntityFramework
         /// </summary>
         public void Dispose()
         {
-            _context.Dispose();
+            // The DI container will dispose the context, so this is optional.
+            // _context?.Dispose();
         }
     }
 }
