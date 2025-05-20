@@ -84,6 +84,7 @@ public partial class DataImportViewModel : ObservableObject
         }
         DeleteAllData();
         int added = PopulatePartsTable();
+        PopulateSalesTotalTable();
         PopulateSalesTable();
         _context.SaveChanges();
         ButtonStatus = $"Database populated from CSV. {added} new parts added.";
@@ -155,7 +156,7 @@ public partial class DataImportViewModel : ObservableObject
         return added;
     }
 
-    private void PopulateSalesTable()
+    private void PopulateSalesTotalTable()
     {
         foreach (var part in DataImportUtil.ImportedParts)
         {
@@ -169,8 +170,80 @@ public partial class DataImportViewModel : ObservableObject
         }
     }
 
+    private void PopulateSalesTable()
+    {
+        var random = new Random();
+        DateTime start = new DateTime(2022, 7, 1);
+        DateTime end = new DateTime(2025, 6, 30);
+        int monthsCount = ((end.Year - start.Year) * 12) + end.Month - start.Month + 1;
+
+        var allSales = new List<PartSale>();
+
+        foreach (var part in DataImportUtil.ImportedParts)
+        {
+            int totalSales = part.InStore * 18;
+            if (totalSales <= 0)
+                continue;
+
+            var months = Enumerable.Range(0, monthsCount)
+                .Select(i => start.AddMonths(i))
+                .ToList();
+
+            int monthsWithSalesCount = random.Next((int)(monthsCount * 0.7), (int)(monthsCount * 0.8) + 1);
+            var monthsWithSales = months.OrderBy(_ => random.Next()).Take(monthsWithSalesCount).OrderBy(m => m).ToList();
+
+            double avgSales = (double)totalSales / monthsWithSalesCount;
+            var salesPerMonth = new List<int>();
+            int salesLeft = totalSales;
+            for (int i = 0; i < monthsWithSalesCount; i++)
+            {
+                int min = (int)Math.Floor(avgSales * 0.7);
+                int max = (int)Math.Ceiling(avgSales * 1.3);
+
+                int sales;
+                if (i == monthsWithSalesCount - 1)
+                {
+                    sales = salesLeft;
+                }
+                else
+                {
+                    int maxAllowed = salesLeft - (min * (monthsWithSalesCount - i - 1));
+                    max = Math.Min(max, maxAllowed);
+                    min = Math.Max(min, 0);
+                    if (max < min) max = min;
+                    sales = random.Next(min, max + 1);
+                }
+                salesPerMonth.Add(sales);
+                salesLeft -= sales;
+            }
+
+            for (int i = 0; i < monthsWithSalesCount; i++)
+            {
+                var month = monthsWithSales[i];
+                int daysInMonth = DateTime.DaysInMonth(month.Year, month.Month);
+                int day = random.Next(1, daysInMonth + 1);
+                var saleDate = new DateTime(month.Year, month.Month, day);
+
+                var sale = new PartSale
+                {
+                    PartId = part.Id,
+                    SaleDate = saleDate,
+                    Quantity = salesPerMonth[i]
+                };
+                allSales.Add(sale);
+            }
+        }
+
+        // Sort all sales by SaleDate before inserting
+        foreach (var sale in allSales.OrderBy(s => s.SaleDate))
+        {
+            _context.PartSales.Add(sale);
+        }
+    }
+
     public void DeleteAllData()
     {
+        _context.PartSales.RemoveRange(_context.PartSales);
         _context.PartsSalesTotals.RemoveRange(_context.PartsSalesTotals);
         _context.PartsInStock.RemoveRange(_context.PartsInStock);
         // _context.Orders.RemoveRange(_context.Orders);
