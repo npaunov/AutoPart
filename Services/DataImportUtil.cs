@@ -41,7 +41,7 @@ public static class DataImportUtil
             for (int i = 1; i < lines.Length; i++)
             {
                 var line = lines[i];
-                var values = line.Split(';');
+                var values = line.Split(new[] { ';', ',' }, StringSplitOptions.None);
 
                 if (values.Length < 5)
                 {
@@ -66,8 +66,6 @@ public static class DataImportUtil
                     return $"Error parsing line {i + 1}: {ex.Message}";
                 }
             }
-            var a = ImportedParts;
-
             return "Data imported successfully!";
         }
         catch (Exception ex)

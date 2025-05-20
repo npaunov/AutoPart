@@ -3,6 +3,7 @@ using AutoPartApp.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoPartApp.EntityFramework.Migrations
 {
     [DbContext(typeof(AutoPartDbContext))]
-    partial class AutoPartDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250520080326_SetPriceBGNPrecision")]
+    partial class SetPriceBGNPrecision
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
