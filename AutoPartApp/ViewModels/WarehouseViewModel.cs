@@ -4,6 +4,8 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using AutoPartApp.Models;
 using AutoPartApp.Utilities;
+using Microsoft.EntityFrameworkCore;
+using AutoPartApp.EntityFramework;
 
 namespace AutoPartApp;
 
@@ -16,18 +18,12 @@ public partial class WarehouseViewModel : ObservableObject
 
     public Warehouse Warehouse { get; set; } = new();
 
-    // Localized Name and Label Properties
-    public string PartIdHeader => Properties.Strings.PartIDName;
-    public string DescriptionHeader => Properties.Strings.DescriptionName;
-    public string PriceBGNHeader => Properties.Strings.PriceName + " " + Properties.Strings.BGNName;
-    public string PriceEUROHeader => Properties.Strings.PriceName + " " + Properties.Strings.EuroName;
-    public string PackageHeader => Properties.Strings.PackageName;
-    public string InStoreHeader => Properties.Strings.InStoreName;
-    public string SearchPartIdLabel => Properties.Strings.SearchName + " " + Properties.Strings.PartIDName;
-    public string SearchButtonLabel => Properties.Strings.SearchName;
+    private readonly AutoPartDbContext _context;
 
-    public WarehouseViewModel()
+    public WarehouseViewModel(AutoPartDbContext context)
     {
+        _context = context;
+        LoadDataFromDatabase();
     }
 
     [RelayCommand]
@@ -60,4 +56,21 @@ public partial class WarehouseViewModel : ObservableObject
         // Update the filtered parts to reflect the imported data
         FilteredParts = DataImportUtil.ImportedParts;
     }
+
+    public void LoadDataFromDatabase()
+    {
+        // Clear and reload the FilteredParts collection from the database
+        FilteredParts.Clear();
+        FilteredParts = _context.Parts.ToObservableCollection();
+    }
+
+    // Localized Name and Label Properties
+    public string PartIdHeader => Properties.Strings.PartIDName;
+    public string DescriptionHeader => Properties.Strings.DescriptionName;
+    public string PriceBGNHeader => Properties.Strings.PriceName + " " + Properties.Strings.BGNName;
+    public string PriceEUROHeader => Properties.Strings.PriceName + " " + Properties.Strings.EuroName;
+    public string PackageHeader => Properties.Strings.PackageName;
+    public string InStoreHeader => Properties.Strings.InStoreName;
+    public string SearchPartIdLabel => Properties.Strings.SearchName + " " + Properties.Strings.PartIDName;
+    public string SearchButtonLabel => Properties.Strings.SearchName;
 }

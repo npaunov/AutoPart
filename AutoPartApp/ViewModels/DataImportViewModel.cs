@@ -82,15 +82,7 @@ public partial class DataImportViewModel : ObservableObject
             return;
         }
         DeleteAllData();
-        int added = 0;
-        foreach (var part in DataImportUtil.ImportedParts)
-        {
-            if (!_context.Parts.Any(p => p.Id == part.Id))
-            {
-                _context.Parts.Add(part);
-                added++;
-            }
-        }
+        int added = PopulatePartsTable();
         _context.SaveChanges();
         ButtonStatus = $"Database populated from CSV. {added} new parts added.";
         WarehouseViewModel.LoadImportedParts();
@@ -146,6 +138,19 @@ public partial class DataImportViewModel : ObservableObject
         //{
         //    ButtonStatus = $"Failed to create .txt file: {ex.Message}";
         //}
+    }
+    private int PopulatePartsTable()
+    {
+        int added = 0;
+        foreach (var part in DataImportUtil.ImportedParts)
+        {
+            if (!_context.Parts.Any(p => p.Id == part.Id))
+            {
+                _context.Parts.Add(part);
+                added++;
+            }
+        }
+        return added;
     }
 
     public void DeleteAllData()
