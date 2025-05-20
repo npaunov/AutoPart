@@ -5,5 +5,5 @@ namespace AutoPartApp.Models;
 
 public class Warehouse
 {
-    public ObservableCollection<Part> Parts { get; set; } = new();
+    public ObservableCollection<Part> PartsInStock { get; set; } = new();
 }

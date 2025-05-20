@@ -13,9 +13,8 @@ public partial class WarehouseViewModel : ObservableObject
 {
     [ObservableProperty]
     private string _searchPartId = string.Empty;
-    [ObservableProperty]
-    private ObservableCollection<Part> _filteredParts = new();
 
+    private List<Part> _allParts = new();
     public Warehouse Warehouse { get; set; } = new();
 
     private readonly AutoPartDbContext _context;
@@ -32,16 +31,23 @@ public partial class WarehouseViewModel : ObservableObject
     /// </summary>
     private void Search()
     {
-        if (!string.IsNullOrEmpty(SearchPartId))
+        Warehouse.PartsInStock.Clear();
+
+        IEnumerable<Part> results;
+        if (!string.IsNullOrWhiteSpace(SearchPartId))
         {
-            // Filter parts by the entered part ID
-            FilteredParts = new ObservableCollection<Part>(Warehouse.Parts.Where(p => p.Id.Equals(SearchPartId)));
+            string search = SearchPartId.ToLower();
+            results = _allParts.Where(p =>
+                (!string.IsNullOrEmpty(p.Id) && p.Id.ToLower().Contains(search)) ||
+                (!string.IsNullOrEmpty(p.Description) && p.Description.ToLower().Contains(search)));
         }
         else
         {
-            // If no valid part ID is entered, show all parts
-            FilteredParts = Warehouse.Parts;
+            results = _allParts;
         }
+
+        foreach (var part in results)
+            Warehouse.PartsInStock.Add(part);
     }
 
     /// <summary>
@@ -50,18 +56,16 @@ public partial class WarehouseViewModel : ObservableObject
     public void LoadImportedParts()
     {
         // Clear the current warehouse parts and load the imported parts
-        //Warehouse.Parts.Clear();
-        Warehouse.Parts = DataImportUtil.ImportedParts;
-
-        // Update the filtered parts to reflect the imported data
-        FilteredParts = DataImportUtil.ImportedParts;
+        //Warehouse.PartsInStock.Clear();
+        Warehouse.PartsInStock = DataImportUtil.ImportedParts;
     }
 
     public void LoadDataFromDatabase()
     {
-        // Clear and reload the FilteredParts collection from the database
-        FilteredParts.Clear();
-        FilteredParts = _context.Parts.ToObservableCollection();
+        // Clear and reload the collection from the database
+        _allParts = _context.PartsInStock.ToList();
+        Warehouse.PartsInStock.Clear();
+        Warehouse.PartsInStock = _allParts.ToObservableCollection();
     }
 
     // Localized Name and Label Properties

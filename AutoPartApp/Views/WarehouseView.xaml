@@ -15,14 +15,19 @@
         <!-- Search Section -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
             <TextBlock Text="{Binding SearchPartIdLabel}" VerticalAlignment="Center" Margin="0,0,10,0" />
-            <TextBox Width="200" Text="{Binding SearchPartId, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Width="200"
+                Text="{Binding SearchPartId, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+                </TextBox.InputBindings>
+            </TextBox>
             <Button Content="{Binding SearchButtonLabel}" Command="{Binding SearchCommand}" Margin="10,0,0,0" />
         </StackPanel>
 
         <!-- Warehouse Inventory -->
         <DataGrid Grid.Row="1"
           IsReadOnly="True"
-          ItemsSource="{Binding FilteredParts}"
+          ItemsSource="{Binding Warehouse.PartsInStock}"
           AutoGenerateColumns="False"
           CanUserAddRows="False"
           HeadersVisibility="Column"

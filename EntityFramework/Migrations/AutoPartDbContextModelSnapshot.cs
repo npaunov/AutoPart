@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AutoPartApp.EntityFramework.Migrations
+namespace EntityFramework.Migrations
 {
     [DbContext(typeof(AutoPartDbContext))]
     partial class AutoPartDbContextModelSnapshot : ModelSnapshot
@@ -41,7 +41,7 @@ namespace AutoPartApp.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parts");
+                    b.ToTable("PartsInStock");
                 });
 #pragma warning restore 612, 618
         }

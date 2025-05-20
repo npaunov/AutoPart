@@ -5,7 +5,7 @@ namespace AutoPartApp.EntityFramework
 {
     public class AutoPartDbContext : DbContext
     {
-        public DbSet<Part> Parts { get; set; }
+        public DbSet<Part> PartsInStock { get; set; }
         //public DbSet<Warehouse> Warehouses { get; set; }
 
         public AutoPartDbContext(DbContextOptions<AutoPartDbContext> options)

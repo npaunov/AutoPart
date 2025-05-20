@@ -144,9 +144,9 @@ public partial class DataImportViewModel : ObservableObject
         int added = 0;
         foreach (var part in DataImportUtil.ImportedParts)
         {
-            if (!_context.Parts.Any(p => p.Id == part.Id))
+            if (!_context.PartsInStock.Any(p => p.Id == part.Id))
             {
-                _context.Parts.Add(part);
+                _context.PartsInStock.Add(part);
                 added++;
             }
         }
@@ -155,7 +155,7 @@ public partial class DataImportViewModel : ObservableObject
 
     public void DeleteAllData()
     {
-        _context.Parts.RemoveRange(_context.Parts);
+        _context.PartsInStock.RemoveRange(_context.PartsInStock);
         // _context.Orders.RemoveRange(_context.Orders);
         // _context.OrderItems.RemoveRange(_context.OrderItems);
         _context.SaveChanges();

@@ -37,9 +37,9 @@ namespace AutoPartApp
 
                     // Register view models and other services
                     services.AddSingleton<MainWindow>();
-                    services.AddSingleton<WarehouseViewModel>();
-                    services.AddSingleton<AutoPartsViewModel>();
                     services.AddSingleton<IDialogService, DialogService>();
+                    services.AddScoped<WarehouseViewModel>();
+                    services.AddScoped<AutoPartsViewModel>();
                     services.AddScoped<DataImportViewModel>();
                 })
                 .Build();

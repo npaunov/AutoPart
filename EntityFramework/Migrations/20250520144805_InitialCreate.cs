@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AutoPartApp.EntityFramework.Migrations
+namespace EntityFramework.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -11,7 +11,7 @@ namespace AutoPartApp.EntityFramework.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Parts",
+                name: "PartsInStock",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -22,7 +22,7 @@ namespace AutoPartApp.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Parts", x => x.Id);
+                    table.PrimaryKey("PK_PartsInStock", x => x.Id);
                 });
         }
 
@@ -30,7 +30,7 @@ namespace AutoPartApp.EntityFramework.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Parts");
+                name: "PartsInStock");
         }
     }
 }

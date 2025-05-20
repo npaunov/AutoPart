@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AutoPartApp.EntityFramework.Migrations
+namespace EntityFramework.Migrations
 {
     [DbContext(typeof(AutoPartDbContext))]
-    [Migration("20250516135352_InitialCreate")]
+    [Migration("20250520144805_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace AutoPartApp.EntityFramework.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AutoPartAppModels.Part", b =>
+            modelBuilder.Entity("AutoPartApp.Models.Part", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -44,7 +44,7 @@ namespace AutoPartApp.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parts");
+                    b.ToTable("PartsInStock");
                 });
 #pragma warning restore 612, 618
         }
