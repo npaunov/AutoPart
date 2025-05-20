@@ -7,6 +7,7 @@ namespace AutoPartApp.EntityFramework
     {
         public DbSet<Part> PartsInStock { get; set; }
         public DbSet<PartsSalesTotal> PartsSalesTotals { get; set; }
+        public DbSet<PartSale> PartSales { get; set; }
 
         public AutoPartDbContext(DbContextOptions<AutoPartDbContext> options)
             : base(options)

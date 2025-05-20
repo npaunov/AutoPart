@@ -19,5 +19,8 @@ namespace AutoPartApp.Models
 
         // Navigation property for one-to-one relationship
         public PartsSalesTotal SalesTotal { get; set; }
+
+        // Navigation property for one-to-many relationship
+        public ICollection<PartSale> Sales { get; set; } = new List<PartSale>();
     }
 }
