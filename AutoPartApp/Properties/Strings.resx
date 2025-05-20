@@ -150,6 +150,9 @@
   <data name="CreateNewDataBaseName" xml:space="preserve">
     <value>Create New DataBase</value>
   </data>
+  <data name="DataAddToDBName" xml:space="preserve">
+    <value>Add Data to DB tables</value>
+  </data>
   <data name="DataImportName" xml:space="preserve">
     <value>Data Import</value>
   </data>

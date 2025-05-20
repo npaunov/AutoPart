@@ -160,6 +160,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Data to DB tables.
+        /// </summary>
+        public static string DataAddToDBName {
+            get {
+                return ResourceManager.GetString("DataAddToDBName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data Import.
         /// </summary>
         public static string DataImportName {

@@ -61,6 +61,41 @@ public partial class DataImportViewModel : ObservableObject
         }
     }
 
+    [RelayCommand]
+    private void PopulateDatabase()
+    {
+        if (!_dialogService.ShowConfirmation(
+            "Populate data from CSV?",
+            "Confirm Populate Data"))
+        {
+            ButtonStatus = "Populate database canceled.";
+            return;
+        }
+
+        // Call the BrowseAndImport method to select and import the CSV
+        BrowseAndImport();
+
+        // Check if import was successful
+        if (DataImportUtil.ImportedParts == null || DataImportUtil.ImportedParts.Count == 0)
+        {
+            ButtonStatus = "No imported parts to add. Please import a valid CSV file.";
+            return;
+        }
+        DeleteAllData();
+        int added = 0;
+        foreach (var part in DataImportUtil.ImportedParts)
+        {
+            if (!_context.Parts.Any(p => p.Id == part.Id))
+            {
+                _context.Parts.Add(part);
+                added++;
+            }
+        }
+        _context.SaveChanges();
+        ButtonStatus = $"Database populated from CSV. {added} new parts added.";
+        WarehouseViewModel.LoadImportedParts();
+    }
+
 
     [RelayCommand]
     /// <summary>
@@ -113,11 +148,20 @@ public partial class DataImportViewModel : ObservableObject
         //}
     }
 
+    public void DeleteAllData()
+    {
+        _context.Parts.RemoveRange(_context.Parts);
+        // _context.Orders.RemoveRange(_context.Orders);
+        // _context.OrderItems.RemoveRange(_context.OrderItems);
+        _context.SaveChanges();
+    }
+
     // Localized string properties
     public string DataImportName => Properties.Strings.DataImportName;
     public string SelectFileName => Properties.Strings.SelectFileName;
     public string ImportCSVName => Properties.Strings.ImportCSVName;
     public string CreateNewDataBaseName => Properties.Strings.CreateNewDataBaseName;
+    public string DataAddToDBName => Properties.Strings.DataAddToDBName;
     public string ModifyDataName => Properties.Strings.ModifyDataName;
     public string DeleteCSVDataName => Properties.Strings.DeleteCSVDataName;
 
