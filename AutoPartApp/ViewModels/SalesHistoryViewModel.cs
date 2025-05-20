@@ -17,6 +17,12 @@ public partial class SalesHistoryViewModel : ObservableObject
     public SalesHistoryViewModel(AutoPartDbContext context)
     {
         _context = context;
+        LoadSalesHistory();
+    }
+    public void LoadSalesHistory()
+    {
+        SalesRows.Clear();
+
         // Generate month headers, descending from now
         var months = new List<string>();
         var now = new DateTime(2025, 6, 1); // or DateTime.Now for dynamic
@@ -25,7 +31,8 @@ public partial class SalesHistoryViewModel : ObservableObject
             months.Add(now.ToString("yy-MM"));
             now = now.AddMonths(-1);
         }
-        MonthHeaders = months;
+        MonthHeaders.Clear();
+        MonthHeaders.AddRange(months);
 
         var parts = _context.PartsInStock.ToList();
         var sales = _context.PartSales.ToList();

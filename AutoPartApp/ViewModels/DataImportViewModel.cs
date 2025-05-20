@@ -5,6 +5,7 @@ using AutoPartApp.Utilities;
 using AutoPartApp.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using AutoPartApp.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AutoPartApp;
 
@@ -86,6 +87,8 @@ public partial class DataImportViewModel : ObservableObject
         int added = PopulatePartsTable();
         PopulateSalesTable();
         _context.SaveChanges();
+        var salesHistoryVM = App.AppHost.Services.GetService<SalesHistoryViewModel>();
+        salesHistoryVM?.LoadSalesHistory();
         ButtonStatus = $"Database populated from CSV. {added} new parts added.";
         WarehouseViewModel.LoadImportedParts();
     }
