@@ -82,7 +82,7 @@
                 </DataGridTextColumn>
 
                 <!-- Price (EURO) Column -->
-                <DataGridTextColumn Binding="{Binding PriceEURO}">
+                <DataGridTextColumn Binding="{Binding PriceEURO, StringFormat=F2}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.PriceEUROHeader, 

@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="AutoPartApp.SalesHistoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AutoPartApp">
+    <UserControl.DataContext>
+        <vm:SalesHistoryViewModel />
+    </UserControl.DataContext>
+    <Grid>
+
+    </Grid>
+</UserControl>

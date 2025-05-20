@@ -3,11 +3,11 @@
 namespace AutoPartApp
 {
     /// <summary>
-    /// Interaction logic for AutoPartsView.xaml
+    /// Interaction logic for SalesHistoryView.xaml
     /// </summary>
-    public partial class AutoPartsView : UserControl
+    public partial class SalesHistoryView : UserControl
     {
-        public AutoPartsView()
+        public SalesHistoryView()
         {
             InitializeComponent();
         }

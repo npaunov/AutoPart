@@ -27,7 +27,7 @@
             </TabItem>
             <!-- Auto Parts Tab -->
             <TabItem Header="{Binding AutoPartsName}">
-                <views:AutoPartsView />
+                <views:SalesHistoryView />
             </TabItem>
             <!-- Data Import Tab -->
             <TabItem Header="{Binding DataImportName}">
