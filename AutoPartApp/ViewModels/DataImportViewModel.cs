@@ -84,7 +84,6 @@ public partial class DataImportViewModel : ObservableObject
         }
         DeleteAllData();
         int added = PopulatePartsTable();
-        PopulateSalesTotalTable();
         PopulateSalesTable();
         _context.SaveChanges();
         ButtonStatus = $"Database populated from CSV. {added} new parts added.";
@@ -154,20 +153,6 @@ public partial class DataImportViewModel : ObservableObject
             }
         }
         return added;
-    }
-
-    private void PopulateSalesTotalTable()
-    {
-        foreach (var part in DataImportUtil.ImportedParts)
-        {
-            var totalSales = part.InStore * 18;
-            var salesTotal = new PartsSalesTotal
-            {
-                Id = part.Id,
-                TotalSales = totalSales
-            };
-            _context.PartsSalesTotals.Add(salesTotal);
-        }
     }
 
     private void PopulateSalesTable()
@@ -244,7 +229,6 @@ public partial class DataImportViewModel : ObservableObject
     public void DeleteAllData()
     {
         _context.PartSales.RemoveRange(_context.PartSales);
-        _context.PartsSalesTotals.RemoveRange(_context.PartsSalesTotals);
         _context.PartsInStock.RemoveRange(_context.PartsInStock);
         // _context.Orders.RemoveRange(_context.Orders);
         // _context.OrderItems.RemoveRange(_context.OrderItems);
