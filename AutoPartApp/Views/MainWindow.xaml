@@ -20,13 +20,13 @@
         </Grid.ColumnDefinitions>
 
         <!-- TabControl -->
-        <TabControl Grid.Row="0">
+        <TabControl Grid.Row="0" >
             <!-- Warehouse Tab -->
             <TabItem Header="{Binding WareHouseName}">
                 <views:WarehouseView />
             </TabItem>
             <!-- Auto Parts Tab -->
-            <TabItem Header="{Binding AutoPartsName}">
+            <TabItem Header="{Binding SaleHistoryName}">
                 <views:SalesHistoryView />
             </TabItem>
             <!-- Data Import Tab -->

@@ -2,10 +2,20 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:AutoPartApp">
-    <UserControl.DataContext>
-        <vm:SalesHistoryViewModel />
-    </UserControl.DataContext>
     <Grid>
-
+        <DataGrid x:Name="SalesGrid"
+            ItemsSource="{Binding SalesRows}"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto"
+            Loaded="SalesGrid_Loaded">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Part Id" Binding="{Binding PartId}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Total Sales" Binding="{Binding TotalSales}" />
+                <!-- Month columns will be added in code-behind -->
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

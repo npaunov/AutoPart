@@ -295,6 +295,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sales History.
+        /// </summary>
+        public static string SaleHistoryName {
+            get {
+                return ResourceManager.GetString("SaleHistoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string SearchName {

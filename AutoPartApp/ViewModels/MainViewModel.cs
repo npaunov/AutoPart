@@ -26,7 +26,7 @@ public partial class MainViewModel : ObservableObject
     public string EnglishCultureCode => Properties.Strings.EnglishCultureCode;
     public string AutoPartTitle => Properties.Strings.AutoPartTitle;
     public string WareHouseName => Properties.Strings.WareHouseName;
-    public string AutoPartsName => Properties.Strings.AutoPartsName;
+    public string SaleHistoryName => Properties.Strings.SaleHistoryName;
     public string LanguageName => Properties.Strings.LanguageName;
     public string EnglishName => Properties.Strings.EnglishName;
     public string BulgarianName => Properties.Strings.BulgarianName;

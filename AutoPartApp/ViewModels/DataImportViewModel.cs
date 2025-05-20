@@ -124,7 +124,7 @@ public partial class DataImportViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void TestAction()
+    private void Test()
     {
         ButtonStatus = "Test button clicked!";
         //try

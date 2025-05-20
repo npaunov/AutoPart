@@ -195,6 +195,9 @@
   <data name="PriceName" xml:space="preserve">
     <value>Цена</value>
   </data>
+  <data name="SaleHistoryName" xml:space="preserve">
+    <value>История Продажби</value>
+  </data>
   <data name="SearchName" xml:space="preserve">
     <value>Търси</value>
   </data>
