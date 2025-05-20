@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using AutoPartApp.Utilities;
 using AutoPartApp.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using AutoPartApp.Models;
 
 namespace AutoPartApp;
 
@@ -83,6 +84,7 @@ public partial class DataImportViewModel : ObservableObject
         }
         DeleteAllData();
         int added = PopulatePartsTable();
+        PopulateSalesTable();
         _context.SaveChanges();
         ButtonStatus = $"Database populated from CSV. {added} new parts added.";
         WarehouseViewModel.LoadImportedParts();
@@ -151,6 +153,20 @@ public partial class DataImportViewModel : ObservableObject
             }
         }
         return added;
+    }
+
+    private void PopulateSalesTable()
+    {
+        foreach (var part in _context.PartsInStock)
+        {
+            var totalSales = part.InStore * 18;
+            var salesTotal = new PartsSalesTotal
+            {
+                Id = part.Id,
+                TotalSales = totalSales
+            };
+            _context.PartsSalesTotals.Add(salesTotal);
+        }
     }
 
     public void DeleteAllData()
