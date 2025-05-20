@@ -3,6 +3,7 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using AutoPartApp.Utilities;
 using AutoPartApp.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoPartApp;
 
@@ -20,16 +21,16 @@ public partial class DataImportViewModel : ObservableObject
     public WarehouseViewModel WarehouseViewModel { get; }
 
     private readonly IDialogService _dialogService;
-    private readonly DbContextWrapper _dbContextWrapper;
+    private readonly AutoPartDbContext _context;
 
     public DataImportViewModel(
         WarehouseViewModel warehouseViewModel,
         IDialogService dialogService,
-        DbContextWrapper dbContextWrapper)
+        AutoPartDbContext context)
     {
         WarehouseViewModel = warehouseViewModel;
         _dialogService = dialogService;
-        _dbContextWrapper = dbContextWrapper;
+        _context = context;
     }
 
     [RelayCommand]
@@ -43,13 +44,23 @@ public partial class DataImportViewModel : ObservableObject
             Properties.Strings.ConfirmCreateDatabaseName
         ))
         {
-            ButtonStatus = _dbContextWrapper.CreateNewDatabase();
+            try
+            {
+                _context.Database.EnsureDeleted(); // Optional: deletes the existing database
+                _context.Database.Migrate();       // Applies all migrations (creates schema)
+                ButtonStatus = "Database created successfully!";
+            }
+            catch (Exception ex)
+            {
+                ButtonStatus = $"Failed to create database: {ex.Message}";
+            }
         }
         else
         {
             ButtonStatus = Properties.Strings.CreateDatabaseCanceledName;
         }
     }
+
 
     [RelayCommand]
     /// <summary>
