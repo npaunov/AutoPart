@@ -55,9 +55,12 @@ public partial class WarehouseViewModel : ObservableObject
     /// </summary>
     public void LoadImportedParts()
     {
-        // Clear the current warehouse parts and load the imported parts
-        //Warehouse.PartsInStock.Clear();
-        Warehouse.PartsInStock = DataImportUtil.ImportedParts;
+        // Clear the current warehouse parts and add the imported parts
+        Warehouse.PartsInStock.Clear();
+        foreach (var part in DataImportUtil.ImportedParts)
+        {
+            Warehouse.PartsInStock.Add(part);
+        }
     }
 
     public void LoadDataFromDatabase()

@@ -157,7 +157,7 @@ public partial class DataImportViewModel : ObservableObject
 
     private void PopulateSalesTable()
     {
-        foreach (var part in _context.PartsInStock)
+        foreach (var part in DataImportUtil.ImportedParts)
         {
             var totalSales = part.InStore * 18;
             var salesTotal = new PartsSalesTotal
@@ -171,6 +171,7 @@ public partial class DataImportViewModel : ObservableObject
 
     public void DeleteAllData()
     {
+        _context.PartsSalesTotals.RemoveRange(_context.PartsSalesTotals);
         _context.PartsInStock.RemoveRange(_context.PartsInStock);
         // _context.Orders.RemoveRange(_context.Orders);
         // _context.OrderItems.RemoveRange(_context.OrderItems);

@@ -115,7 +115,7 @@
         <!-- Total Parts Count -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
             <TextBlock Text="Total: " FontWeight="Bold"/>
-            <TextBlock Text="{Binding FilteredParts.Count}"/>
+            <TextBlock Text="{Binding Warehouse.PartsInStock.Count}"/>
         </StackPanel>
     </Grid>
 </UserControl>
