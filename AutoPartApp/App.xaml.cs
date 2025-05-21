@@ -38,6 +38,7 @@ namespace AutoPartApp
                     // Register view models and other services
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<IDialogService, DialogService>();
+                    services.AddSingleton<OrdersViewModel>();
                     services.AddScoped<WarehouseViewModel>();
                     services.AddScoped<SalesHistoryViewModel>();
                     services.AddScoped<DataImportViewModel>();

@@ -277,6 +277,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        public static string OrdersName {
+            get {
+                return ResourceManager.GetString("OrdersName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Package.
         /// </summary>
         public static string PackageName {

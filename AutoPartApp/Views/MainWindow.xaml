@@ -22,8 +22,12 @@
         <!-- TabControl -->
         <TabControl Grid.Row="0" >
             <!-- Warehouse Tab -->
-            <TabItem Header="{Binding WareHouseName}">
+            <TabItem Header= "{Binding WareHouseName}">
                 <views:WarehouseView />
+            </TabItem>
+            <!-- Orders Tab -->
+            <TabItem Header="{Binding OrdersName}">
+                <views:OrdersView />
             </TabItem>
             <!-- Auto Parts Tab -->
             <TabItem Header="{Binding SaleHistoryName}">

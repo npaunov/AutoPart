@@ -25,10 +25,12 @@ public partial class MainViewModel : ObservableObject
     public string BulgarianCultureCode => Properties.Strings.BulgarianCultureCode;
     public string EnglishCultureCode => Properties.Strings.EnglishCultureCode;
     public string AutoPartTitle => Properties.Strings.AutoPartTitle;
-    public string WareHouseName => Properties.Strings.WareHouseName;
-    public string SaleHistoryName => Properties.Strings.SaleHistoryName;
     public string LanguageName => Properties.Strings.LanguageName;
     public string EnglishName => Properties.Strings.EnglishName;
     public string BulgarianName => Properties.Strings.BulgarianName;
+
+    public string WareHouseName => Properties.Strings.WareHouseName;
+    public string OrdersName => Properties.Strings.OrdersName;
+    public string SaleHistoryName => Properties.Strings.SaleHistoryName;
     public string DataImportName => Properties.Strings.DataImportName;
 }

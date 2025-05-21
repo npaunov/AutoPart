@@ -46,6 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BusinessLogic\OrdersLogic\" />
     <Folder Include="DIServices\Services\Interfaces\" />
   </ItemGroup>
 
