@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoPartApp;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Controls;
 
 namespace AutoPartApp

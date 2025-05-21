@@ -1,7 +1,37 @@
 ﻿<UserControl x:Class="AutoPartApp.OrdersView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-        <TextBlock Text="{Binding OrdersName}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AutoPartApp">
+    <StackPanel Margin="20">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="Months to order:" VerticalAlignment="Center"/>
+            <TextBox Width="40" Margin="5,0"
+                     Text="{Binding MonthsToOrder, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Suggest Orders"
+                    Command="{Binding GenerateOrderSuggestionsCommand}" Margin="10,0"/>
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding OrderSuggestions}" AutoGenerateColumns="False" Margin="0,10,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Part ID" Binding="{Binding PartId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Package" Binding="{Binding Package}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Needed Qty" Binding="{Binding NeededQty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Order Qty" Binding="{Binding OrderQty}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Total BGN" Binding="{Binding TotalBGN}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Total EUR" Binding="{Binding TotalEURO}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Sales 1" Binding="{Binding Sales1}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Sales 2" Binding="{Binding Sales2}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Sales 3" Binding="{Binding Sales3}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Sales 4" Binding="{Binding Sales4}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Sales 5" Binding="{Binding Sales5}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Sales 6" Binding="{Binding Sales6}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <TextBlock Text="Total BGN: " FontWeight="Bold"/>
+            <TextBlock Text="{Binding TotalBGN}" Margin="5,0"/>
+            <TextBlock Text="Total EUR: " FontWeight="Bold" Margin="20,0,0,0"/>
+            <TextBlock Text="{Binding TotalEURO}" Margin="5,0"/>
+        </StackPanel>
+    </StackPanel>
 </UserControl>
