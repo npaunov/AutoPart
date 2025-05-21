@@ -34,12 +34,31 @@
 
             <Button Style="{StaticResource DataButtonStyle}" Content="{Binding DataAddToDBName}" Command="{Binding PopulateDatabaseCommand}" />
         </StackPanel>
-        
+
         <!-- Right StackPanel -->
         <StackPanel Grid.Column="1"  Margin="10">
             <TextBlock Text="{Binding ModifyDataName}" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
             <TextBlock Text="{Binding ModifyDataName}"/>
             <Button Style="{StaticResource DataButtonStyle}" Content="{Binding DeleteCSVDataName}" Command="{Binding DeleteCsvDataCommand}" />
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
+                <TextBox Width="50"
+             Text="{Binding ReducePercentage, UpdateSourceTrigger=PropertyChanged}"
+             MaxLength="2"
+             VerticalContentAlignment="Center"
+             HorizontalContentAlignment="Center">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding ReduceQuantitiesCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+                <Button Content="Reduce Quantities"
+            Style="{StaticResource DataButtonStyle}"
+            Command="{Binding ReduceQuantitiesCommand}"
+            Margin="10,0,0,0"/>
+            </StackPanel>
+            <Button Content="Restore Quantities"
+                Style="{StaticResource DataButtonStyle}"
+            Command="{Binding RestoreQuantitiesCommand}"
+            Margin="0,10,0,0"/>
         </StackPanel>
     </Grid>
 </UserControl>

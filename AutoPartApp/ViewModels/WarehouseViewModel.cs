@@ -22,7 +22,7 @@ public partial class WarehouseViewModel : ObservableObject
     public WarehouseViewModel(AutoPartDbContext context)
     {
         _context = context;
-        LoadDataFromDatabase();
+        LoadFromDatabase();
     }
 
     [RelayCommand]
@@ -50,25 +50,39 @@ public partial class WarehouseViewModel : ObservableObject
             Warehouse.PartsInStock.Add(part);
     }
 
-    /// <summary>
-    /// Loads the parts imported by the DataImportUtil into the Warehouse and updates the FilteredParts collection.
-    /// </summary>
-    public void LoadImportedParts()
+    [RelayCommand]
+    private void Clear()
     {
-        // Clear the current warehouse parts and add the imported parts
+        // write the logic to clear the search
+        SearchPartId = string.Empty;
         Warehouse.PartsInStock.Clear();
-        foreach (var part in DataImportUtil.ImportedParts)
-        {
+        foreach (var part in _allParts)
             Warehouse.PartsInStock.Add(part);
-        }
     }
 
-    public void LoadDataFromDatabase()
+    /// <summary>
+    /// Loads parts from the last imported CSV file into the warehouse for preview purposes.
+    /// This does not affect the database; it only updates the in-memory collection for UI display.
+    /// </summary>
+    public void LoadFromCsv()
     {
-        // Clear and reload the collection from the database
-        _allParts = _context.PartsInStock.ToList();
         Warehouse.PartsInStock.Clear();
-        Warehouse.PartsInStock = _allParts.ToObservableCollection();
+        foreach (var part in DataImportUtil.ImportedParts)
+            Warehouse.PartsInStock.Add(part);
+        _allParts = DataImportUtil.ImportedParts.ToList();
+    }
+
+    /// <summary>
+    /// Loads parts from the database into the warehouse, ensuring the UI reflects the current persisted data.
+    /// This should be called after any operation that modifies the database.
+    /// </summary>
+    public void LoadFromDatabase()
+    {
+        var dbParts = _context.PartsInStock.AsNoTracking().ToList();
+        Warehouse.PartsInStock.Clear();
+        foreach (var part in dbParts)
+            Warehouse.PartsInStock.Add(part);
+        _allParts = dbParts;
     }
 
     // Localized Name and Label Properties
@@ -78,6 +92,7 @@ public partial class WarehouseViewModel : ObservableObject
     public string PriceEUROHeader => Properties.Strings.PriceName + " " + Properties.Strings.EuroName;
     public string PackageHeader => Properties.Strings.PackageName;
     public string InStoreHeader => Properties.Strings.InStoreName;
-    public string SearchPartIdLabel => Properties.Strings.SearchName + " " + Properties.Strings.PartIDName;
+    public string SearchPartIdLabel => Properties.Strings.SearchLabelName;
     public string SearchButtonLabel => Properties.Strings.SearchName;
+    public string ClearNameLabel => Properties.Strings.ClearName;
 }

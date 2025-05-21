@@ -201,10 +201,16 @@
   <data name="SearchName" xml:space="preserve">
     <value>Търси</value>
   </data>
+  <data name="SearchLabelName" xml:space="preserve">
+    <value>Търсене по Кат. Номер или Описание</value>
+  </data>
   <data name="SelectFileName" xml:space="preserve">
     <value>Изберете файл за импорт</value>
   </data>
   <data name="WareHouseName" xml:space="preserve">
     <value>Склад</value>
+  </data>
+  <data name="ClearName" xml:space="preserve">
+    <value>Изчисти</value>
   </data>
 </root>

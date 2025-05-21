@@ -7,7 +7,7 @@ namespace AutoPartApp.Models
     public class PartSale
     {
         [Key]
-        public int SaleId { get; set; } // Unique for each sale
+        public int SaleId { get; set; } // Unique for each sale, needed for EF
 
         [Required]
         [ForeignKey("Part")]

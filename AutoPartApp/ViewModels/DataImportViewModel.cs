@@ -18,6 +18,8 @@ public partial class DataImportViewModel : ObservableObject
     private string _selectedFilePath = string.Empty;
     [ObservableProperty]
     private string _buttonStatus = string.Empty;
+    [ObservableProperty]
+    private string _reducePercentage = string.Empty;
 
     // Expose WarehouseViewModel as a property
     public WarehouseViewModel WarehouseViewModel { get; }
@@ -90,7 +92,7 @@ public partial class DataImportViewModel : ObservableObject
         var salesHistoryVM = App.AppHost.Services.GetService<SalesHistoryViewModel>();
         salesHistoryVM?.LoadSalesHistory();
         ButtonStatus = $"Database populated from CSV. {added} new parts added.";
-        WarehouseViewModel.LoadImportedParts();
+        WarehouseViewModel.LoadFromDatabase();
     }
 
 
@@ -109,7 +111,7 @@ public partial class DataImportViewModel : ObservableObject
         {
             SelectedFilePath = openFileDialog.FileName;
             ButtonStatus = DataImportUtil.ImportCsv(SelectedFilePath);
-            WarehouseViewModel.LoadImportedParts();
+            WarehouseViewModel.LoadFromCsv();
         }
     }
 
@@ -236,6 +238,66 @@ public partial class DataImportViewModel : ObservableObject
         // _context.Orders.RemoveRange(_context.Orders);
         // _context.OrderItems.RemoveRange(_context.OrderItems);
         _context.SaveChanges();
+    }
+
+    /// <summary>
+    /// Command to reduce all parts' quantities by a given percentage (1-99), with confirmation.
+    /// </summary>
+    [RelayCommand]
+    private void ReduceQuantities()
+    {
+        // Validate input
+        if (!int.TryParse(ReducePercentage, out int percent) || percent < 1 || percent > 99)
+        {
+            ButtonStatus = "Please enter a valid percentage (1-99).";
+            return;
+        }
+
+        // Confirm with user
+        if (!_dialogService.ShowConfirmation(
+            $"Are you sure you want to reduce all quantities by {percent}%?",
+            "Confirm Reduction"))
+        {
+            ButtonStatus = "Reduction canceled.";
+            return;
+        }
+
+        // Update all parts
+        var parts = _context.PartsInStock.ToList();
+        foreach (var part in parts)
+        {
+            int newQty = (int)Math.Floor(part.InStore * (1 - percent / 100.0));
+            part.InStore = Math.Max(newQty, 0);
+        }
+        _context.SaveChanges();
+
+        // Refresh warehouse view
+        WarehouseViewModel.LoadFromDatabase();
+
+        ButtonStatus = $"All quantities reduced by {percent}%.";
+    }
+
+    /// <summary>
+    /// Restores the InStore quantity for each part by calculating total sales.
+    /// Updates both the database and the UI.
+    /// </summary>
+    [RelayCommand]
+    private void RestoreQuantities()
+    {
+        // Get all parts and sales from the database
+        var parts = _context.PartsInStock.ToList();
+        var sales = _context.PartSales.ToList();
+
+        foreach (var part in parts)
+        {
+            int totalSales = sales.Where(s => s.PartId == part.Id).Sum(s => s.Quantity);
+            int restoredQty = totalSales / 18;
+            part.InStore = restoredQty;
+        }
+
+        _context.SaveChanges();
+        WarehouseViewModel.LoadFromDatabase();
+        ButtonStatus = "All quantities restored based on sales history.";
     }
 
     // Localized string properties

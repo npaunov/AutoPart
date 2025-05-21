@@ -201,10 +201,16 @@
   <data name="SearchName" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="SearchLabelName" xml:space="preserve">
+    <value>Search by Id or Description</value>
+  </data>
   <data name="SelectFileName" xml:space="preserve">
     <value>Select File to import</value>
   </data>
   <data name="WareHouseName" xml:space="preserve">
     <value>Warehouse</value>
+  </data>
+  <data name="ClearName" xml:space="preserve">
+    <value>Clear</value>
   </data>
 </root>

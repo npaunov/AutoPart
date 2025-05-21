@@ -35,7 +35,7 @@ namespace AutoPartApp
         }
 
         /// <summary>
-        /// Not implemented. Throws <see cref="NotImplementedException"/> because row number conversion is one-way only.
+        /// Not implemented. Throws <see cref="NotImplementedException"/> because row number conversion is one-way only. Requred by IMultiValueConverter.
         /// </summary>
         /// <param name="value">The value produced by the binding target.</param>
         /// <param name="targetTypes">The array of types to convert to.</param>

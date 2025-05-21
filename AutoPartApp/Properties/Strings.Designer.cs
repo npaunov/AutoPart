@@ -115,6 +115,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string ClearName {
+            get {
+                return ResourceManager.GetString("ClearName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Create Database.
         /// </summary>
         public static string ConfirmCreateDatabaseName {
@@ -300,6 +309,15 @@ namespace AutoPartApp.Properties {
         public static string SaleHistoryName {
             get {
                 return ResourceManager.GetString("SaleHistoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search by Id or Description.
+        /// </summary>
+        public static string SearchLabelName {
+            get {
+                return ResourceManager.GetString("SearchLabelName", resourceCulture);
             }
         }
         
