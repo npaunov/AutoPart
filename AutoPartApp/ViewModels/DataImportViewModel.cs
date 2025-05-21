@@ -20,6 +20,8 @@ public partial class DataImportViewModel : ObservableObject
     private string _buttonStatus = string.Empty;
     [ObservableProperty]
     private string _reducePercentage = string.Empty;
+    [ObservableProperty]
+    private string _partsAffected = "100";
 
     // Expose WarehouseViewModel as a property
     public WarehouseViewModel WarehouseViewModel { get; }
@@ -246,35 +248,47 @@ public partial class DataImportViewModel : ObservableObject
     [RelayCommand]
     private void ReduceQuantities()
     {
-        // Validate input
-        if (!int.TryParse(ReducePercentage, out int percent) || percent < 1 || percent > 99)
+        // Validate input for reduction percentage
+        if (!int.TryParse(ReducePercentage, out int percent) || percent < 1 || percent > 100)
         {
-            ButtonStatus = "Please enter a valid percentage (1-99).";
+            ButtonStatus = "Please enter a valid reduction percentage (1-100).";
+            return;
+        }
+
+        // Validate input for parts affected percentage
+        if (!int.TryParse(PartsAffected, out int partsPercent) || partsPercent < 1 || partsPercent > 100)
+        {
+            ButtonStatus = "Please enter a valid parts affected percentage (1-100).";
             return;
         }
 
         // Confirm with user
         if (!_dialogService.ShowConfirmation(
-            $"Are you sure you want to reduce all quantities by {percent}%?",
+            $"Are you sure you want to reduce quantities by {percent}% for {partsPercent}% of parts?",
             "Confirm Reduction"))
         {
             ButtonStatus = "Reduction canceled.";
             return;
         }
 
-        // Update all parts
         var parts = _context.PartsInStock.ToList();
-        foreach (var part in parts)
+        int totalParts = parts.Count;
+        int affectedCount = (int)Math.Ceiling(totalParts * (partsPercent / 100.0));
+
+        // Randomly select affectedCount parts
+        var random = new Random();
+        var affectedParts = parts.OrderBy(_ => random.Next()).Take(affectedCount).ToList();
+
+        foreach (var part in affectedParts)
         {
             int newQty = (int)Math.Floor(part.InStore * (1 - percent / 100.0));
             part.InStore = Math.Max(newQty, 0);
         }
-        _context.SaveChanges();
 
-        // Refresh warehouse view
+        _context.SaveChanges();
         WarehouseViewModel.LoadFromDatabase();
 
-        ButtonStatus = $"All quantities reduced by {percent}%.";
+        ButtonStatus = $"Reduced quantities by {percent}% for {affectedCount} of {totalParts} parts.";
     }
 
     /// <summary>
