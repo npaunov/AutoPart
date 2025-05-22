@@ -69,29 +69,25 @@ namespace AutoPartApp
         public decimal TotalEURO => OrderQty * PriceEURO;
 
         /// <summary>
-        /// Gets or sets the sales quantity for the current month, 1 year ago.
+        /// Gets or sets the sales quantity for the last month.
         /// </summary>
         public int Sales1 { get; set; }
         /// <summary>
-        /// Gets or sets the sales quantity for the next month, 1 year ago.
+        /// Gets or sets the sales quantity for the current month, 1 year ago.
         /// </summary>
         public int Sales2 { get; set; }
         /// <summary>
-        /// Gets or sets the sales quantity for the current month, 2 years ago.
+        /// Gets or sets the sales quantity for the next month, 1 years ago.
         /// </summary>
         public int Sales3 { get; set; }
         /// <summary>
-        /// Gets or sets the sales quantity for the next month, 2 years ago.
+        /// Gets or sets the sales quantity for the current month, 2 years ago.
         /// </summary>
         public int Sales4 { get; set; }
         /// <summary>
-        /// Gets or sets the sales quantity for the current month, 3 years ago.
+        /// Gets or sets the sales quantity for the next month, 2 years ago.
         /// </summary>
         public int Sales5 { get; set; }
-        /// <summary>
-        /// Gets or sets the sales quantity for the next month, 3 years ago.
-        /// </summary>
-        public int Sales6 { get; set; }
 
         /// <summary>
         /// Updates the order quantity based on the needed quantity and package size.
