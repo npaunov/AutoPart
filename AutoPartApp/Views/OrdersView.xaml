@@ -17,8 +17,8 @@
                 <DataGridTextColumn Header="Package" Binding="{Binding Package}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Needed Qty" Binding="{Binding NeededQty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Order Qty" Binding="{Binding OrderQty}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Total BGN" Binding="{Binding TotalBGN}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Total EUR" Binding="{Binding TotalEURO}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Total BGN" Binding="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Total EUR" Binding="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Sales 1" Binding="{Binding Sales1}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Sales 2" Binding="{Binding Sales2}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Sales 3" Binding="{Binding Sales3}" IsReadOnly="True"/>
@@ -29,9 +29,9 @@
         </DataGrid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
             <TextBlock Text="Total BGN: " FontWeight="Bold"/>
-            <TextBlock Text="{Binding TotalBGN}" Margin="5,0"/>
+            <TextBlock Text="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" Margin="5,0"/>
             <TextBlock Text="Total EUR: " FontWeight="Bold" Margin="20,0,0,0"/>
-            <TextBlock Text="{Binding TotalEURO}" Margin="5,0"/>
+            <TextBlock Text="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" Margin="5,0"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

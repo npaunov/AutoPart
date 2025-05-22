@@ -1,15 +1,29 @@
 ﻿<Application x:Class="AutoPartApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:AutoPartApp.Converters">
     <Application.Resources>
+        <!-- Converters for the application -->
+        <converters:PriceFormatConverter x:Key="PriceFormatConverter" />
+
+        <!-- Style for all TabControls in the application. -->
         <Style TargetType="TabControl">
             <Setter Property="TabStripPlacement" Value="Left" />
             <Setter Property="FontSize" Value="18" />
         </Style>
+
+        <!-- Style for all TabItems in the application. -->
         <Style TargetType="TabItem">
             <Setter Property="HeaderTemplate">
                 <Setter.Value>
                     <DataTemplate>
+                        <!-- 
+                            Displays the tab header text.
+                            - FontSize: 20
+                            - Margin: 15
+                            - Width: 180
+                            - TextAlignment: Center
+                        -->
                         <TextBlock Text="{Binding}" FontSize="20" Margin="15" Width="180" TextAlignment="Center" />
                     </DataTemplate>
                 </Setter.Value>

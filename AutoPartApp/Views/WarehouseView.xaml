@@ -73,7 +73,7 @@
                 </DataGridTextColumn>
 
                 <!-- Price (BGN) Column -->
-                <DataGridTextColumn Binding="{Binding PriceBGN}">
+                <DataGridTextColumn Binding="{Binding PriceBGN, Converter={StaticResource PriceFormatConverter}}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.PriceBGNHeader, 
@@ -83,7 +83,7 @@
                 </DataGridTextColumn>
 
                 <!-- Price (EURO) Column -->
-                <DataGridTextColumn Binding="{Binding PriceEURO, StringFormat=F2}">
+                <DataGridTextColumn Binding="{Binding PriceEURO, Converter={StaticResource PriceFormatConverter}}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.PriceEUROHeader, 
