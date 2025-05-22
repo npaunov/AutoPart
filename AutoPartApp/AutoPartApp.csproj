@@ -24,7 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EntityFramework\EntityFramework.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
-    <ProjectReference Include="..\Services\Utilities.csproj" />
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
