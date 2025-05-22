@@ -2,15 +2,33 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:AutoPartApp">
-    <StackPanel Margin="20">
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Controls row -->
+            <RowDefinition Height="*"/>
+            <!-- DataGrid row (fills remaining space) -->
+            <RowDefinition Height="Auto"/>
+            <!-- Totals row -->
+        </Grid.RowDefinitions>
+
+        <!-- Controls -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0">
             <TextBlock Text="Months to order:" VerticalAlignment="Center"/>
             <TextBox Width="40" Margin="5,0"
                      Text="{Binding MonthsToOrder, UpdateSourceTrigger=PropertyChanged}" />
             <Button Content="Suggest Orders"
                     Command="{Binding GenerateOrderSuggestionsCommand}" Margin="10,0"/>
         </StackPanel>
-        <DataGrid ItemsSource="{Binding OrderSuggestions}" AutoGenerateColumns="False" Margin="0,10,0,0">
+
+        <!-- DataGrid fills available space and scrolls internally -->
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding OrderSuggestions}"
+                  AutoGenerateColumns="False"
+                  Margin="0,10,0,0"
+                  ColumnWidth="Auto"
+                  VerticalAlignment="Stretch"
+                  HorizontalScrollBarVisibility="Auto">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Part ID" Binding="{Binding PartId}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="True"/>
@@ -27,11 +45,13 @@
                 <DataGridTextColumn Header="Sales 6" Binding="{Binding Sales6}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+
+        <!-- Totals -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0" Grid.Row="2">
             <TextBlock Text="Total BGN: " FontWeight="Bold"/>
             <TextBlock Text="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" Margin="5,0"/>
             <TextBlock Text="Total EUR: " FontWeight="Bold" Margin="20,0,0,0"/>
             <TextBlock Text="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" Margin="5,0"/>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </UserControl>

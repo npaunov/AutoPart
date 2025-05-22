@@ -12,6 +12,7 @@ namespace AutoPartApp;
 public partial class OrdersViewModel : ObservableObject
 {
     private readonly AutoPartDbContext _context;
+    private readonly IDialogService _dialogService;
 
     /// <summary>
     /// Gets or sets the collection of order suggestions for display in the DataGrid.
@@ -19,11 +20,33 @@ public partial class OrdersViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<OrderSuggestionDto> orderSuggestions = new();
 
+    private int _monthsToOrder = 2;
+
     /// <summary>
     /// Gets or sets the number of months to order for. Default is 2.
+    /// Shows a warning if set above 2, and prevents values above 12.
     /// </summary>
-    [ObservableProperty]
-    private int monthsToOrder = 2;
+    public int MonthsToOrder
+    {
+        get => _monthsToOrder;
+        set
+        {
+            if (value > 12)
+            {
+                _dialogService.ShowMessage(
+                    "Months to order cannot be greater than 12. Value will be set to 12.",
+                    "Warning");
+                value = 12;
+            }
+            else if (value > 2)
+            {
+                _dialogService.ShowMessage(
+                    "Warning: Ordering for more than 2 months may result in overstock.",
+                    "Warning");
+            }
+            SetProperty(ref _monthsToOrder, value);
+        }
+    }
 
     /// <summary>
     /// Gets the total price in BGN for all suggested orders.
@@ -41,9 +64,11 @@ public partial class OrdersViewModel : ObservableObject
     /// Initializes a new instance of the <see cref="OrdersViewModel"/> class.
     /// </summary>
     /// <param name="context">The application's database context.</param>
-    public OrdersViewModel(AutoPartDbContext context)
+    /// <param name="dialogService">The dialog service for showing messages.</param>
+    public OrdersViewModel(AutoPartDbContext context, IDialogService dialogService)
     {
         _context = context;
+        _dialogService = dialogService;
         MonthsToOrder = 2;
         OrderSuggestions = new ObservableCollection<OrderSuggestionDto>();
     }
@@ -54,11 +79,9 @@ public partial class OrdersViewModel : ObservableObject
     [RelayCommand]
     public void GenerateOrderSuggestions()
     {
-        // Validate months to order
+        // Validate months to order (enforce lower bound)
         if (MonthsToOrder < 1)
             MonthsToOrder = 1;
-        if (MonthsToOrder > 6)
-            MonthsToOrder = 6;
 
         var parts = _context.PartsInStock.ToList();
         var sales = _context.PartSales.ToList();
