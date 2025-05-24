@@ -33,6 +33,7 @@
           CanUserAddRows="False"
           HeadersVisibility="Column"
           ColumnWidth="*"
+          FontSize="16"
           AlternationCount="1000000">
             <DataGrid.Columns>
 

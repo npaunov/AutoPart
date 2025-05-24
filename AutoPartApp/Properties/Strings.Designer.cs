@@ -250,7 +250,7 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In Store.
+        ///   Looks up a localized string similar to In Store Qty.
         /// </summary>
         public static string InStoreName {
             get {
@@ -273,6 +273,33 @@ namespace AutoPartApp.Properties {
         public static string ModifyDataName {
             get {
                 return ResourceManager.GetString("ModifyDataName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Months To Order:.
+        /// </summary>
+        public static string MonthsToOrderName {
+            get {
+                return ResourceManager.GetString("MonthsToOrderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Needed Qty.
+        /// </summary>
+        public static string NeededQtyName {
+            get {
+                return ResourceManager.GetString("NeededQtyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Qty.
+        /// </summary>
+        public static string OrderQtyName {
+            get {
+                return ResourceManager.GetString("OrderQtyName", resourceCulture);
             }
         }
         
@@ -345,6 +372,33 @@ namespace AutoPartApp.Properties {
         public static string SelectFileName {
             get {
                 return ResourceManager.GetString("SelectFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suggest Orders.
+        /// </summary>
+        public static string SuggestOrdersName {
+            get {
+                return ResourceManager.GetString("SuggestOrdersName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total BGN.
+        /// </summary>
+        public static string TotalBGNName {
+            get {
+                return ResourceManager.GetString("TotalBGNName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Euro.
+        /// </summary>
+        public static string TotalEuroName {
+            get {
+                return ResourceManager.GetString("TotalEuroName", resourceCulture);
             }
         }
         

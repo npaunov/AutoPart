@@ -85,7 +85,7 @@ public partial class WarehouseViewModel : ObservableObject
         _allParts = dbParts;
     }
 
-    // Localized Name and Label Properties
+    #region Localized Properties
     public string PartIdHeader => Properties.Strings.PartIDName;
     public string DescriptionHeader => Properties.Strings.DescriptionName;
     public string PriceBGNHeader => Properties.Strings.PriceName + " " + Properties.Strings.BGNName;
@@ -95,4 +95,5 @@ public partial class WarehouseViewModel : ObservableObject
     public string SearchPartIdLabel => Properties.Strings.SearchLabelName;
     public string SearchButtonLabel => Properties.Strings.SearchName;
     public string ClearNameLabel => Properties.Strings.ClearName;
+    #endregion
 }

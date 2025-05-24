@@ -176,5 +176,17 @@ public partial class OrdersViewModel : ObservableObject
         TotalEURO = OrderSuggestions.Sum(x => x.TotalEURO);
     }
 
+    #region Localized Properties
     public string OrdersName => Properties.Strings.OrdersName;
+    public string MonthsToOrderName => Properties.Strings.MonthsToOrderName;
+    public string SuggestOrdersName => Properties.Strings.SuggestOrdersName;
+    public string PartIDName => Properties.Strings.PartIDName;
+    public string DescriptionName => Properties.Strings.DescriptionName;
+    public string PackageName => Properties.Strings.PackageName;
+    public string NeededQtyName => Properties.Strings.NeededQtyName;
+    public string OrderQtyName => Properties.Strings.OrderQtyName;
+    public string TotalBGNName => Properties.Strings.TotalBGNName;
+    public string TotalEuroName => Properties.Strings.TotalEuroName;
+    #endregion
+
 }

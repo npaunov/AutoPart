@@ -178,7 +178,7 @@
     <value>Импорт на .csv файл</value>
   </data>
   <data name="InStoreName" xml:space="preserve">
-    <value>На Склад</value>
+    <value>К-во Склад</value>
   </data>
   <data name="LanguageName" xml:space="preserve">
     <value>Език</value>
@@ -215,5 +215,23 @@
   </data>
   <data name="OrdersName" xml:space="preserve">
     <value>Поръчки</value>
+  </data>
+  <data name="NeededQtyName" xml:space="preserve">
+    <value>Необх. К-во</value>
+  </data>
+  <data name="OrderQtyName" xml:space="preserve">
+    <value>Поръчка К-во</value>
+  </data>
+  <data name="TotalBGNName" xml:space="preserve">
+    <value>Цена общо Лева</value>
+  </data>
+  <data name="TotalEuroName" xml:space="preserve">
+    <value>Цена общо Евро</value>
+  </data>
+  <data name="MonthsToOrderName" xml:space="preserve">
+    <value>Месеци за поръчка:</value>
+  </data>
+  <data name="SuggestOrdersName" xml:space="preserve">
+    <value>Предложи поръчки</value>
   </data>
 </root>

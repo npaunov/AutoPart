@@ -178,7 +178,7 @@
     <value>Import .csv file</value>
   </data>
   <data name="InStoreName" xml:space="preserve">
-    <value>In Store</value>
+    <value>In Store Qty</value>
   </data>
   <data name="LanguageName" xml:space="preserve">
     <value>Language</value>
@@ -215,5 +215,23 @@
   </data>
   <data name="OrdersName" xml:space="preserve">
     <value>Orders</value>
+  </data>
+  <data name="NeededQtyName" xml:space="preserve">
+    <value>Needed Qty</value>
+  </data>
+  <data name="OrderQtyName" xml:space="preserve">
+    <value>Order Qty</value>
+  </data>
+  <data name="TotalBGNName" xml:space="preserve">
+    <value>Total BGN</value>
+  </data>
+  <data name="TotalEuroName" xml:space="preserve">
+    <value>Total Euro</value>
+  </data>
+  <data name="MonthsToOrderName" xml:space="preserve">
+    <value>Months To Order:</value>
+  </data>
+  <data name="SuggestOrdersName" xml:space="preserve">
+    <value>Suggest Orders</value>
   </data>
 </root>

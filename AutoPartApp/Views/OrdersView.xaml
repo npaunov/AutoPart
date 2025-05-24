@@ -15,38 +15,115 @@
 
         <!-- Controls -->
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0">
-            <TextBlock Text="Months to order:" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding MonthsToOrderName}" VerticalAlignment="Center"/>
             <TextBox Width="40" Margin="5,0"
                      Text="{Binding MonthsToOrder, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Content="Suggest Orders"
+            <Button Content="{Binding SuggestOrdersName}"
                     Command="{Binding GenerateOrderSuggestionsCommand}" Margin="10,0"/>
         </StackPanel>
 
-        <!-- DataGrid fills available space and scrolls internally -->
         <DataGrid Grid.Row="1"
-                  x:Name="OrdersDataGrid"
-                  DataContext="{Binding}"
-                  ItemsSource="{Binding OrderSuggestions}"
-                  AutoGenerateColumns="False"
-                  Margin="0,10,0,0"
-                  ColumnWidth="Auto"
-                  VerticalAlignment="Stretch"
-                  HorizontalScrollBarVisibility="Auto">
+          x:Name="OrdersDataGrid"
+          ItemsSource="{Binding OrderSuggestions}"
+          AutoGenerateColumns="False"
+          Margin="0,10,0,0"
+          ColumnWidth="Auto"
+          VerticalAlignment="Stretch"
+          HorizontalScrollBarVisibility="Auto"
+          FontSize="16">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Part ID" Binding="{Binding PartId}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Package" Binding="{Binding Package}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Needed Qty" Binding="{Binding NeededQty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="Order Qty" Binding="{Binding OrderQty}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Total BGN" Binding="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Total EUR" Binding="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True"/>
-
+                <!-- Part ID -->
+                <DataGridTextColumn Binding="{Binding PartId}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PartIDName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Description -->
+                <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.DescriptionName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Package -->
+                <DataGridTextColumn Binding="{Binding Package}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PackageName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Needed Qty -->
+                <DataGridTextColumn Binding="{Binding NeededQty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.NeededQtyName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Order Qty -->
+                <DataGridTextColumn Binding="{Binding OrderQty}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.OrderQtyName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Total BGN -->
+                <DataGridTextColumn Binding="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.TotalBGNName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Total EUR -->
+                <DataGridTextColumn Binding="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.TotalEURName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
                 <!-- Sales Columns -->
-                <DataGridTextColumn x:Name="Sales1Column" Binding="{Binding Sales1}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="Sales2Column" Binding="{Binding Sales2}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="Sales3Column" Binding="{Binding Sales3}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="Sales4Column" Binding="{Binding Sales4}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="Sales5Column" Binding="{Binding Sales5}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="Sales1Column" Binding="{Binding Sales1}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.Sales1Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Sales2Column" Binding="{Binding Sales2}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.Sales2Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Sales3Column" Binding="{Binding Sales3}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.Sales3Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Sales4Column" Binding="{Binding Sales4}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.Sales4Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Sales5Column" Binding="{Binding Sales5}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.Sales5Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
