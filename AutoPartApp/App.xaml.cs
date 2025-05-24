@@ -39,6 +39,7 @@ namespace AutoPartApp
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<IDialogService, DialogService>();
                     services.AddSingleton<OrdersViewModel>();
+                    services.AddSingleton<StoresViewModel>();
                     services.AddScoped<WarehouseViewModel>();
                     services.AddScoped<SalesHistoryViewModel>();
                     services.AddScoped<DataImportViewModel>();

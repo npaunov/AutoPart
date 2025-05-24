@@ -29,9 +29,13 @@
             <TabItem Header="{Binding OrdersName}">
                 <views:OrdersView />
             </TabItem>
-            <!-- Auto Parts Tab -->
+            <!-- Sale History Tab -->
             <TabItem Header="{Binding SaleHistoryName}">
                 <views:SalesHistoryView />
+            </TabItem>
+            <!-- Stores Tab -->
+            <TabItem Header="te">
+                <views:StoresView />
             </TabItem>
             <!-- Data Import Tab -->
             <TabItem Header="{Binding DataImportName}">
