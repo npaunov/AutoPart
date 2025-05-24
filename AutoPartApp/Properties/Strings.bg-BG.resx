@@ -234,4 +234,10 @@
   <data name="SuggestOrdersName" xml:space="preserve">
     <value>Предложи поръчки</value>
   </data>
+  <data name="TotalOrderPriceBGNName" xml:space="preserve">
+    <value>Обща цена поръчка ЛЕВА: </value>
+  </data>
+  <data name="TotalOrderPriceEUROName" xml:space="preserve">
+    <value>Обща цена поръчка ЕВРО: </value>
+  </data>
 </root>

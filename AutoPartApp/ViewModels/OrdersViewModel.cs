@@ -180,6 +180,8 @@ public partial class OrdersViewModel : ObservableObject
     public string OrdersName => Properties.Strings.OrdersName;
     public string MonthsToOrderName => Properties.Strings.MonthsToOrderName;
     public string SuggestOrdersName => Properties.Strings.SuggestOrdersName;
+    public string TotalOrderPriceBGNName => Properties.Strings.TotalOrderPriceBGNName;
+    public string TotalOrderPriceEUROName => Properties.Strings.TotalOrderPriceEUROName;
     public string PartIDName => Properties.Strings.PartIDName;
     public string DescriptionName => Properties.Strings.DescriptionName;
     public string PackageName => Properties.Strings.PackageName;

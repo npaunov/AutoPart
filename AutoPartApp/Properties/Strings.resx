@@ -234,4 +234,10 @@
   <data name="SuggestOrdersName" xml:space="preserve">
     <value>Suggest Orders</value>
   </data>
+  <data name="TotalOrderPriceBGNName" xml:space="preserve">
+    <value>Total Order Price BGN: </value>
+  </data>
+  <data name="TotalOrderPriceEUROName" xml:space="preserve">
+    <value>Total Order Price EURO: </value>
+  </data>
 </root>

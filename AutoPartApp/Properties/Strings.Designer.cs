@@ -403,6 +403,24 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Order Price BGN: .
+        /// </summary>
+        public static string TotalOrderPriceBGNName {
+            get {
+                return ResourceManager.GetString("TotalOrderPriceBGNName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Order Price EURO: .
+        /// </summary>
+        public static string TotalOrderPriceEUROName {
+            get {
+                return ResourceManager.GetString("TotalOrderPriceEUROName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warehouse.
         /// </summary>
         public static string WareHouseName {

@@ -31,9 +31,22 @@
           VerticalAlignment="Stretch"
           HorizontalScrollBarVisibility="Auto"
           FontSize="16">
+            <DataGrid.Resources>
+                <!-- Center cell content -->
+                <Style x:Key="CenterCellTextStyle" TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                </Style>
+                <!-- Center header content -->
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <!-- Part ID -->
-                <DataGridTextColumn Binding="{Binding PartId}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding PartId}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.PartIDName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
@@ -41,7 +54,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 <!-- Description -->
-                <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.DescriptionName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
@@ -49,7 +62,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 <!-- Package -->
-                <DataGridTextColumn Binding="{Binding Package}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding Package}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.PackageName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
@@ -57,7 +70,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 <!-- Needed Qty -->
-                <DataGridTextColumn Binding="{Binding NeededQty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <DataGridTextColumn Binding="{Binding NeededQty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.NeededQtyName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
@@ -65,7 +78,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 <!-- Order Qty -->
-                <DataGridTextColumn Binding="{Binding OrderQty}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding OrderQty}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.OrderQtyName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
@@ -73,7 +86,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 <!-- Total BGN -->
-                <DataGridTextColumn Binding="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.TotalBGNName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
@@ -81,43 +94,43 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 <!-- Total EUR -->
-                <DataGridTextColumn Binding="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding DataContext.TotalEURName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                            <TextBlock Text="{Binding DataContext.TotalEuroName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 <!-- Sales Columns -->
-                <DataGridTextColumn x:Name="Sales1Column" Binding="{Binding Sales1}" IsReadOnly="True">
+                <DataGridTextColumn x:Name="Sales1Column" Binding="{Binding Sales1}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.Sales1Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="Sales2Column" Binding="{Binding Sales2}" IsReadOnly="True">
+                <DataGridTextColumn x:Name="Sales2Column" Binding="{Binding Sales2}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.Sales2Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="Sales3Column" Binding="{Binding Sales3}" IsReadOnly="True">
+                <DataGridTextColumn x:Name="Sales3Column" Binding="{Binding Sales3}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.Sales3Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="Sales4Column" Binding="{Binding Sales4}" IsReadOnly="True">
+                <DataGridTextColumn x:Name="Sales4Column" Binding="{Binding Sales4}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.Sales4Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="Sales5Column" Binding="{Binding Sales5}" IsReadOnly="True">
+                <DataGridTextColumn x:Name="Sales5Column" Binding="{Binding Sales5}" IsReadOnly="True" ElementStyle="{StaticResource CenterCellTextStyle}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DataContext.Sales5Header, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
@@ -129,10 +142,10 @@
 
         <!-- Totals -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0" Grid.Row="2">
-            <TextBlock Text="Total BGN: " FontWeight="Bold"/>
-            <TextBlock Text="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" Margin="5,0"/>
-            <TextBlock Text="Total EUR: " FontWeight="Bold" Margin="20,0,0,0"/>
-            <TextBlock Text="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" Margin="5,0"/>
+            <TextBlock Text="{Binding TotalOrderPriceBGNName}"/>
+            <TextBlock Text="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" Margin="5,0" FontWeight="Bold"/>
+            <TextBlock Text="{Binding TotalOrderPriceEUROName}" Margin="20,0,0,0"/>
+            <TextBlock Text="{Binding TotalEURO, Converter={StaticResource PriceFormatConverter}}" Margin="5,0" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </UserControl>
