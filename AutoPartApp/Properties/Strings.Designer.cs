@@ -259,6 +259,24 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Part Id!.
+        /// </summary>
+        public static string InvalidPartIdMessage {
+            get {
+                return ResourceManager.GetString("InvalidPartIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quaqntity must be greater then 0 and lower than 10 000!.
+        /// </summary>
+        public static string InvalidQuantityMessage {
+            get {
+                return ResourceManager.GetString("InvalidQuantityMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string LanguageName {
@@ -291,6 +309,15 @@ namespace AutoPartApp.Properties {
         public static string NeededQtyName {
             get {
                 return ResourceManager.GetString("NeededQtyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string NoName {
+            get {
+                return ResourceManager.GetString("NoName", resourceCulture);
             }
         }
         
@@ -471,6 +498,15 @@ namespace AutoPartApp.Properties {
         public static string WareHouseName {
             get {
                 return ResourceManager.GetString("WareHouseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string YesName {
+            get {
+                return ResourceManager.GetString("YesName", resourceCulture);
             }
         }
     }

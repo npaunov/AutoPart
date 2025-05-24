@@ -255,4 +255,16 @@
   <data name="QuantityName" xml:space="preserve">
     <value>Количество</value>
   </data>
+  <data name="YesName" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="NoName" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="InvalidPartIdMessage" xml:space="preserve">
+    <value>Невалиден Каталожен Номер!</value>
+  </data>
+  <data name="InvalidQuantityMessage" xml:space="preserve">
+    <value>Количеството трябва да е по-голямо от 0 и по-малко от 10 000.</value>
+  </data>
 </root>
