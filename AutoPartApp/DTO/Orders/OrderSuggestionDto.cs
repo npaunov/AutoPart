@@ -19,6 +19,11 @@ namespace AutoPartApp
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the quantity currently in store.
+        /// </summary>
+        public int InStoreQty { get; set; }
+
+        /// <summary>
         /// Gets or sets the package size for the part.
         /// </summary>
         public int Package { get; set; }

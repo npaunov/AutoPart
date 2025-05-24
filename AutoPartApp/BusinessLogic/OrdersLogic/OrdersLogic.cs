@@ -50,6 +50,7 @@ namespace AutoPartApp
                     {
                         PartId = part.Id,
                         Description = part.Description,
+                        InStoreQty = part.InStore,
                         Package = part.Package,
                         NeededQty = Math.Max(neededQty - part.InStore, 0),
                         PriceBGN = part.PriceBGN,

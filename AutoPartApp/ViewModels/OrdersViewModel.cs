@@ -184,6 +184,7 @@ public partial class OrdersViewModel : ObservableObject
     public string TotalOrderPriceEUROName => Properties.Strings.TotalOrderPriceEUROName;
     public string PartIDName => Properties.Strings.PartIDName;
     public string DescriptionName => Properties.Strings.DescriptionName;
+    public string InStoreName => Properties.Strings.InStoreName;
     public string PackageName => Properties.Strings.PackageName;
     public string NeededQtyName => Properties.Strings.NeededQtyName;
     public string OrderQtyName => Properties.Strings.OrderQtyName;
