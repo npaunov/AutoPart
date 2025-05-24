@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.ObjectModel;
 
 namespace AutoPartApp;
@@ -9,7 +10,8 @@ namespace AutoPartApp;
 public partial class StoresViewModel : ObservableObject
 {
     /// <summary>List of available stores.</summary>
-    public ObservableCollection<string> Stores { get; } = new() { "Sofia", "Plovdiv" };
+    [ObservableProperty]
+    private ObservableCollection<string> _stores = new();
 
     [ObservableProperty]
     private string selectedStore;
@@ -29,6 +31,13 @@ public partial class StoresViewModel : ObservableObject
     public StoresViewModel()
     {
         OrderRows.CollectionChanged += (_, _) => RecalculateTotals();
+
+        UpdateStores();
+        // Listen for language change messages
+        WeakReferenceMessenger.Default.Register<LanguageChangedMessage>(this, (r, m) =>
+        {
+            UpdateStores();
+        });
     }
 
     partial void OnOrderRowsChanged(ObservableCollection<StoreOrderRowDto> value)
@@ -65,4 +74,25 @@ public partial class StoresViewModel : ObservableObject
         TotalBGN = OrderRows.Sum(r => r.TotalBGN);
         TotalEuro = OrderRows.Sum(r => r.TotalEuro);
     }
+
+    private void UpdateStores()
+    {
+        // Clear and repopulate with localized store names
+        Stores.Clear();
+        Stores.Add(Properties.Strings.SofiaName);    // Use your localized resource
+        Stores.Add(Properties.Strings.PlovdivName);  // Use your localized resource
+    }
+
+    #region Localization Properties
+    public string StoresName => Properties.Strings.StoresName;
+    public string SelectStoreName => Properties.Strings.SelectStoreName;
+    public string PartIDName => Properties.Strings.PartIDName;
+    public string DescriptionName => Properties.Strings.DescriptionName;
+    public string QuantityName => Properties.Strings.QuantityName;
+    public string TotalBGNName => Properties.Strings.TotalBGNName;
+    public string TotalEuroName => Properties.Strings.TotalEuroName;
+    public string TotalOrderPriceBGNName => Properties.Strings.TotalOrderPriceBGNName;
+    public string TotalOrderPriceEUROName => Properties.Strings.TotalOrderPriceEUROName;
+    #endregion
+
 }

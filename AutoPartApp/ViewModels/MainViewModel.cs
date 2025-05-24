@@ -28,9 +28,9 @@ public partial class MainViewModel : ObservableObject
     public string LanguageName => Properties.Strings.LanguageName;
     public string EnglishName => Properties.Strings.EnglishName;
     public string BulgarianName => Properties.Strings.BulgarianName;
-
     public string WareHouseName => Properties.Strings.WareHouseName;
     public string OrdersName => Properties.Strings.OrdersName;
     public string SaleHistoryName => Properties.Strings.SaleHistoryName;
+    public string StoresName => Properties.Strings.StoresName;
     public string DataImportName => Properties.Strings.DataImportName;
 }

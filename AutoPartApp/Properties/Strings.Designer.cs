@@ -331,11 +331,29 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plovdiv.
+        /// </summary>
+        public static string PlovdivName {
+            get {
+                return ResourceManager.GetString("PlovdivName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price.
         /// </summary>
         public static string PriceName {
             get {
                 return ResourceManager.GetString("PriceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity.
+        /// </summary>
+        public static string QuantityName {
+            get {
+                return ResourceManager.GetString("QuantityName", resourceCulture);
             }
         }
         
@@ -372,6 +390,33 @@ namespace AutoPartApp.Properties {
         public static string SelectFileName {
             get {
                 return ResourceManager.GetString("SelectFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Store: .
+        /// </summary>
+        public static string SelectStoreName {
+            get {
+                return ResourceManager.GetString("SelectStoreName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sofia.
+        /// </summary>
+        public static string SofiaName {
+            get {
+                return ResourceManager.GetString("SofiaName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stores.
+        /// </summary>
+        public static string StoresName {
+            get {
+                return ResourceManager.GetString("StoresName", resourceCulture);
             }
         }
         

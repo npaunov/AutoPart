@@ -34,7 +34,7 @@
                 <views:SalesHistoryView />
             </TabItem>
             <!-- Stores Tab -->
-            <TabItem Header="te">
+            <TabItem Header="{Binding StoresName}">
                 <views:StoresView />
             </TabItem>
             <!-- Data Import Tab -->

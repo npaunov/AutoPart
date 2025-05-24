@@ -4,27 +4,107 @@
              xmlns:vm="clr-namespace:AutoPartApp">
     <UserControl.Resources>
         <vm:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        <vm:RowNumberConverter x:Key="RowNumberConverter"/>
     </UserControl.Resources>
-    <StackPanel Margin="20">
-        <TextBlock Text="Stores" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-        <ComboBox ItemsSource="{Binding Stores}" SelectedItem="{Binding SelectedStore}" Width="200" Margin="0,0,0,10" />
-        <DataGrid ItemsSource="{Binding OrderRows}" AutoGenerateColumns="False" CanUserAddRows="True"
-                  IsReadOnly="False" Margin="0,0,0,10"
-                  IsEnabled="{Binding SelectedStore, Converter={StaticResource NullToBoolConverter}}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0"
+            Text="{Binding StoresName}"
+            FontSize="22"
+            FontWeight="Bold"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Margin="0,0,0,10"/>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Grid.Row="1">
+            <TextBlock Text="{Binding SelectStoreName}" />
+            <ComboBox ItemsSource="{Binding Stores}" SelectedItem="{Binding SelectedStore}" Width="200" Margin="0,0,0,10" />
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding OrderRows}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="True"
+                  HeadersVisibility="Column"
+                  ColumnWidth="Auto"
+                  IsReadOnly="False"
+                  Margin="0,0,0,10"
+                  IsEnabled="{Binding SelectedStore, Converter={StaticResource NullToBoolConverter}}"
+                  Grid.Row="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="#" Binding="{Binding RowNumber}" IsReadOnly="True" Width="40"/>
-                <DataGridTextColumn Header="Part ID" Binding="{Binding PartId, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
-                <DataGridTextColumn Header="Total BGN" Binding="{Binding TotalBGN}" IsReadOnly="True" Width="100"/>
-                <DataGridTextColumn Header="Total EURO" Binding="{Binding TotalEuro}" IsReadOnly="True" Width="100"/>
+                <!-- Row Number -->
+                <DataGridTemplateColumn Header="#" Width="40">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock.Text>
+                                    <MultiBinding Converter="{StaticResource RowNumberConverter}">
+                                        <Binding />
+                                        <Binding RelativeSource="{RelativeSource AncestorType=DataGrid}" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Part ID -->
+                <DataGridTextColumn Binding="{Binding PartId, UpdateSourceTrigger=PropertyChanged}" >
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PartIDName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Description -->
+                <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="*">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.DescriptionName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Quantity -->
+                <DataGridTextColumn Binding="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.QuantityName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Total BGN -->
+                <DataGridTextColumn Binding="{Binding TotalBGN}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.TotalBGNName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <!-- Total EURO -->
+                <DataGridTextColumn Binding="{Binding TotalEuro}" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.TotalEuroName, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock Text="Total BGN: " FontWeight="Bold"/>
-            <TextBlock Text="{Binding TotalBGN, StringFormat=F2}" Margin="5,0"/>
-            <TextBlock Text="Total EURO: " FontWeight="Bold" Margin="20,0,0,0"/>
-            <TextBlock Text="{Binding TotalEuro, StringFormat=F2}" Margin="5,0"/>
+
+        <!-- Totals at the bottom -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
+            <TextBlock Text="{Binding TotalOrderPriceBGNName}"/>
+            <TextBlock Text="{Binding TotalBGN, StringFormat=F2}" Margin="5,0" FontWeight="Bold"/>
+            <TextBlock Text="{Binding TotalOrderPriceEUROName}" Margin="20,0,0,0"/>
+            <TextBlock Text="{Binding TotalEuro, StringFormat=F2}" Margin="5,0" FontWeight="Bold"/>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </UserControl>
