@@ -20,13 +20,13 @@ public partial class StoresViewModel : ObservableObject
     /// List of available stores.
     /// </summary>
     [ObservableProperty]
-    private ObservableCollection<string> _stores = new();
+    private ObservableCollection<StoreDto> _stores = new();
 
     /// <summary>
     /// The currently selected store.
     /// </summary>
     [ObservableProperty]
-    private string selectedStore;
+    private StoreDto selectedStore;
 
     /// <summary>
     /// The collection of order rows for the selected store.
@@ -53,6 +53,9 @@ public partial class StoresViewModel : ObservableObject
     private StoreOrderRowDto selectedOrderRow;
     #endregion 
 
+    private string? _cachedSelectedStoreKey;
+    private List<StoreOrderRowDto>? _cachedOrderRows;
+
     /// <summary>
     /// All available parts for suggestions and validation.
     /// </summary>
@@ -77,7 +80,9 @@ public partial class StoresViewModel : ObservableObject
         // Subscribe to language change for localization
         WeakReferenceMessenger.Default.Register<LanguageChangedMessage>(this, (r, m) =>
         {
+            CacheState();
             UpdateStores();
+            RestoreState();
         });
 
         // Subscribe to collection changes for totals and row property changes
@@ -211,7 +216,7 @@ public partial class StoresViewModel : ObservableObject
         RecalculateTotals();
     }
 
-    partial void OnSelectedStoreChanged(string value)
+    partial void OnSelectedStoreChanged(StoreDto value)
     {
         OrderRows.Clear();
         AddEmptyRow(); // Always add one empty row after clearing
@@ -239,13 +244,14 @@ public partial class StoresViewModel : ObservableObject
     }
 
     /// <summary>
-    /// Updates the list of stores with localized names.
+    /// Updates the list of stores with their keys and localized names.
     /// </summary>
     private void UpdateStores()
     {
         Stores.Clear();
-        Stores.Add(Properties.Strings.SofiaName);
-        Stores.Add(Properties.Strings.PlovdivName);
+        Stores.Add(new StoreDto { Key = "Sofia", DisplayName = Properties.Strings.SofiaName });
+        Stores.Add(new StoreDto { Key = "Plovdiv", DisplayName = Properties.Strings.PlovdivName });
+        // Add more stores
     }
 
     /// <summary>
@@ -256,6 +262,45 @@ public partial class StoresViewModel : ObservableObject
         for (int i = 0; i < OrderRows.Count; i++)
         {
             OrderRows[i].RowNumber = i + 1;
+        }
+    }
+
+    /// <summary>
+    /// Caches the currently selected store key and order rows.
+    /// </summary>
+    private void CacheState()
+    {
+        _cachedSelectedStoreKey = SelectedStore?.Key;
+        _cachedOrderRows = OrderRows.Select(row => new StoreOrderRowDto
+        {
+            PartId = row.PartId,
+            Description = row.Description,
+            Quantity = row.Quantity,
+            PriceBGN = row.PriceBGN,
+            PriceEuro = row.PriceEuro,
+            AllParts = AllParts
+        }).ToList();
+    }
+
+    /// <summary>
+    /// Restores the selected store and order rows after a UI refresh (e.g., language change).
+    /// </summary>
+    private void RestoreState()
+    {
+        if (_cachedSelectedStoreKey != null)
+            SelectedStore = Stores.FirstOrDefault(s => s.Key == _cachedSelectedStoreKey);
+
+        if (_cachedOrderRows != null)
+        {
+            OrderRows.Clear();
+            foreach (var row in _cachedOrderRows)
+            {
+                row.AllParts = AllParts;
+                row.PropertyChanged += StoreOrderRow_PropertyChanged;
+                OrderRows.Add(row);
+            }
+            UpdateRowNumbers();
+            RecalculateTotals();
         }
     }
 
