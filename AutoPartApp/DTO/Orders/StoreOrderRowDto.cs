@@ -2,19 +2,19 @@ using AutoPartApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 
 namespace AutoPartApp;
 
 /// <summary>
 /// Represents a single row in the store order grid, including validation for PartId and Quantity.
 /// </summary>
-public class StoreOrderRowDto : ObservableObject, IDataErrorInfo
+public partial class StoreOrderRowDto : ObservableObject, IDataErrorInfo
 {
     /// <summary>
     /// Row number in the grid.
     /// </summary>
-    public int RowNumber { get; set; }
+    [ObservableProperty]
+    private int rowNumber;
 
     private string _partId;
     /// <summary>

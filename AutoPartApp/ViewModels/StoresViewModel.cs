@@ -1,6 +1,7 @@
 using AutoPartApp.EntityFramework;
 using AutoPartApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
@@ -14,8 +15,9 @@ namespace AutoPartApp;
 /// </summary>
 public partial class StoresViewModel : ObservableObject
 {
+    #region ObservableProperties
     /// <summary>
-    /// List of available stores (localized).
+    /// List of available stores.
     /// </summary>
     [ObservableProperty]
     private ObservableCollection<string> _stores = new();
@@ -43,6 +45,13 @@ public partial class StoresViewModel : ObservableObject
     /// </summary>
     [ObservableProperty]
     private decimal totalEuro;
+
+    /// <summary>
+    /// Gets or sets the currently selected order row in the grid.
+    /// </summary>
+    [ObservableProperty]
+    private StoreOrderRowDto selectedOrderRow;
+    #endregion 
 
     /// <summary>
     /// All available parts for suggestions and validation.
@@ -82,9 +91,64 @@ public partial class StoresViewModel : ObservableObject
                     row.PropertyChanged += StoreOrderRow_PropertyChanged;
                 }
             }
+            UpdateRowNumbers();
             RecalculateTotals();
         };
+
+        // Ensure the grid starts with one empty row
+        if (OrderRows.Count == 0)
+            AddEmptyRow();
     }
+
+    #region Commands
+    /// <summary>
+    /// Adds an empty row to the order grid only if the last row is valid or the grid is empty.
+    /// </summary>
+    [RelayCommand(CanExecute = nameof(CanAddEmptyRow))]
+    public void AddEmptyRow()
+    {
+        var row = new StoreOrderRowDto
+        {
+            AllParts = AllParts // Set reference for validation
+        };
+        row.PropertyChanged += StoreOrderRow_PropertyChanged;
+        OrderRows.Add(row);
+    }
+
+    /// <summary>
+    /// Determines whether a new row can be added based on the validity of the last row.
+    /// </summary>
+    private bool CanAddEmptyRow()
+    {
+        if (OrderRows.Count == 0)
+            return true;
+
+        var lastRow = OrderRows.Last();
+
+        // Validate PartId
+        bool validPart = !string.IsNullOrWhiteSpace(lastRow.PartId)
+            && AllParts.Any(p => p.Id == lastRow.PartId);
+
+        // Validate Quantity
+        bool validQuantity = lastRow.Quantity > 0 && lastRow.Quantity <= 10000;
+
+        return validPart && validQuantity;
+    }
+
+    /// <summary>
+    /// Deletes the currently selected order row from the collection, if any.
+    /// Does nothing if no row is selected.
+    /// </summary>
+    [RelayCommand]
+    private void DeleteSelectedRow()
+    {
+        if (SelectedOrderRow != null)
+        {
+            OrderRows.Remove(SelectedOrderRow);
+            UpdateRowNumbers();
+        }
+    }
+    #endregion
 
     /// <summary>
     /// Handles property changes in order rows for auto-fill and totals.
@@ -135,20 +199,8 @@ public partial class StoresViewModel : ObservableObject
     partial void OnSelectedStoreChanged(string value)
     {
         OrderRows.Clear();
+        AddEmptyRow(); // Always add one empty row after clearing
         RecalculateTotals();
-    }
-
-    /// <summary>
-    /// Adds an empty row to the order grid.
-    /// </summary>
-    public void AddEmptyRow()
-    {
-        var row = new StoreOrderRowDto
-        {
-            AllParts = AllParts // Set reference for validation
-        };
-        row.PropertyChanged += StoreOrderRow_PropertyChanged;
-        OrderRows.Add(row);
     }
 
     /// <summary>
@@ -179,6 +231,18 @@ public partial class StoresViewModel : ObservableObject
         Stores.Add(Properties.Strings.SofiaName);
         Stores.Add(Properties.Strings.PlovdivName);
     }
+
+    /// <summary>
+    /// Updates the RowNumber property for all order rows to match their position in the collection.
+    /// </summary>
+    private void UpdateRowNumbers()
+    {
+        for (int i = 0; i < OrderRows.Count; i++)
+        {
+            OrderRows[i].RowNumber = i + 1;
+        }
+    }
+
 
     #region Localization Properties
     public string StoresName => Properties.Strings.StoresName;

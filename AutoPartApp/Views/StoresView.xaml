@@ -35,26 +35,24 @@
 
         <DataGrid ItemsSource="{Binding OrderRows}"
                   AutoGenerateColumns="False"
-                  CanUserAddRows="True"
+                  CanUserAddRows="False"
                   HeadersVisibility="Column"
                   ColumnWidth="Auto"
                   IsReadOnly="False"
                   Margin="0,0,0,10"
                   IsEnabled="{Binding SelectedStore, Converter={StaticResource NullToBoolConverter}}"
+                  SelectedItem="{Binding SelectedOrderRow, Mode=TwoWay}"
                   Grid.Row="2">
+            <DataGrid.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding AddEmptyRowCommand}" />
+                <KeyBinding Key="Delete" Command="{Binding DeleteSelectedRowCommand}" />
+            </DataGrid.InputBindings>
             <DataGrid.Columns>
                 <!-- Row Number -->
                 <DataGridTemplateColumn Header="#" Width="40">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource RowNumberConverter}">
-                                        <Binding />
-                                        <Binding RelativeSource="{RelativeSource AncestorType=DataGrid}" />
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
+                            <TextBlock Text="{Binding RowNumber}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
