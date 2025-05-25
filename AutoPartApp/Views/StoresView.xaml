@@ -136,12 +136,32 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Totals at the bottom -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
-            <TextBlock Text="{Binding TotalOrderPriceBGNName}"/>
-            <TextBlock Text="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" Margin="5,0" FontWeight="Bold"/>
-            <TextBlock Text="{Binding TotalOrderPriceEUROName}" Margin="20,0,0,0"/>
-            <TextBlock Text="{Binding TotalEuro, Converter={StaticResource PriceFormatConverter}}" Margin="5,0" FontWeight="Bold"/>
-        </StackPanel>
+        <!-- Bottom panel -->
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Row action buttons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Margin="0,0,0,10">
+                <Button Content="{Binding AddRowName}" 
+                Command="{Binding AddEmptyRowCommand}" 
+                Margin="10"
+                Padding="5"/>
+                <Button Content="{Binding DeleteRowName}" 
+                Command="{Binding DeleteSelectedRowCommand}"
+                Margin="10"
+                Padding="5"/>
+            </StackPanel>
+
+            <!-- Totals at the bottom -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
+                <TextBlock Text="{Binding TotalOrderPriceBGNName}"/>
+                <TextBlock Text="{Binding TotalBGN, Converter={StaticResource PriceFormatConverter}}" Margin="5,0" FontWeight="Bold"/>
+                <TextBlock Text="{Binding TotalOrderPriceEUROName}" Margin="20,0,0,0"/>
+                <TextBlock Text="{Binding TotalEuro, Converter={StaticResource PriceFormatConverter}}" Margin="5,0" FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

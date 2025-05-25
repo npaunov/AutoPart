@@ -61,6 +61,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Row.
+        /// </summary>
+        public static string AddRowName {
+            get {
+                return ResourceManager.GetString("AddRowName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AutoPart.
         /// </summary>
         public static string AutoPartName {
@@ -201,6 +210,15 @@ namespace AutoPartApp.Properties {
         public static string DeleteCSVDataQuestionName {
             get {
                 return ResourceManager.GetString("DeleteCSVDataQuestionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete selected Row.
+        /// </summary>
+        public static string DeleteRowName {
+            get {
+                return ResourceManager.GetString("DeleteRowName", resourceCulture);
             }
         }
         

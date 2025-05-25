@@ -267,4 +267,10 @@
   <data name="InvalidQuantityMessage" xml:space="preserve">
     <value>Quaqntity must be greater then 0 and lower than 10 000!</value>
   </data>
+  <data name="AddRowName" xml:space="preserve">
+    <value>Add Row</value>
+  </data>
+  <data name="DeleteRowName" xml:space="preserve">
+    <value>Delete selected Row</value>
+  </data>
 </root>

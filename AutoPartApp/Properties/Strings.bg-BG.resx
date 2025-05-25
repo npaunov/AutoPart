@@ -267,4 +267,10 @@
   <data name="InvalidQuantityMessage" xml:space="preserve">
     <value>Количеството трябва да е по-голямо от 0 и по-малко от 10 000.</value>
   </data>
+  <data name="AddRowName" xml:space="preserve">
+    <value>Добавете Ред</value>
+  </data>
+  <data name="DeleteRowName" xml:space="preserve">
+    <value>Изтрийте избрания Ред</value>
+  </data>
 </root>

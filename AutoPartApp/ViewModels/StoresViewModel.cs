@@ -81,19 +81,7 @@ public partial class StoresViewModel : ObservableObject
         });
 
         // Subscribe to collection changes for totals and row property changes
-        OrderRows.CollectionChanged += (s, e) =>
-        {
-            if (e.NewItems != null)
-            {
-                foreach (StoreOrderRowDto row in e.NewItems)
-                {
-                    row.AllParts = AllParts; // Ensure validation works for all rows
-                    row.PropertyChanged += StoreOrderRow_PropertyChanged;
-                }
-            }
-            UpdateRowNumbers();
-            RecalculateTotals();
-        };
+        OrderRows.CollectionChanged += OrderRows_CollectionChanged;
 
         // Ensure the grid starts with one empty row
         if (OrderRows.Count == 0)
@@ -151,6 +139,26 @@ public partial class StoresViewModel : ObservableObject
     #endregion
 
     /// <summary>
+    /// Handles changes to the OrderRows collection, such as adding or removing rows.
+    /// Updates row numbers and recalculates totals.
+    /// </summary>
+    private void OrderRows_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        if (e.NewItems != null)
+        {
+            foreach (StoreOrderRowDto row in e.NewItems)
+            {
+                row.AllParts = AllParts; // Ensure validation works for all rows
+                row.PropertyChanged += StoreOrderRow_PropertyChanged;
+            }
+        }
+        UpdateRowNumbers();
+        RecalculateTotals();
+        AddEmptyRowCommand.NotifyCanExecuteChanged();
+    }
+
+    #region Handlers for Property Changes
+    /// <summary>
     /// Handles property changes in order rows for auto-fill and totals.
     /// </summary>
     private void StoreOrderRow_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -184,6 +192,13 @@ public partial class StoresViewModel : ObservableObject
         {
             RecalculateTotals();
         }
+
+        // Notify command system if the changed row is the last row
+        if (OrderRows.Count > 0 && row == OrderRows.Last() &&
+            (e.PropertyName == nameof(StoreOrderRowDto.PartId) || e.PropertyName == nameof(StoreOrderRowDto.Quantity)))
+        {
+            AddEmptyRowCommand.NotifyCanExecuteChanged();
+        }
     }
 
     partial void OnOrderRowsChanged(ObservableCollection<StoreOrderRowDto> value)
@@ -202,6 +217,7 @@ public partial class StoresViewModel : ObservableObject
         AddEmptyRow(); // Always add one empty row after clearing
         RecalculateTotals();
     }
+    #endregion
 
     /// <summary>
     /// Recalculates the total prices for all order rows.
@@ -258,6 +274,8 @@ public partial class StoresViewModel : ObservableObject
     public string TotalBGNName => Properties.Strings.TotalBGNName;
     /// <summary>Localized header for Total Euro.</summary>
     public string TotalEuroName => Properties.Strings.TotalEuroName;
+    public string AddRowName => Properties.Strings.AddRowName;
+    public string DeleteRowName => Properties.Strings.DeleteRowName;
     /// <summary>Localized label for total order price in BGN.</summary>
     public string TotalOrderPriceBGNName => Properties.Strings.TotalOrderPriceBGNName;
     /// <summary>Localized label for total order price in Euro.</summary>
