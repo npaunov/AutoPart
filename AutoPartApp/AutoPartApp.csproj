@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoPart.DataAccess\AutoPart.DataAccess.csproj" />
+    <ProjectReference Include="..\AutoPart.Models\AutoPart.Models.csproj" />
     <ProjectReference Include="..\AutoPart.Utilities\AutoPart.Utilities.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
