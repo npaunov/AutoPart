@@ -5,6 +5,11 @@ using CommunityToolkit.Mvvm.Messaging;
 using System.Windows;
 using AutoPartApp.EntityFramework;
 using AutoPartApp.Utilities;
+using AutoPartApp.DIServices.Messengers;
+using AutoPartApp.DIServices.Services.Interfaces;
+using AutoPartApp.DIServices.Services;
+using AutoPartApp.ViewModels;
+using AutoPartApp.Views;
 
 namespace AutoPartApp
 {

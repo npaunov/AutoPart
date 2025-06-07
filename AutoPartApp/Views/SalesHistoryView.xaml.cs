@@ -1,8 +1,9 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using AutoPartApp.ViewModels;
 
-namespace AutoPartApp
+namespace AutoPartApp.Views
 {
     public partial class SalesHistoryView : UserControl
     {

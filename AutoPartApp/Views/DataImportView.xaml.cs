@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Controls;
+using AutoPartApp.ViewModels;
 
-namespace AutoPartApp
+namespace AutoPartApp.Views
 {
     /// <summary>
     /// Interaction logic for DataImportView.xaml

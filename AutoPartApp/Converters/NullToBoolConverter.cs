@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
 
-namespace AutoPartApp;
+namespace AutoPartApp.Converters;
 
 /// <summary>
 /// Converts a null value to false and non-null to true (for enabling/disabling controls).

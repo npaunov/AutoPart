@@ -1,6 +1,7 @@
 using System.Windows;
+using AutoPartApp.DIServices.Services.Interfaces;
 
-namespace AutoPartApp;
+namespace AutoPartApp.DIServices.Services;
 
 /// <summary>
 /// Provides a concrete implementation of <see cref="IDialogService"/> for displaying dialog messages using WPF's MessageBox.

@@ -13,6 +13,7 @@ obj/
 
 # User created files and folders
 /DataBase/
+filelist.txt
 
 # IDE-specific files
 .vscode/

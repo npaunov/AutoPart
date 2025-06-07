@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace AutoPartApp
+namespace AutoPartApp.Converters
 {
     /// <summary>
     /// Converts a DataGrid item and its ItemsControl to a 1-based row number for display.
@@ -15,7 +15,7 @@ namespace AutoPartApp
         /// </summary>
         /// <param name="values">
         /// values[0]: The current item (row data).
-        /// values[1]: The ItemsControl (typically the DataGrid).
+        /// values[1]: The ItemsControl (DataGrid).
         /// </param>
         /// <param name="targetType">The type of the binding target property.</param>
         /// <param name="parameter">Optional parameter (not used).</param>

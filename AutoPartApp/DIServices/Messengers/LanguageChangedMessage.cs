@@ -1,6 +1,6 @@
 using CommunityToolkit.Mvvm.Messaging.Messages;
 
-namespace AutoPartApp;
+namespace AutoPartApp.DIServices.Messengers;
 
 /// <summary>
 /// Message used to notify subscribers when the application's language or culture has changed.

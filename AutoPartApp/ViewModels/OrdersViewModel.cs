@@ -2,9 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using AutoPartApp.EntityFramework;
-using System.Linq;
+using AutoPartApp.BusinessLogic.OrdersLogic;
+using AutoPartApp.DIServices.Services.Interfaces;
+using AutoPartApp.DTO.Orders;
 
-namespace AutoPartApp;
+namespace AutoPartApp.ViewModels;
 
 /// <summary>
 /// ViewModel for the Orders view, providing order planning and suggestion logic.

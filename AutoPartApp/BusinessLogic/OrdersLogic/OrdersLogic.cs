@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using AutoPartApp.DTO.Orders;
 using AutoPartApp.Models;
 
-namespace AutoPartApp
+namespace AutoPartApp.BusinessLogic.OrdersLogic
 {
     /// <summary>
     /// Provides business logic for generating order suggestions based on sales history and inventory.

@@ -1,13 +1,13 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using AutoPartApp.Utilities;
 using AutoPartApp.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using AutoPartApp.Models;
 using Microsoft.Extensions.DependencyInjection;
+using AutoPartApp.DIServices.Services.Interfaces;
 
-namespace AutoPartApp;
+namespace AutoPartApp.ViewModels;
 
 /// <summary>
 /// ViewModel for the Data Import functionality.

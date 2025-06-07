@@ -1,9 +1,9 @@
-using AutoPartApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using AutoPartApp.Models;
 
-namespace AutoPartApp;
+namespace AutoPartApp.DTO.Orders;
 
 /// <summary>
 /// Represents a single row in the store order grid, including validation for PartId and Quantity.

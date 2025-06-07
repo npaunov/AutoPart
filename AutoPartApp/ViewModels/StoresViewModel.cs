@@ -1,14 +1,15 @@
-using AutoPartApp.EntityFramework;
-using AutoPartApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
+using AutoPartApp.EntityFramework;
+using AutoPartApp.DIServices.Messengers;
+using AutoPartApp.Models;
+using AutoPartApp.DTO.Orders;
 
-namespace AutoPartApp;
+namespace AutoPartApp.ViewModels;
 
 /// <summary>
 /// ViewModel for the Stores tab, managing store selection, order entry, and part suggestions/validation.

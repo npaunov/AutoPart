@@ -2,8 +2,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using AutoPartApp.Utilities;
+using AutoPartApp.DIServices.Messengers;
 
-namespace AutoPartApp;
+namespace AutoPartApp.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {

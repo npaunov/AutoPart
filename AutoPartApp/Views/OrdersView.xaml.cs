@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoPartApp.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Controls;
 
-namespace AutoPartApp
+namespace AutoPartApp.Views
 {
     /// <summary>
     /// Interaction logic for OrdersView.xaml

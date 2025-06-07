@@ -1,4 +1,4 @@
-namespace AutoPartApp;
+namespace AutoPartApp.DIServices.Services.Interfaces;
 
 /// <summary>
 /// Provides an abstraction for displaying dialog messages to the user.

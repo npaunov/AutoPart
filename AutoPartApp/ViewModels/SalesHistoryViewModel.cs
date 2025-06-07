@@ -1,12 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using AutoPartApp.Models;
 using AutoPartApp.EntityFramework;
 using System.Collections.ObjectModel;
-using System.Globalization;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace AutoPartApp;
+namespace AutoPartApp.ViewModels;
 
 public partial class SalesHistoryViewModel : ObservableObject
 {

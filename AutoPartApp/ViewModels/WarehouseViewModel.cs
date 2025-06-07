@@ -1,13 +1,11 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using AutoPartApp.Models;
 using AutoPartApp.Utilities;
 using Microsoft.EntityFrameworkCore;
 using AutoPartApp.EntityFramework;
 
-namespace AutoPartApp;
+namespace AutoPartApp.ViewModels;
 
 public partial class WarehouseViewModel : ObservableObject
 {

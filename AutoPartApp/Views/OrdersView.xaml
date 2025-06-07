@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="AutoPartApp.OrdersView"
+﻿<UserControl x:Class="AutoPartApp.Views.OrdersView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:AutoPartApp">
+             xmlns:conv="clr-namespace:AutoPartApp.Converters">
     <UserControl.Resources>
-        <vm:RowNumberConverter x:Key="RowNumberConverter"/>
+        <conv:RowNumberConverter x:Key="RowNumberConverter"/>
     </UserControl.Resources>
     
     <Grid Margin="20">
