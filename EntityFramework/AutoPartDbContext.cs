@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using AutoPartApp.Models;
+using AutoPart.Models;
+using AutoPart.Models.Orders;
 
-namespace AutoPartApp.EntityFramework
+namespace AutoPart.EntityFramework
 {
     /// <summary>
     /// Represents the Entity Framework Core database context for the AutoPart application.

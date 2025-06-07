@@ -1,7 +1,5 @@
-﻿namespace AutoPartApp.Models
+﻿namespace AutoPart.Models.Orders
 {
-
-
     /// <summary>
     /// Represents the status of an order or order item.
     /// </summary>

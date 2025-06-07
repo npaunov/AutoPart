@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace AutoPartApp.Utilities
+namespace AutoPart.Utilities
 {
     /// <summary>
     /// Provides a shared number format for displaying prices consistently across the app.

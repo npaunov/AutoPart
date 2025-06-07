@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using AutoPartApp.EntityFramework;
 using AutoPartApp.BusinessLogic.OrdersLogic;
 using AutoPartApp.DIServices.Services.Interfaces;
 using AutoPartApp.DTO.Orders;
+using AutoPart.EntityFramework;
 
 namespace AutoPartApp.ViewModels;
 

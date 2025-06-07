@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using AutoPartApp.Models;
+using AutoPart.Models;
 
 namespace AutoPartApp.DTO.Orders;
 

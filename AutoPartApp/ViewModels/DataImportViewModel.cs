@@ -1,11 +1,11 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using AutoPartApp.DIServices.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using AutoPartApp.Utilities;
-using AutoPartApp.EntityFramework;
-using AutoPartApp.Models;
+using AutoPart.Utilities;
+using AutoPart.Models;
+using AutoPart.EntityFramework;
+using AutoPartApp.DIServices.Services.Interfaces;
 
 namespace AutoPartApp.ViewModels;
 

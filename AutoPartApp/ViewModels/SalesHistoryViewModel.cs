@@ -1,6 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using AutoPartApp.EntityFramework;
 using System.Collections.ObjectModel;
+using AutoPart.EntityFramework;
 
 namespace AutoPartApp.ViewModels;
 

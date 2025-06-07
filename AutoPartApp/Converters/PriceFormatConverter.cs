@@ -1,7 +1,6 @@
-using System;
 using System.Globalization;
 using System.Windows.Data;
-using AutoPartApp.Utilities;
+using AutoPart.Utilities;
 
 namespace AutoPartApp.Converters
 {

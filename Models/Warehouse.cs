@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace AutoPartApp.Models;
+namespace AutoPart.Models;
 
 public class Warehouse
 {

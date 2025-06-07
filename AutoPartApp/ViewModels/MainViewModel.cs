@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using AutoPartApp.Utilities;
+using AutoPart.Utilities;
 using AutoPartApp.DIServices.Messengers;
 
 namespace AutoPartApp.ViewModels;

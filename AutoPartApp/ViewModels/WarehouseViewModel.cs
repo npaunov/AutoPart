@@ -1,9 +1,9 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using AutoPartApp.Models;
-using AutoPartApp.Utilities;
 using Microsoft.EntityFrameworkCore;
-using AutoPartApp.EntityFramework;
+using AutoPart.EntityFramework;
+using AutoPart.Utilities;
+using AutoPart.Models;
 
 namespace AutoPartApp.ViewModels;
 

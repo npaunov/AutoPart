@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace AutoPartApp.Utilities;
+namespace AutoPart.Utilities;
 
 /// <summary>
 /// A service that facilitates language change across view models.

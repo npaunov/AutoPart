@@ -4,9 +4,9 @@ using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using AutoPartApp.EntityFramework;
+using AutoPart.EntityFramework;
 using AutoPartApp.DIServices.Messengers;
-using AutoPartApp.Models;
+using AutoPart.Models;
 using AutoPartApp.DTO.Orders;
 
 namespace AutoPartApp.ViewModels;

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AutoPartApp.Models
+namespace AutoPart.Models.Orders
 {
     /// <summary>
     /// Represents a single part item within an order, including quantities, prices, and status.

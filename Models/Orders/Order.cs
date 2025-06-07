@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace AutoPartApp.Models
+namespace AutoPart.Models.Orders
 {
     /// <summary>
     /// Represents an order placed for parts, including status, totals, and audit fields.

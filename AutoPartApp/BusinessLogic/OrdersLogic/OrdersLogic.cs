@@ -1,5 +1,5 @@
 ﻿using AutoPartApp.DTO.Orders;
-using AutoPartApp.Models;
+using AutoPart.Models;
 
 namespace AutoPartApp.BusinessLogic.OrdersLogic
 {
