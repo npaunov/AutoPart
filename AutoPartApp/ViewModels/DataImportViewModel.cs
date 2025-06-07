@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using AutoPart.Utilities;
 using AutoPart.Models;
-using AutoPart.EntityFramework;
+using AutoPart.DataAccess;
 using AutoPartApp.DIServices.Services.Interfaces;
 
 namespace AutoPartApp.ViewModels;

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace EntityFramework.Migrations
+namespace AutoPart.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddPartSaleTable : Migration

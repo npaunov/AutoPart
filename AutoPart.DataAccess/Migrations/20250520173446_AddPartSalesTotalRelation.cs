@@ -2,20 +2,13 @@
 
 #nullable disable
 
-namespace EntityFramework.Migrations
+namespace AutoPart.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class RemovePartsSalesTotals : Migration
+    public partial class AddPartSalesTotalRelation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "PartsSalesTotals");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "PartsSalesTotals",
@@ -34,6 +27,13 @@ namespace EntityFramework.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "PartsSalesTotals");
         }
     }
 }

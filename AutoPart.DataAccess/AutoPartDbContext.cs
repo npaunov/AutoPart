@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoPart.Models;
 using AutoPart.Models.Orders;
 
-namespace AutoPart.EntityFramework
+namespace AutoPart.DataAccess
 {
     /// <summary>
     /// Represents the Entity Framework Core database context for the AutoPart application.

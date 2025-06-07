@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Windows;
-using AutoPart.EntityFramework;
+using AutoPart.DataAccess;
 using AutoPart.Utilities;
 using AutoPartApp.DIServices.Messengers;
 using AutoPartApp.DIServices.Services.Interfaces;
@@ -43,8 +43,8 @@ namespace AutoPartApp
                     // Register view models and other services
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<IDialogService, DialogService>();
-                    services.AddSingleton<OrdersViewModel>();
-                    services.AddSingleton<StoresViewModel>();
+                    services.AddScoped<OrdersViewModel>();
+                    services.AddScoped<StoresViewModel>();
                     services.AddScoped<WarehouseViewModel>();
                     services.AddScoped<SalesHistoryViewModel>();
                     services.AddScoped<DataImportViewModel>();

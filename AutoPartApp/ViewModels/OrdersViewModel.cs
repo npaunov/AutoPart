@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using AutoPartApp.BusinessLogic.OrdersLogic;
 using AutoPartApp.DIServices.Services.Interfaces;
 using AutoPartApp.DTO.Orders;
-using AutoPart.EntityFramework;
+using AutoPart.DataAccess;
 
 namespace AutoPartApp.ViewModels;
 

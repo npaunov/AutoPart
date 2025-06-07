@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
-using AutoPart.EntityFramework;
+using AutoPart.DataAccess;
 using AutoPart.Utilities;
 using AutoPart.Models;
 

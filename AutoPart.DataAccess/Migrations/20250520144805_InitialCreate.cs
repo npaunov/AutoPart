@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EntityFramework.Migrations
+namespace AutoPart.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
