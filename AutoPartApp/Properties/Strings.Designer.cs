@@ -151,6 +151,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm Euro Rate.
+        /// </summary>
+        public static string ConfirmEuroRateLabelName {
+            get {
+                return ResourceManager.GetString("ConfirmEuroRateLabelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database creation canceled..
         /// </summary>
         public static string CreateDatabaseCanceledName {
@@ -255,6 +264,15 @@ namespace AutoPartApp.Properties {
         public static string EuroName {
             get {
                 return ResourceManager.GetString("EuroName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Euro Rate.
+        /// </summary>
+        public static string EuroRateLabelName {
+            get {
+                return ResourceManager.GetString("EuroRateLabelName", resourceCulture);
             }
         }
         

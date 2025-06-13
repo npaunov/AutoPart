@@ -12,17 +12,33 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Search Section -->
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-            <TextBlock Text="{Binding SearchPartIdLabel}" VerticalAlignment="Center" Margin="0,0,10,0" />
-            <TextBox Width="200"
-                Text="{Binding SearchPartId, UpdateSourceTrigger=PropertyChanged}">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
-                </TextBox.InputBindings>
-            </TextBox>
-            <Button Content="{Binding SearchButtonLabel}" Command="{Binding SearchCommand}" Margin="10,0,0,0" />
-            <Button Content="{Binding ClearNameLabel}" Command="{Binding ClearCommand}" Margin="20,0,0,0" />
+        <!-- Controls Row: Search (top) + Euro Rate (below) -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <!-- Search Section -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="{Binding SearchPartIdLabel}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                <TextBox Width="200"
+                 Text="{Binding SearchPartId, UpdateSourceTrigger=PropertyChanged}">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+                <Button Content="{Binding SearchButtonLabel}" Command="{Binding SearchCommand}" Margin="10,0,0,0" />
+                <Button Content="{Binding ClearNameLabel}" Command="{Binding ClearCommand}" Margin="20,0,0,0" />
+            </StackPanel>
+
+            <!-- Euro Rate Section -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                <Label Content="{Binding EuroRateLabelName}" VerticalAlignment="Center"/>
+                <TextBox Width="80"
+             Margin="5,0,0,0"
+             Text="{Binding PendingEuroRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+             VerticalAlignment="Center"/>
+                <Button Content="{Binding ConfirmEuroRateLabelName}" 
+            Command="{Binding ConfirmEuroRateCommand}" 
+            Margin="10,0,0,0"
+            VerticalAlignment="Center"/>
+            </StackPanel>
         </StackPanel>
 
         <!-- Warehouse Inventory -->

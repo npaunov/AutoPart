@@ -45,6 +45,7 @@ namespace AutoPartApp
                     services.AddDbContext<AutoPartDbContext>(options =>
                         options.UseSqlServer(connectionString));
                     // Register view models and other services
+                    services.AddSingleton<CurrencySettingsService>();
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<IDialogService, DialogService>();
                     services.AddScoped<OrdersViewModel>();

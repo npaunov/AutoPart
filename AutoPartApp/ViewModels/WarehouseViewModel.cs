@@ -4,22 +4,31 @@ using Microsoft.EntityFrameworkCore;
 using AutoPart.DataAccess;
 using AutoPart.Utilities;
 using AutoPart.Models;
+using AutoPartApp.DIServices.Services;
 
 namespace AutoPartApp.ViewModels;
 
 public partial class WarehouseViewModel : ObservableObject
 {
+    private readonly CurrencySettingsService _currencySettings;
+    private readonly AutoPartDbContext _context;
     [ObservableProperty]
     private string _searchPartId = string.Empty;
-
+    [ObservableProperty]
+    private string _pendingEuroRate;
     private List<Part> _allParts = new();
     public Warehouse Warehouse { get; set; } = new();
+    public decimal EuroRate
+    {
+        get => _currencySettings.EuroRate;
+        set => _currencySettings.EuroRate = value;
+    }
 
-    private readonly AutoPartDbContext _context;
-
-    public WarehouseViewModel(AutoPartDbContext context)
+    public WarehouseViewModel(AutoPartDbContext context, CurrencySettingsService currencySettings)
     {
         _context = context;
+        _currencySettings = currencySettings;
+        PendingEuroRate = EuroRate.ToString("F5");
         LoadFromDatabase();
     }
 
@@ -58,6 +67,19 @@ public partial class WarehouseViewModel : ObservableObject
             Warehouse.PartsInStock.Add(part);
     }
 
+    [RelayCommand]
+    private void ConfirmEuroRate()
+    {
+        if (decimal.TryParse(PendingEuroRate, out var newRate) && newRate > 0)
+        {
+            EuroRate = newRate;
+        }
+        else
+        {
+            // Optionally show a message to the user about invalid input
+        }
+    }
+
     /// <summary>
     /// Loads parts from the last imported CSV file into the warehouse for preview purposes.
     /// This does not affect the database; it only updates the in-memory collection for UI display.
@@ -93,5 +115,8 @@ public partial class WarehouseViewModel : ObservableObject
     public string SearchPartIdLabel => Properties.Strings.SearchLabelName;
     public string SearchButtonLabel => Properties.Strings.SearchName;
     public string ClearNameLabel => Properties.Strings.ClearName;
+    public string EuroRateLabelName => Properties.Strings.EuroRateLabelName;
+    public string ConfirmEuroRateLabelName => Properties.Strings.ConfirmEuroRateLabelName;
+
     #endregion
 }

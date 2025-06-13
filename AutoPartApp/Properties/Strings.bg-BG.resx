@@ -276,4 +276,10 @@
   <data name="TotalSalesName" xml:space="preserve">
     <value>Общо Продажби</value>
   </data>
+  <data name="EuroRateLabelName" xml:space="preserve">
+    <value>Евро Курс</value>
+  </data>
+  <data name="ConfirmEuroRateLabelName" xml:space="preserve">
+    <value>Потвърдете курс на Евро</value>
+  </data>
 </root>

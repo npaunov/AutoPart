@@ -276,4 +276,10 @@
   <data name="TotalSalesName" xml:space="preserve">
     <value>Total Sales</value>
   </data>
+  <data name="EuroRateLabelName" xml:space="preserve">
+    <value>Euro Rate</value>
+  </data>
+  <data name="ConfirmEuroRateLabelName" xml:space="preserve">
+    <value>Confirm Euro Rate</value>
+  </data>
 </root>
