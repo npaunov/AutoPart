@@ -10,6 +10,7 @@ using AutoPartApp.DIServices.Services.Interfaces;
 using AutoPartApp.DIServices.Services;
 using AutoPartApp.ViewModels;
 using AutoPartApp.Views;
+using Microsoft.Extensions.Configuration;
 
 namespace AutoPartApp
 {
@@ -34,12 +35,15 @@ namespace AutoPartApp
             LanguageUtil.ChangeLanguage(AutoPartApp.Properties.Strings.BulgarianCultureCode);
 
             AppHost = Host.CreateDefaultBuilder()
+                .ConfigureAppConfiguration((context, config) =>
+                {
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                })
                 .ConfigureServices((context, services) =>
                 {
-                    // Register AutoPartDbContext with connection string
+                    var connectionString = context.Configuration.GetConnectionString("DefaultConnection");
                     services.AddDbContext<AutoPartDbContext>(options =>
-                        options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=AutoPartsDb;Integrated Security=True;Connect Timeout=30"));
-
+                        options.UseSqlServer(connectionString));
                     // Register view models and other services
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<IDialogService, DialogService>();
