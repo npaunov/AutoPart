@@ -153,24 +153,32 @@ public partial class StoresViewModel : ObservableObject
             return;
         }
 
-        // Filter out empty/invalid rows
         var validRows = OrderRows
-            .Where(r => !string.IsNullOrWhiteSpace(r.PartId) && r.Quantity > 0)
-            .ToList();
+    .Where(r => !string.IsNullOrWhiteSpace(r.PartId) && r.Quantity > 0)
+    .ToList();
 
         if (validRows.Count == 0)
             return;
 
-        // Create Order
+        // Map store key to code
+        string storeCode = SelectedStore.Key switch
+        {
+            "Sofia" => "Sof",
+            "Plovdiv" => "Plo",
+            _ => SelectedStore.Key // fallback
+        };
+
         var order = new Order
         {
             Date = DateTime.Now,
             CreatedAt = DateTime.Now,
             ModifiedAt = DateTime.Now,
-            Status = AutoPart.Models.Orders.OrderStatus.Pending, // Or your default
+            Status = OrderStatus.Pending,
             TotalSumBGN = validRows.Sum(r => r.TotalBGN),
             TotalSumEuro = validRows.Sum(r => r.TotalEuro),
-            Items = validRows.Select(r => new AutoPart.Models.Orders.OrderItem
+            Type = OrderType.Customer,
+            StoreCode = storeCode,
+            Items = validRows.Select(r => new OrderItem
             {
                 PartId = r.PartId,
                 Description = r.Description,
@@ -181,14 +189,13 @@ public partial class StoresViewModel : ObservableObject
                 QuantityReceived = 0,
                 SubtotalBGN = r.TotalBGN,
                 SubtotalEuro = r.TotalEuro,
-                Status = AutoPart.Models.Orders.OrderStatus.Pending
+                Status = OrderStatus.Pending
             }).ToList()
         };
 
         _context.Orders.Add(order);
         _context.SaveChanges();
 
-        // Optionally clear the order rows or show a success message
         OrderRows.Clear();
         AddEmptyRow();
     }
