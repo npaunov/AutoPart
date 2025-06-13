@@ -285,4 +285,7 @@
   <data name="SaveOrderName" xml:space="preserve">
     <value>Save Order</value>
   </data>
+  <data name="VersionName" xml:space="preserve">
+    <value>Version: </value>
+  </data>
 </root>

@@ -8,11 +8,15 @@ namespace AutoPart.Tests.ViewModels
     public class MainViewModelTests
     {
         [Fact]
+        /// <summary>
+        /// Verifies that the ChangeLanguageCommand sends a LanguageChangedMessage when executed.
+        /// </summary>
         public void ChangeLanguageCommand_SendsLanguageChangedMessage()
         {
             // Arrange
             bool messageReceived = false;
-            WeakReferenceMessenger.Default.Register<LanguageChangedMessage>(this, (r, m) => messageReceived = true);
+            WeakReferenceMessenger.Default
+                .Register<LanguageChangedMessage>(this, (r, m) => messageReceived = true);
 
             var viewModel = new MainViewModel();
 
@@ -20,7 +24,7 @@ namespace AutoPart.Tests.ViewModels
             viewModel.ChangeLanguageCommand.Execute("en-US");
 
             // Assert
-            Assert.True(messageReceived);
+            Assert.True(messageReceived, $"{nameof(viewModel.ChangeLanguageCommand)}, did not send message");
 
             // Cleanup
             WeakReferenceMessenger.Default.UnregisterAll(this);

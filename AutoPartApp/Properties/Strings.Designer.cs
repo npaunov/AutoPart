@@ -547,6 +547,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version: .
+        /// </summary>
+        public static string VersionName {
+            get {
+                return ResourceManager.GetString("VersionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warehouse.
         /// </summary>
         public static string WareHouseName {

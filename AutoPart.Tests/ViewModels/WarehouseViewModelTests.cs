@@ -64,7 +64,8 @@ namespace AutoPart.Tests.ViewModels
             viewModel.ClearCommand.Execute(null);
 
             // Assert
-            Assert.Equal(string.Empty, viewModel.SearchPartId);
+            Assert.True(string.IsNullOrEmpty(viewModel.SearchPartId)
+                , $"Expected {nameof(viewModel.SearchPartId)} to be empty after clear command.");
             Assert.Equal(2, viewModel.Warehouse.PartsInStock.Count);
         }
     }

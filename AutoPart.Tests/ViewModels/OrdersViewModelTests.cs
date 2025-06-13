@@ -23,9 +23,10 @@ namespace AutoPart.Tests.ViewModels
 
             // Assert
             Assert.Equal(12, viewModel.MonthsToOrder);
-            dialogServiceMock.Verify(d => d.ShowMessage(
-                It.Is<string>(msg => msg.Contains("cannot be greater than 12")),
-                "Warning"), Times.Once);
+            dialogServiceMock
+                .Verify(d => d.ShowMessage(It.Is<string>(msg => msg
+                .Contains("cannot be greater than 12")),
+                "Warning"), Times.Once , "Dialog message does not contain the correct text.");
         }
     }
 }

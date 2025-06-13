@@ -43,20 +43,35 @@
             </TabItem>
         </TabControl>
 
-        <!-- Localization Dropdown -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-            <TextBlock Text="{Binding LanguageName}" FontSize="16" Margin="0,0,10,0" VerticalAlignment="Center" Width="80" TextAlignment="Right"/>
-            <ComboBox Width="150" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" SelectedValuePath="Tag"
-                      VerticalAlignment="Bottom" SelectedValue="{Binding SelectedLanguage}">
-               <i:Interaction.Triggers>
-                   <i:EventTrigger EventName="SelectionChanged">
-                       <i:InvokeCommandAction Command="{Binding ChangeLanguageCommand}" 
-                                              CommandParameter="{Binding SelectedValue, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
-                   </i:EventTrigger>
-               </i:Interaction.Triggers>
-               <ComboBoxItem Content="{Binding BulgarianName}" Tag="{Binding BulgarianCultureCode}" />
-               <ComboBoxItem Content="{Binding EnglishName}" Tag="{Binding EnglishCultureCode}" />
+        <!-- Localization and Version -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Language label and ComboBox -->
+            <TextBlock Grid.Column="0" Text="{Binding LanguageName}" FontSize="16" Margin="0,0,10,0" VerticalAlignment="Center" Width="80" TextAlignment="Right"/>
+            <ComboBox Grid.Column="1" Width="150" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" SelectedValuePath="Tag"
+              VerticalAlignment="Bottom" SelectedValue="{Binding SelectedLanguage}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ChangeLanguageCommand}" 
+                                      CommandParameter="{Binding SelectedValue, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ComboBoxItem Content="{Binding BulgarianName}" Tag="{Binding BulgarianCultureCode}" />
+                <ComboBoxItem Content="{Binding EnglishName}" Tag="{Binding EnglishCultureCode}" />
             </ComboBox>
-        </StackPanel>
+
+            <!-- Version text, aligned right -->
+            <TextBlock 
+        Grid.Column="2"
+        Text="{Binding VersionName}"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Bottom"
+        Margin="0,0,10,10"/>
+        </Grid>
     </Grid>
 </Window>

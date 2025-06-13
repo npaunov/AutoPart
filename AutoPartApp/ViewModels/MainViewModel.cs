@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using System.Reflection;
 using AutoPart.Utilities;
 using AutoPartApp.DIServices.Messengers;
 
@@ -10,6 +11,17 @@ public partial class MainViewModel : ObservableObject
 {
     [ObservableProperty]
     private string _selectedLanguage = Properties.Strings.BulgarianCultureCode;
+
+    public string AppVersion
+    {
+        get
+        {
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            return version == null
+                ? string.Empty
+                : $"{version.Major}.{version.Minor}.{version.Build}";
+        }
+    }
 
     public MainViewModel()
     {
@@ -34,4 +46,5 @@ public partial class MainViewModel : ObservableObject
     public string SaleHistoryName => Properties.Strings.SaleHistoryName;
     public string StoresName => Properties.Strings.StoresName;
     public string DataImportName => Properties.Strings.DataImportName;
+    public string VersionName => Properties.Strings.VersionName + AppVersion;
 }
