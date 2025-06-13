@@ -2,6 +2,12 @@
 
 namespace AutoPart.Models.Orders
 {
+    public enum OrderType
+    {
+        Customer,   // Order from a store (customer)
+        Warehouse   // Order from warehouse
+    }
+
     /// <summary>
     /// Represents an order placed for parts, including status, totals, and audit fields.
     /// </summary>
@@ -44,5 +50,13 @@ namespace AutoPart.Models.Orders
         /// The collection of items included in this order.
         /// </summary>
         public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
+        /// <summary>
+        /// The type of the order, indicating whether it's a customer order or a warehouse order.
+        /// </summary>
+        public OrderType Type { get; set; }
+        /// <summary>
+        /// The code of the store from which the order is placed.
+        /// </summary>
+        public string StoreCode { get; set; } = string.Empty;
     }
 }

@@ -89,6 +89,11 @@ namespace AutoPart.DataAccess
 
                 entity.Property(e => e.Status)
                       .IsRequired();
+                entity.Property(e => e.Type)
+                      .IsRequired();
+
+                entity.Property(e => e.StoreCode)
+                      .HasMaxLength(20); 
             });
 
             // Configure the OrderItem entity
