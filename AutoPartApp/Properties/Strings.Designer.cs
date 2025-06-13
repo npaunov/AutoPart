@@ -511,6 +511,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Sales.
+        /// </summary>
+        public static string TotalSalesName {
+            get {
+                return ResourceManager.GetString("TotalSalesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warehouse.
         /// </summary>
         public static string WareHouseName {

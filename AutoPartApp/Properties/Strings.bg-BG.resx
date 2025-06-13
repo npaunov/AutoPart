@@ -273,4 +273,7 @@
   <data name="DeleteRowName" xml:space="preserve">
     <value>Изтрийте избрания Ред</value>
   </data>
+  <data name="TotalSalesName" xml:space="preserve">
+    <value>Общо Продажби</value>
+  </data>
 </root>

@@ -1,7 +1,9 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using CommunityToolkit.Mvvm.Messaging;
 using AutoPartApp.ViewModels;
+using AutoPartApp.DIServices.Messengers;
 
 namespace AutoPartApp.Views
 {
@@ -11,6 +13,12 @@ namespace AutoPartApp.Views
         {
             InitializeComponent();
             DataContext = App.AppHost.Services.GetRequiredService<SalesHistoryViewModel>();
+
+            // Subscribe to language change
+            WeakReferenceMessenger.Default.Register<LanguageChangedMessage>(this, (r, m) =>
+            {
+                UpdateFirstThreeHeaders();
+            });
         }
 
         private void SalesGrid_Loaded(object sender, RoutedEventArgs e)
@@ -31,6 +39,19 @@ namespace AutoPartApp.Views
                     Binding = new System.Windows.Data.Binding($"MonthlySales[{month}]")
                 };
                 SalesGrid.Columns.Add(col);
+            }
+
+            UpdateFirstThreeHeaders();
+        }
+
+        private void UpdateFirstThreeHeaders()
+        {
+            // Update only the first three column headers with localized strings
+            if (SalesGrid.Columns.Count >= 3)
+            {
+                SalesGrid.Columns[0].Header = AutoPartApp.Properties.Strings.PartIDName;
+                SalesGrid.Columns[1].Header = AutoPartApp.Properties.Strings.DescriptionName;
+                SalesGrid.Columns[2].Header = AutoPartApp.Properties.Strings.TotalSalesName;
             }
         }
     }

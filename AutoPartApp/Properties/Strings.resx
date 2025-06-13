@@ -273,4 +273,7 @@
   <data name="DeleteRowName" xml:space="preserve">
     <value>Delete selected Row</value>
   </data>
+  <data name="TotalSalesName" xml:space="preserve">
+    <value>Total Sales</value>
+  </data>
 </root>
