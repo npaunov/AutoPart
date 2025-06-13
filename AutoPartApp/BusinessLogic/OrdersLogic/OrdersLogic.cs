@@ -1,4 +1,4 @@
-﻿using AutoPartApp.DTO.Orders;
+﻿using AutoPartApp.DTO.OrdersDTO;
 using AutoPart.Models;
 
 namespace AutoPartApp.BusinessLogic.OrdersLogic

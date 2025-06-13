@@ -282,4 +282,7 @@
   <data name="ConfirmEuroRateLabelName" xml:space="preserve">
     <value>Confirm Euro Rate</value>
   </data>
+  <data name="SaveOrderName" xml:space="preserve">
+    <value>Save Order</value>
+  </data>
 </root>

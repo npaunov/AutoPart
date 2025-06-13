@@ -430,6 +430,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save Order.
+        /// </summary>
+        public static string SaveOrderName {
+            get {
+                return ResourceManager.GetString("SaveOrderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search by Id or Description.
         /// </summary>
         public static string SearchLabelName {

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using AutoPart.Models;
 
-namespace AutoPartApp.DTO.Orders;
+namespace AutoPartApp.DTO.OrdersDTO;
 
 /// <summary>
 /// Represents a single row in the store order grid, including validation for PartId and Quantity.

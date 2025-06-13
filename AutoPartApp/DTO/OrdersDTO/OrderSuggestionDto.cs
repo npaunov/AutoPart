@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace AutoPartApp.DTO.Orders
+namespace AutoPartApp.DTO.OrdersDTO
 {
     /// <summary>
     /// Represents a suggested order row for the order planning DataGrid.

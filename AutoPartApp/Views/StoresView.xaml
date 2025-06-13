@@ -156,6 +156,7 @@
                 Command="{Binding DeleteSelectedRowCommand}"
                 Margin="10"
                 Padding="5"/>
+                <Button Content="{Binding SaveOrderName}" Margin="10" Padding="5" Command="{Binding SaveOrderCommand}" />
             </StackPanel>
 
             <!-- Totals at the bottom -->

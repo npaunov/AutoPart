@@ -7,7 +7,8 @@ using System.ComponentModel;
 using AutoPart.DataAccess;
 using AutoPart.Models;
 using AutoPartApp.DIServices.Messengers;
-using AutoPartApp.DTO.Orders;
+using AutoPartApp.DTO.OrdersDTO;
+using AutoPart.Models.Orders;
 
 namespace AutoPartApp.ViewModels;
 
@@ -141,6 +142,55 @@ public partial class StoresViewModel : ObservableObject
             OrderRows.Remove(SelectedOrderRow);
             UpdateRowNumbers();
         }
+    }
+
+    [RelayCommand]
+    private void SaveOrder()
+    {
+        if (SelectedStore == null || OrderRows.Count == 0)
+        {
+            // Optionally show a message to the user
+            return;
+        }
+
+        // Filter out empty/invalid rows
+        var validRows = OrderRows
+            .Where(r => !string.IsNullOrWhiteSpace(r.PartId) && r.Quantity > 0)
+            .ToList();
+
+        if (validRows.Count == 0)
+            return;
+
+        // Create Order
+        var order = new Order
+        {
+            Date = DateTime.Now,
+            CreatedAt = DateTime.Now,
+            ModifiedAt = DateTime.Now,
+            Status = AutoPart.Models.Orders.OrderStatus.Pending, // Or your default
+            TotalSumBGN = validRows.Sum(r => r.TotalBGN),
+            TotalSumEuro = validRows.Sum(r => r.TotalEuro),
+            Items = validRows.Select(r => new AutoPart.Models.Orders.OrderItem
+            {
+                PartId = r.PartId,
+                Description = r.Description,
+                Package = AllParts.FirstOrDefault(p => p.Id == r.PartId)?.Package ?? 1,
+                PriceBGN = r.PriceBGN,
+                PriceEuro = r.PriceEuro,
+                QuantityOrdered = r.Quantity,
+                QuantityReceived = 0,
+                SubtotalBGN = r.TotalBGN,
+                SubtotalEuro = r.TotalEuro,
+                Status = AutoPart.Models.Orders.OrderStatus.Pending
+            }).ToList()
+        };
+
+        _context.Orders.Add(order);
+        _context.SaveChanges();
+
+        // Optionally clear the order rows or show a success message
+        OrderRows.Clear();
+        AddEmptyRow();
     }
     #endregion
 
@@ -326,5 +376,7 @@ public partial class StoresViewModel : ObservableObject
     public string TotalOrderPriceBGNName => Properties.Strings.TotalOrderPriceBGNName;
     /// <summary>Localized label for total order price in Euro.</summary>
     public string TotalOrderPriceEUROName => Properties.Strings.TotalOrderPriceEUROName;
+    /// <summary>Localized label for Save Order button.</summary>
+    public string SaveOrderName => Properties.Strings.SaveOrderName;
     #endregion
 }

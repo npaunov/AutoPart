@@ -1,5 +1,5 @@
 
-namespace AutoPartApp.DTO.Orders;
+namespace AutoPartApp.DTO.OrdersDTO;
 
 /// <summary>
 /// Represents a store with a unique key and a localized display name.

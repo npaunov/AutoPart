@@ -282,4 +282,7 @@
   <data name="ConfirmEuroRateLabelName" xml:space="preserve">
     <value>Потвърдете курс на Евро</value>
   </data>
+  <data name="SaveOrderName" xml:space="preserve">
+    <value>Запази Поръчка</value>
+  </data>
 </root>
