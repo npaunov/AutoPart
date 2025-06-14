@@ -117,6 +117,8 @@ public partial class WarehouseViewModel : ObservableObject
     public string ClearNameLabel => Properties.Strings.ClearName;
     public string EuroRateLabelName => Properties.Strings.EuroRateLabelName;
     public string ConfirmEuroRateLabelName => Properties.Strings.ConfirmEuroRateLabelName;
+    public string TotalCountName => Properties.Strings.TotalCountName;
+
 
     #endregion
 }

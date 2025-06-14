@@ -511,6 +511,15 @@ namespace AutoPartApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total: .
+        /// </summary>
+        public static string TotalCountName {
+            get {
+                return ResourceManager.GetString("TotalCountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Euro.
         /// </summary>
         public static string TotalEuroName {

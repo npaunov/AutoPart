@@ -288,4 +288,7 @@
   <data name="VersionName" xml:space="preserve">
     <value>Версия: </value>
   </data>
+  <data name="TotalCountName" xml:space="preserve">
+    <value>Общо: </value>
+  </data>
 </root>

@@ -6,7 +6,7 @@
         xmlns:prop="clr-namespace:AutoPartApp.Properties"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         FontSize="18"
-        Title="{x:Static prop:Strings.AutoPartTitle}" Height="600" Width="1000">
+        Title="{Binding AutoPartTitle}" Height="600" Width="1000">
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>

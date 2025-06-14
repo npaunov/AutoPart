@@ -288,4 +288,7 @@
   <data name="VersionName" xml:space="preserve">
     <value>Version: </value>
   </data>
+  <data name="TotalCountName" xml:space="preserve">
+    <value>Total: </value>
+  </data>
 </root>
