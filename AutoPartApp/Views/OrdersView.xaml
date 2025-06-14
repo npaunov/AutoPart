@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <!-- Title row -->
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
             <!-- Controls row -->
             <RowDefinition Height="*"/>
             <!-- DataGrid row -->

@@ -11,6 +11,16 @@
             <Setter Property="TabStripPlacement" Value="Left" />
             <Setter Property="FontSize" Value="18" />
         </Style>
+        
+        <!-- Style for all buttons in the application. -->
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="12,6"/>
+        </Style>
+        <!-- TextBox style for centered text -->
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
 
         <!-- Style for all TabItems in the application. -->
         <Style TargetType="TabItem">
