@@ -5,6 +5,7 @@ using AutoPart.DataAccess;
 using AutoPart.Utilities;
 using AutoPart.Models;
 using AutoPartApp.DIServices.Services;
+using AutoPartApp.Extensions;
 
 namespace AutoPartApp.ViewModels;
 
@@ -100,7 +101,7 @@ public partial class WarehouseViewModel : ObservableObject
     {
         var dbParts = _context.PartsInStock.AsNoTracking().ToList();
         Warehouse.PartsInStock.Clear();
-        foreach (var part in dbParts)
+        foreach (var part in dbParts.ToObservableCollection())
             Warehouse.PartsInStock.Add(part);
         _allParts = dbParts;
     }
